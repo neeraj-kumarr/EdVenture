@@ -1,90 +1,87 @@
-// import React, { useEffect, useState } from "react"
-import React, { useState } from "react"
-// import axios from "axios"
-// import { useNavigate, Link } from "react-router-dom"
+import React, { useState } from "react";
+import "./../App.css"; // Adjust the relative path to App.css
+import axios from "axios";
+import { useNavigate } from "react-router-dom"; // Import useHistory from react-router-dom
 
 
 function Login() {
 
-    // const history = useNavigate();
+    const history = useNavigate();
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    async function handleSubmit(e) {
+    function handleSubmit(e) {
         e.preventDefault();
+        axios.post("http://localhost:3000/login", { email, password })
+            .then(res => {
+                console.log(res);
+                if (res.data === "Login Successfully") {
+                    // Redirect to another page upon successful login
+                    history("/sidenavbar"); // Change "/anotherpage" to the desired URL
+                } else {
+                    console.log('Login not successful')
+                }
+
+
+            })
+
+
+            .catch(err => console.log(err));
     }
-    //     try {
-
-    //         await axios.post("http://localhost:3000/", {
-    //             email, password
-    //         })
-    //             .then(res => {
-    //                 if (res.data == "exist") {
-    //                     history("/navigation", { state: { id: email } })
-    //                 }
-    //                 else if (res.data == "notexist") {
-    //                     alert("User have not sign up")
-    //                 }
-    //             })
-    //             .catch(e => {
-    //                 alert("wrong details")
-    //                 console.log(e);
-    //             })
-
-    //     }
-    //     catch (e) {
-    //         console.log(e);
-
-    //     }
-
-    // }
-
-    // Inline styles for centering the form
-    const formStyles = {
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-
-    };
-
     return (
         <>
-            <div style={formStyles}>
-                {/* <form onSubmit={handleSubmit} style={{ width: "20%", margin: '100px', border: '1px solid black', padding: '20px' }}> */}
-                <form action="POST" style={{ width: "20%", margin: '100px', border: '1px solid black', padding: '20px', borderRadius: '20px' }}>
-                    <h3 className="my-3">Sign In</h3>
 
-                    <div className="mb-3">
-                        <label>Email address</label>
-                        <input
-                            type="email"
-                            className="form-control"
-                            placeholder="Enter email"
-                            value={email}
-                            onChange={(e) => { setEmail(e.target.value) }} />
-                    </div>
-                    <div className="mb-3">
-                        <label>Password</label>
-                        <input
-                            type="password"
-                            autoComplete="current-password"
-                            className="form-control"
-                            placeholder="Enter password"
-                            value={password}
-                            onChange={(e) => { setPassword(e.target.value) }} />
-                    </div>
+            <section className="vh-100">
+                <div className="container-fluid h-custom">
+                    <div className="row d-flex justify-content-center align-items-center h-100">
+                        <div className="col-md-9 col-lg-6 col-xl-5">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                                className="img-fluid" alt="" />
+                        </div>
+                        <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                            <form onSubmit={handleSubmit}>
+                                <div className="form-outline mb-4">
+                                    <label className="form-label" htmlFor="form3Example3">Email address</label>
+                                    <input type="email" id="form3Example3" className="form-control form-control-lg"
+                                        placeholder="Enter a valid email address" autoComplete="username" onChange={(e) => { setEmail(e.target.value) }} />
+                                </div>
 
-                    <div className="d-grid">
-                        <input type="submit" onClick={handleSubmit} className="btn btn-primary" />
-                    </div>
+                                <div className="form-outline mb-3">
+                                    <label className="form-label" htmlFor="form3Example4">Password</label>
+                                    <input type="password" id="form3Example4" className="form-control form-control-lg"
+                                        placeholder="Enter password" autoComplete="current-password" onChange={(e) => { setPassword(e.target.value) }} />
+                                </div>
 
-                </form>
-            </div>
+                                <div className="d-flex justify-content-between align-items-center">
+                                    <div className="form-check mb-0">
+                                        <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                                        <label className="form-check-label" htmlFor="form2Example3">
+                                            Remember me
+                                        </label>
+                                    </div>
+                                    {/* <a href="#!" className="text-body">Forgot password?</a> */}
+                                </div>
+
+                                <div className="text-center text-lg-start mt-4 pt-2">
+                                    <button onClick={handleSubmit} type="submit" className="btn btn-primary btn-lg" style={{ paddingLeft: '2.5rem', paddingRight: '2.5rem' }}>
+                                        Login
+                                    </button>
+                                    <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account?
+                                        {/* <a href="#!"  className="link-danger">Register</a> */}
+                                    </p>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
 
         </>
     )
 }
-
 export default Login

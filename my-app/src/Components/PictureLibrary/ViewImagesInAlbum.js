@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 export default function ViewImagesInAlbum() {
-
-
     return (
         <div className='p-4'>
             <h1 className="text-center mb-3"><mark>View Images</mark></h1>
@@ -30,8 +28,6 @@ export default function ViewImagesInAlbum() {
                     </div>
                 </div>
             </div>
-
-
         </div>
     );
 }
