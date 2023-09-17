@@ -1,13 +1,20 @@
-import React from 'react'
+import React from 'react';
+import SideNavbar from './SideNavbar';
 
 export default function Transaction() {
     return (
-        <div className='m-4'>
-            <>
-                <h1 className='text-center'>KEEP TRACK OF YOUR SPENDINGS</h1>
-                <h3>Seamless Transactions</h3>
-                <p>Lorem ipsum dolor sit amet...</p>
-            </>
-        </div>
+        <>
+            <div style={{ display: 'flex', height: '100vh' }}>
+                <SideNavbar />
+
+                <section style={{ flex: 1 }}>
+                    <div className='m-4' >
+                        <h1 className="text-center">Welcome to Transactions</h1>
+                        <h3>Bank of the free</h3>
+                        <p>Lorem ipsum dolor sit amet...</p>
+                    </div>
+                </section>
+            </div>
+        </>
     )
 }

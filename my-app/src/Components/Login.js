@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import "./../App.css"; // Adjust the relative path to App.css
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Import useHistory from react-router-dom
-
+import Navbar from './Navbar';
 
 function Login({ setIsLoggedIn }) {
 
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -18,19 +18,16 @@ function Login({ setIsLoggedIn }) {
                 console.log(res);
                 if (res.data === "Login Successfully") {
                     setIsLoggedIn(true);
-                    history("/sidenavbar");
+                    navigate("/home");
                 } else {
                     console.log('Login not successful')
                 }
-
-
             })
-
-
             .catch(err => console.log(err));
     }
     return (
         <>
+            <Navbar />
             <section className="vh-100">
                 <div className="container-fluid h-custom">
                     <div className="row d-flex justify-content-center align-items-center h-100">
