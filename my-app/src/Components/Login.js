@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Import useHistory from react-router-dom
 
 
-function Login() {
+function Login({ setIsLoggedIn }) {
 
     const history = useNavigate();
 
@@ -17,8 +17,8 @@ function Login() {
             .then(res => {
                 console.log(res);
                 if (res.data === "Login Successfully") {
-                    // Redirect to another page upon successful login
-                    history("/sidenavbar"); // Change "/anotherpage" to the desired URL
+                    setIsLoggedIn(true);
+                    history("/sidenavbar");
                 } else {
                     console.log('Login not successful')
                 }
@@ -31,7 +31,6 @@ function Login() {
     }
     return (
         <>
-
             <section className="vh-100">
                 <div className="container-fluid h-custom">
                     <div className="row d-flex justify-content-center align-items-center h-100">

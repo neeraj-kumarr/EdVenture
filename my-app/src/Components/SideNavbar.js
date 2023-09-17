@@ -13,10 +13,20 @@ import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
-import { Link } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
+import Home from "./Home";
+import Dashboard from "./Dashboard";
+import Transactions from "./Transactions";
+import CreateNewAlbum from "./PictureLibrary/CreateNewAlbum";
+import ViewAlbums from "./PictureLibrary/ViewAlbums";
+import AddImagesToAlbum from "./PictureLibrary/AddImagesToAlbum";
+import ViewImagesInAlbum from "./PictureLibrary/ViewImagesInAlbum";
 
-export default function SideNavbar({ collapsed, toggleSidebar }) {
-
+export default function SideNavbar() {
+    const [collapsed, setCollapsed] = useState(false);
+    const toggleSidebar = () => {
+        setCollapsed(!collapsed);
+    };
     return (
 
         <div style={{ display: 'flex', height: '100vh' }}>
@@ -90,15 +100,15 @@ export default function SideNavbar({ collapsed, toggleSidebar }) {
 
             </Sidebar>
             <section style={{ flex: 1 }}>
-                {/* <Routes>
+                <Routes>
                     <Route exact path="/" element={<Home />} />
-                    <Route exact path="/dashboard" element={<Dashboard />} />
-                    <Route exact path="/transactions" element={<Transactions />} />
-                    <Route exact path="/create-album" element={<CreateNewAlbum />} />
-                    <Route exact path="/view-albums" element={<ViewAlbums />} />
-                    <Route exact path="/add-images" element={<AddImagesToAlbum />} />
-                    <Route exact path="/view-images-in-album" element={<ViewImagesInAlbum />} />
-                </Routes> */}
+                    <Route exact path="dashboard" element={<Dashboard />} />
+                    <Route exact path="transactions" element={<Transactions />} />
+                    <Route exact path="create-album" element={<CreateNewAlbum />} />
+                    <Route exact path="view-albums" element={<ViewAlbums />} />
+                    <Route exact path="add-images" element={<AddImagesToAlbum />} />
+                    <Route exact path="view-images-in-album" element={<ViewImagesInAlbum />} />
+                </Routes>
             </section>
         </div>
     )
