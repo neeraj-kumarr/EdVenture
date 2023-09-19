@@ -1,19 +1,20 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import SideNavbar from '../SideNavbar';
 
 export default function ViewAlbums() {
-    const albumData = [
-        { sno: 1, title: 'Fruits' },
-        { sno: 2, title: 'Animals' },
-        { sno: 3, title: 'Furniture' },
-        { sno: 4, title: 'Nature' },
-        { sno: 5, title: 'Landscapes' },
-        { sno: 6, title: 'Cities' },
-        { sno: 7, title: 'Sports' },
-        { sno: 8, title: 'Food' },
-        { sno: 9, title: 'Travel' },
-        { sno: 10, title: 'Music' },
-    ];
+    const [albumData, setAlbumData] = useState([]);
+
+    useEffect(() => {
+        // Fetch album data from the API
+        axios.get('http://localhost:3000/view-albums')
+            .then((response) => {
+                setAlbumData(response.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
     return (
         <>
             <div style={{ display: 'flex', height: '100vh' }}>
@@ -34,8 +35,8 @@ export default function ViewAlbums() {
                                 <tbody>
                                     {albumData.map((album, index) => (
                                         <tr key={index}>
-                                            <th scope="row">{album.sno}</th>
-                                            <td>{album.title}</td>
+                                            <th scope="row">{album.SNo}</th>
+                                            <td>{album.Title}</td>
                                         </tr>
                                     ))}
                                 </tbody>
