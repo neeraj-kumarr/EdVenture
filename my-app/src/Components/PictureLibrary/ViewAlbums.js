@@ -35,8 +35,8 @@ export default function ViewAlbums() {
                                 <tbody>
                                     {albumData.map((album, index) => (
                                         <tr key={index}>
-                                            <th scope="row">{album.SNo}</th>
-                                            <td>{album.Title}</td>
+                                            <th scope="row">{album.id}</th>
+                                            <td>{album.title}</td>
                                         </tr>
                                     ))}
                                 </tbody>

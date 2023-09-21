@@ -33,6 +33,7 @@ export default function SideNavbar() {
                     <h2>EdVenture</h2>
                 </MenuItem>
                 <MenuItem
+
                     component={<Link to="/dashboard" className="link" />}
                     icon={<GridViewRoundedIcon />}
                 >
@@ -69,10 +70,12 @@ export default function SideNavbar() {
                     <MenuItem> Item 1 </MenuItem>
                     <MenuItem> Item 2 </MenuItem>
                 </SubMenu>
-                <SubMenu label="Background Images" icon={<FilterBAndWRoundedIcon />}>
-                    <MenuItem> Item 1 </MenuItem>
-                    <MenuItem> Item 2 </MenuItem>
-                </SubMenu>
+                <MenuItem icon={<FilterBAndWRoundedIcon />}
+                    component={<Link to="/background-images" className="link" />}
+
+
+                >Background Images
+                </MenuItem>
                 <MenuItem
                     component={<Link to="/transactions" className="link" />}
                     icon={<MonetizationOnRoundedIcon />}

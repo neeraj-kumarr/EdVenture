@@ -19,7 +19,7 @@ db.connect((err) => {
 
 // Function to insert a new album into the database
 const createAlbum = (albumName, callback) => {
-    const sql = 'INSERT INTO viewAlbum (Title) VALUES (?)';
+    const sql = 'INSERT INTO viewAlbum (title) VALUES (?)';
     db.query(sql, [albumName], (err, data) => {
         if (err) {
             console.error('Error inserting album:', err);

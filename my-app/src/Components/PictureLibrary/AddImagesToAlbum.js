@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, message, Upload } from 'antd';
 import SideNavbar from '../SideNavbar';
 
 export default function AddImagesToAlbum() {
+
+    const [albumData, setAlbumData] = useState([]);
+    const [selectedAlbum, setSelectedAlbum] = useState(''); // Initialize with an empty string
+
+    useEffect(() => {
+        // Fetch album data from the API
+        axios.get('http://localhost:3000/view-albums')
+            .then((response) => {
+                setAlbumData(response.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
+
+
+
     const props = {
         name: 'file',
         action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
@@ -41,16 +59,21 @@ export default function AddImagesToAlbum() {
                                 <p><i>You can only upload images saved on your system</i></p>
                             </div>
                         </div>
+
                         <div className="row mt-4">
                             <div className="col-2">
                                 <h6 className='mt-2'>Picture Album: </h6>
                             </div>
-                            <div className="col-3">
-                                <select className="form-select" aria-label="Default select example">
-                                    <option selected>Select </option>
-                                    <option value="1">Fruits</option>
-                                    <option value="2">Animals</option>
-                                    <option value="3">Nature</option>
+                            <div className="col-2">
+                                <select className="form-select" aria-label="Default select example" value={selectedAlbum} // Use selectedAlbum here
+                                    onChange={(event) => setSelectedAlbum(event.target.value)}>
+
+                                    <option selected="selected" >Select </option>
+                                    {albumData.map((album, index) => (
+                                        <option key={index} value={album.id}>
+                                            {album.title}
+                                        </option>
+                                    ))}
                                 </select>
                             </div>
                         </div>
@@ -59,6 +82,14 @@ export default function AddImagesToAlbum() {
                         <Upload {...props}>
                             <Button className='my-3' icon={<UploadOutlined />}>Click to Upload Images</Button>
                         </Upload>
+
+                        <div className="my-4 col-2">
+                            <input className="form-control me-2 col-3" type="text" placeholder="Write Title/Keyword" />
+                        </div>
+
+                        <div className="my-4 col-2">
+                            <button type="submit" className="btn btn-primary mb-3">Submit</button>
+                        </div>
                     </div>
                 </section>
             </div>

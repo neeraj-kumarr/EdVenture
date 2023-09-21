@@ -80,3 +80,11 @@ h2 {
     height: 100\%;
   }
 }
+
+/* CSS */
+.nav-link {
+  color: inherit;
+  /* Inherit the text color from the parent element */
+  text-decoration: none;
+  /* Remove underline */
+}
