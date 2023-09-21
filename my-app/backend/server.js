@@ -12,6 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(bodyparser.json());
 app.use(cors());
+app.use(express.static('../src/Components'))
 
 app.use(users);
 app.use(viewAlbum);

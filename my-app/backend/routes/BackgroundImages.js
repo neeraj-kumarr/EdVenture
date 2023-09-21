@@ -29,13 +29,21 @@ router.post('/upload', upload.single('image'), (req, res) => {
         return res.json({ Status: 'Success' })
     })
 });
+router.get('/background-images', (req, res) => {
+    const { keyword } = req.query;
+    let sql = 'SELECT * from pictureGallery';
+    
+    // If a keyword is provided, add a WHERE clause to filter by title
+    if (keyword) {
+        sql += ` WHERE title LIKE '%${keyword}%'`;
+    }
 
-router.get('/', (req, res) => {
-    const sql = 'SELECT * from pictureGallery';
     db.query(sql, (err, result) => {
-        if (err) return res.json({ Message: 'Error' })
-        return res.json((result))
-    })
-})
+        if (err) return res.json('Error');
+        return res.json(result);
+    });
+});
+
+
 
 module.exports = router;

@@ -70,7 +70,7 @@ export default function ViewImagesInAlbum() {
                                         <img
                                             key={index}
                                             src={`/images/${image}`} // Path to the images served by Express
-                                            alt={`Image ${index}`}
+                                            alt="item"
                                         />
                                     ))}
                                 </div>

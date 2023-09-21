@@ -1,6 +1,8 @@
+// eslint-disable-next-line
 import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+// eslint-disable-next-line
 import Login from './Components/Login';
 import Navbar from './Components/Navbar';
 import Home from "./Components/Home";
@@ -13,14 +15,14 @@ import ViewImagesInAlbum from "./Components/PictureLibrary/ViewImagesInAlbum";
 import BackgroundImages from './Components/PictureLibrary/BackgroundImages';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route exact path='/' element={<Navbar />} />
-          <Route exact path='login' element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+          {/* <Route exact path='login' element={<Login setIsLoggedIn={setIsLoggedIn} />} /> */}
 
           {/* {isLoggedIn && <Route exact path='/home' element={<Home />} />} */}
           <Route exact path='/home' element={<Home />} />
