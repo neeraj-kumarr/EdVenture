@@ -1,32 +1,104 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SideNavbar from '../SideNavbar';
+import { Gallery } from "react-grid-gallery";
+import Spinner from '../Spinner';
 
 export default function ViewImagesInAlbum() {
     const [albumData, setAlbumData] = useState([]);
     const [selectedAlbum, setSelectedAlbum] = useState('');
-    const [images, setImages] = useState([]);
+    const [data, setData] = useState([]);
+    const [galleryImages, setGalleryImages] = useState([]);
+    const [searchKeyword, setSearchKeyword] = useState('');
+    const [page, setPage] = useState(1);
+    const [pageSize, setPageSize] = useState(8);
+    const [loading, setLoading] = useState(false);
+    const [hasMoreResults, setHasMoreResults] = useState(true);
+
+    // Function to fetch images for the selected album
+    // const fetchImages = async () => {
+    //     setLoading(true);
+    //     try {
+    //         // Fetch album data from the API
+    //         const albumResponse = await axios.get('http://localhost:3000/view-albums');
+    //         setAlbumData(albumResponse.data);
+
+    //         // Fetch images for the selected album
+    //         const imagesResponse = await axios.get('http://localhost:3000/view-images-in-album', {
+    //             params: {
+    //                 keyword: searchKeyword,
+    //                 page,
+    //                 pageSize,
+    //             }
+    //         });
+
+    //         setData(imagesResponse.data);
+
+    //         // Process image data
+    //         const galleryData = imagesResponse.data.map((image) => ({
+    //             src: `http://localhost:3000/PictureGallery/${image.image}`,
+    //             width: 320,
+    //             height: 212,
+    //         }));
+
+    //         setGalleryImages(galleryData);
+    //         setHasMoreResults(imagesResponse.data.length === pageSize);
+    //     } catch (error) {
+    //         console.error('Error fetching data:', error);
+    //     } finally {
+    //         setLoading(false);
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     fetchImages(); // Call the fetchImages function to fetch data
+    // }, [searchKeyword, page, pageSize]);
+
 
     useEffect(() => {
-        // Fetch album data from the API
-        axios.get('http://localhost:3000/view-albums')
-            .then((response) => {
-                setAlbumData(response.data);
+        setLoading(true);
+        // FIND BELOW SOLUTION
+        axios.get('http://localhost:3000/view-images', {
+            params: {
+                keyword: searchKeyword,
+                page,
+                pageSize,
+            }
+        })
+            .then((res) => {
+                setData(res.data);
+                const galleryData = res.data.map((image) => ({
+                    src: `http://localhost:3000/PictureGallery/${image.image}`,
+                    width: 320,
+                    height: 212,
+                }));
+                setGalleryImages(galleryData);
+                setHasMoreResults(res.data.length === pageSize); // Check if there are more results
             })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
-    }, []);
+            .catch((err) => console.log(err))
+            .finally(() => setLoading(false));
+    }, [searchKeyword, page, pageSize]);
 
-    const fetchImagesForAlbum = async () => {
-        try {
-            // Fetch images for the selected album
-            const response = await axios.get(`/view-images-in-album?album=${selectedAlbum}`);
-            setImages(response.data);
-        } catch (error) {
-            console.error('Error fetching images:', error);
+    const handlePrevPage = () => {
+        if (page > 1) {
+            setPage(page - 1);
         }
     };
+
+    const handleNextPage = () => {
+        if (hasMoreResults) { // Only increment page if there are more results
+            setPage(page + 1);
+        }
+    };
+
+    // Function to reset state when search keyword is erased
+    const handleSearchKeywordReset = () => {
+        setSearchKeyword('');
+        setPage(1);
+        setHasMoreResults(true);
+    };
+
+
 
     return (
         <>
@@ -40,42 +112,68 @@ export default function ViewImagesInAlbum() {
                             <p>1. Select Album Name to View Images in the selected Album</p>
                             <p>2. Enter a Keyword to search for a particular image within an Album</p>
 
-                            <div className="row g-3 mt-4">
-                                <div className="col-auto">
-                                    <h6 className='mt-2'>Select Album Name: </h6>
-                                </div>
-                                <div className="col-auto">
-                                    <select className="form-select" aria-label="Default select example"
-                                        value={selectedAlbum}
-                                        onChange={(e) => setSelectedAlbum(e.target.value)}
-                                    >
-                                        <option value=''>Select</option>
-                                        {albumData.map((album) => (
-                                            <option key={album.id} value={album.id}>
-                                                {album.title}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-                                <div className="col-auto">
-                                    <input className="form-control me-2 col-3" type="text" placeholder="Write here" />
-                                </div>
-                                <div className="col-auto">
-                                    <button type="button" className="btn btn-primary mb-3"
-                                        onClick={fetchImagesForAlbum}
-                                    >Submit</button>
-                                </div>
-                                <div className="image-container">
-                                    {images.map((image, index) => (
-                                        <img
-                                            key={index}
-                                            src={`/images/${image}`} // Path to the images served by Express
-                                            alt="item"
-                                        />
+                            <div className="d-flex justify-content-between my-4">
+                                <h6 >Select Album Name: </h6>
+
+                                <select className="form-select h-25 w-25" aria-label="Default select example"
+                                    value={selectedAlbum}
+                                    onChange={(e) => setSelectedAlbum(e.target.value)}
+                                >
+                                    <option value=''>Select</option>
+                                    {albumData.map((album) => (
+                                        <option key={album.id} value={album.id}>
+                                            {album.title}
+                                        </option>
                                     ))}
+                                </select>
+                                <div className="input-group">
+                                    <label htmlFor="exampleFormControlInput1" className='m-2'>Search By Keyword: </label>
+                                    <div >
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            placeholder="Enter Title here."
+                                            value={searchKeyword}
+                                            onChange={(e) => setSearchKeyword(e.target.value)}
+                                        />
+                                    </div>
+                                    {searchKeyword && (
+                                        <button
+                                            type="button"
+                                            className="btn btn-danger mx-4 "
+                                            onClick={handleSearchKeywordReset}
+                                        >
+                                            Clear Search
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    {loading ? (
+                        <Spinner />
+                    ) : (
+                        <div className="m-4">
+                            <Gallery images={galleryImages} />
+                        </div>
+                    )}
+                    <div className="m-4 d-flex justify-content-between">
+                        <button
+                            type="button"
+                            disabled={page <= 1}
+                            className="btn btn-dark"
+                            onClick={handlePrevPage}
+                        >
+                            &larr; Previous Page
+                        </button>
+                        <button
+                            type="button"
+                            disabled={!hasMoreResults}
+                            className="btn btn-dark"
+                            onClick={handleNextPage}
+                        >
+                            Next Page &rarr;
+                        </button>
                     </div>
 
                 </section>

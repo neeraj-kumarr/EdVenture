@@ -4,12 +4,10 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // eslint-disable-next-line
 import Login from './Components/Login';
-// import Navbar from './Components/Navbar';
 import Home from "./Components/Home";
 import Dashboard from "./Components/Dashboard";
 import Transactions from "./Components/Transactions";
 import CreateNewAlbum from "./Components/PictureLibrary/CreateNewAlbum";
-import ViewAlbums from "./Components/PictureLibrary/ViewAlbums";
 import AddImagesToAlbum from "./Components/PictureLibrary/AddImagesToAlbum";
 import ViewImagesInAlbum from "./Components/PictureLibrary/ViewImagesInAlbum";
 import BackgroundImages from './Components/PictureLibrary/BackgroundImages';

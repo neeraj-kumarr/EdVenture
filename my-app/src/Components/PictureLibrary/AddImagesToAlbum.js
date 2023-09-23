@@ -48,24 +48,24 @@ export default function AddImagesToAlbum() {
                 <section style={{ flex: 1 }}>
                     <div className='container'>
                         <h1 className="my-4 text-center"><mark>Add Image to Existing Albums</mark></h1>
-                        <div className='p-3 border border-dark'>
+                        <div className='m-4 p-4 border border-dark'>
                             <h3><u>Instructions:</u></h3>
-                            <p>1. Select Album from drop-down menu</p>
-                            <p>2. Insert Image name in Text box in English</p>
-                            <p>3. In the image box upload an image from your system. (The ideal size of the image is 95px X 135px and not greater than 300kb)</p>
-                            <p>4. You may upload up to 5 images at a time.</p>
+                            <p>
+                                1. Select Album from drop-down menu<br />
+                                2. Insert Image name in Text box in English<br />
+                                3. In the image box upload an image from your system. (The ideal size of the image is 95px X 135px and not greater than 300kb)<br />
+                                4. You may upload up to 5 images at a time.</p>
                             <div style={{ color: 'red' }}>
-                                <p><i>Best Policy would be not to upload images bigger than 300px X 300px</i></p>
-                                <p><i>You can only upload images saved on your system</i></p>
+                                <p><i>Best Policy would be not to upload images bigger than 300px X 300px<br />
+                                    You can only upload images saved on your system</i></p>
                             </div>
                         </div>
 
-                        <div className="row mt-4">
+                        <div class="d-flex justify-content-evenly m-4 ">
+
+                            <h6 className='mt-2'>Choose Picture Album: </h6>
                             <div className="col-2">
-                                <h6 className='mt-2'>Picture Album: </h6>
-                            </div>
-                            <div className="col-2">
-                                <select className="form-select" aria-label="Default select example" value={selectedAlbum} // Use selectedAlbum here
+                                <select className="border border-dark form-select" aria-label="Default select example" value={selectedAlbum} // Use selectedAlbum here
                                     onChange={(event) => setSelectedAlbum(event.target.value)}>
 
                                     <option selected="selected" >Select </option>
@@ -76,19 +76,19 @@ export default function AddImagesToAlbum() {
                                     ))}
                                 </select>
                             </div>
-                        </div>
 
-                        {/* Include the Ant Design Upload component */}
-                        <Upload {...props}>
-                            <Button className='my-3' icon={<UploadOutlined />}>Click to Upload Images</Button>
-                        </Upload>
+                            {/* Include the Ant Design Upload component */}
+                            <Upload {...props}>
+                                <Button style={{ height: '40px' }} className='border border-dark' icon={<UploadOutlined />}>Click to Upload Images</Button>
+                            </Upload>
 
-                        <div className="my-4 col-2">
-                            <input className="form-control me-2 col-3" type="text" placeholder="Write Title/Keyword" />
-                        </div>
+                            <div className="">
+                                <input className="form-control border border-dark me-2 col-3" type="text" placeholder="Write Title/Keyword" />
+                            </div>
 
-                        <div className="my-4 col-2">
-                            <button type="submit" className="btn btn-primary mb-3">Submit</button>
+                            <div className="">
+                                <button type="submit" className="btn btn-primary mb-3">Submit</button>
+                            </div>
                         </div>
                     </div>
                 </section>

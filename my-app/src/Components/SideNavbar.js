@@ -50,11 +50,7 @@ export default function SideNavbar() {
                     >
                         Create New Album
                     </MenuItem>
-                    <MenuItem
-                        component={<Link to="/view-albums" className="link" />}
-                    >
-                        View Albums
-                    </MenuItem>
+
                     <MenuItem
                         component={<Link to="/add-images" className="link" />}
                     >
