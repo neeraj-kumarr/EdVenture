@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SideNavbar from '../SideNavbar';
 import axios from 'axios';
 
 function CreateNewAlbum() {
     const [albumName, setAlbumName] = useState('');
     const [message, setMessage] = useState('');
+    const [albumData, setAlbumData] = useState([]);
 
 
     const handleOnSubmit = (e) => {
@@ -22,6 +23,18 @@ function CreateNewAlbum() {
                 setMessage('Error creating album');
             });
     };
+
+
+    useEffect(() => {
+        // Fetch album data from the API
+        axios.get('http://localhost:3000/view-albums')
+            .then((response) => {
+                setAlbumData(response.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
 
 
     return (
@@ -56,6 +69,28 @@ function CreateNewAlbum() {
                                     {message && <div className="alert alert-success">{message}</div>}
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div className='m-4 '>
+                        <h3 className='my-4'><u>Exisiting Album List</u></h3>
+                        <div className='text-center'>
+                            <table className="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Sno</th>
+                                        <th scope="col">Title</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {albumData.map((album, index) => (
+                                        <tr key={index}>
+                                            <th scope="row">{album.id}</th>
+                                            <td>{album.title}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </section>

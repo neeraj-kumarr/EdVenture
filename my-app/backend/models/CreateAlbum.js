@@ -17,17 +17,17 @@ db.connect((err) => {
 });
 
 
-// Function to insert a new album into the database
-const createAlbum = (albumName, callback) => {
-    const sql = 'INSERT INTO viewAlbum (title) VALUES (?)';
-    db.query(sql, [albumName], (err, data) => {
-        if (err) {
-            console.error('Error inserting album:', err);
-            callback(err, null);
-            return;
-        }
-        callback(null, data.insertId); // Return the ID of the newly inserted album
-    });
-};
+// // Function to insert a new album into the database
+// const createAlbum = (albumName, callback) => {
+//     const sql = 'INSERT INTO viewAlbum (title) VALUES (?)';
+//     db.query(sql, [albumName], (err, data) => {
+//         if (err) {
+//             console.error('Error inserting album:', err);
+//             callback(err, null);
+//             return;
+//         }
+//         callback(null, data.insertId); // Return the ID of the newly inserted album
+//     });
+// };
 
-module.exports = { createAlbum };
+module.exports = db;

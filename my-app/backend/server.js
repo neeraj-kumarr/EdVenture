@@ -2,7 +2,6 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const cors = require('cors');
 const users = require('./routes/Users');
-const viewAlbum = require('./routes/ViewAlbum');
 const createAlbum = require('./routes/CreateAlbum');
 // const viewImages = require('./routes/ViewImages');
 const backgroundImages = require('./routes/BackgroundImages'); // Import your API routes
@@ -15,7 +14,6 @@ app.use(cors());
 app.use(express.static('../src/Components'))
 
 app.use(users);
-app.use(viewAlbum);
 app.use(createAlbum);
 // app.use(viewImages);
 app.use(backgroundImages);

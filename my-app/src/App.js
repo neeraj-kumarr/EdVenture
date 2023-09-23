@@ -29,7 +29,6 @@ function App() {
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route exact path="/transactions" element={<Transactions />} />
           <Route exact path="/create-album" element={<CreateNewAlbum />} />
-          <Route exact path="/view-albums" element={<ViewAlbums />} />
           <Route exact path="/add-images" element={<AddImagesToAlbum />} />
           <Route exact path="/view-images-in-album" element={<ViewImagesInAlbum />} />
           <Route exact path="/background-images" element={<BackgroundImages />} />
