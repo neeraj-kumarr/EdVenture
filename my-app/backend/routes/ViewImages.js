@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('../models/ViewImages');
+const db = require('../db');
 
 const router = express.Router();
 

@@ -5,6 +5,7 @@ const users = require('./routes/Users');
 const createAlbum = require('./routes/CreateAlbum');
 const viewImages = require('./routes/ViewImages');
 const backgroundImages = require('./routes/BackgroundImages'); // Import your API routes
+const addImages = require('./routes/AddImagesInAlbum')
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(users);
 app.use(createAlbum);
 app.use(viewImages);
 app.use(backgroundImages);
+app.use(addImages);
 
 
 

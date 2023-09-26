@@ -8,6 +8,7 @@ export default function AddImagesToAlbum() {
 
     const [albumData, setAlbumData] = useState([]);
     const [selectedAlbum, setSelectedAlbum] = useState(''); // Initialize with an empty string
+    const [file, setFile] = useState(null);
 
     useEffect(() => {
         // Fetch album data from the API
@@ -20,25 +21,58 @@ export default function AddImagesToAlbum() {
             });
     }, []);
 
+    const handleFile = (info) => {
 
 
-    const props = {
-        name: 'file',
-        action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-        headers: {
-            authorization: 'authorization-text',
-        },
-        onChange(info) {
-            if (info.file.status !== 'uploading') {
-                console.log(info.file, info.fileList);
-            }
-            if (info.file.status === 'done') {
-                message.success(`${info.file.name} file uploaded successfully`);
-            } else if (info.file.status === 'error') {
-                message.error(`${info.file.name} file upload failed.`);
-            }
-        },
+        if (info.file.status === 'done') {
+            message.success(`${info.file.name} file uploaded successfully`);
+        } else if (info.file.status === 'error') {
+            message.error(`${info.file.name} file upload failed.`);
+        }
     };
+
+    const handleUpload = () => {
+        if (!file) {
+            message.error('Please select a file to upload.');
+            return;
+        }
+        const formData = new FormData();
+        formData.append('image', file);
+
+        axios.post('http://localhost:3000/upload', formData)
+            .then((res) => {
+                if (res.data.Status === 'Success') {
+                    console.log('Uploaded Successfully');
+                    message.success('Please select a file to upload.');
+
+                } else {
+                    console.log('Upload Failed');
+
+                }
+            })
+            .catch((err) => {
+                console.error('Error uploading image:', err);
+                message.error('Image upload failed. Check your Network');
+            });
+    };
+
+    // const props = {
+    //     name: 'file',
+    //     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+    //     headers: {
+    //         authorization: 'authorization-text',
+    //     },
+    //     onChange(info) {
+    //         if (info.file.status !== 'uploading') {
+    //             console.log(info.file, info.fileList);
+    //         }
+    //         if (info.file.status === 'done') {
+    //             message.success(`${info.file.name} file uploaded successfully`);
+    //         } else if (info.file.status === 'error') {
+    //             message.error(`${info.file.name} file upload failed.`);
+    //         }
+    //     },
+    // };
 
     return (
         <>
@@ -78,8 +112,24 @@ export default function AddImagesToAlbum() {
                             </div>
 
                             {/* Include the Ant Design Upload component */}
-                            <Upload {...props}>
-                                <Button style={{ height: '40px' }} className='border border-dark' icon={<UploadOutlined />}>Click to Upload Images</Button>
+                            <Upload
+                                name="image"
+
+                                showUploadList={true}
+                                beforeUpload={(file) => {
+                                    setFile(file);
+                                    return false; // Prevent automatic upload
+                                }}
+
+                                onChange={handleFile}
+                            >
+                                <Button
+                                    style={{ height: '40px' }}
+                                    className='border border-dark'
+                                    icon={<UploadOutlined />}
+                                >
+                                    Click to Upload Image
+                                </Button>
                             </Upload>
 
                             <div className="">
@@ -87,12 +137,17 @@ export default function AddImagesToAlbum() {
                             </div>
 
                             <div className="">
-                                <button type="submit" className="btn btn-primary mb-3">Submit</button>
-                            </div>
+                                <button
+                                    type="button"
+                                    className="btn btn-primary mb-3"
+                                    onClick={handleUpload}
+                                >
+                                    Upload Image
+                                </button>                            </div>
                         </div>
                     </div>
-                </section>
-            </div>
+                </section >
+            </div >
         </>
     );
 }
