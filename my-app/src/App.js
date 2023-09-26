@@ -7,10 +7,13 @@ import Login from './Components/Login';
 import Home from "./Components/Home";
 import Dashboard from "./Components/Dashboard";
 import Transactions from "./Components/Transactions";
+// PictureLibary
 import CreateNewAlbum from "./Components/PictureLibrary/CreateNewAlbum";
 import AddImagesToAlbum from "./Components/PictureLibrary/AddImagesToAlbum";
 import ViewImagesInAlbum from "./Components/PictureLibrary/ViewImagesInAlbum";
 import BackgroundImages from './Components/PictureLibrary/BackgroundImages';
+// Line Game
+import PrepareNewSlide from './Components/Games/LineGame/PrepareNewSlide';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,6 +33,7 @@ function App() {
           <Route exact path="/add-images" element={<AddImagesToAlbum />} />
           <Route exact path="/view-images-in-album" element={<ViewImagesInAlbum />} />
           <Route exact path="/background-images" element={<BackgroundImages />} />
+          <Route exact path="/prepare-new-slide" element={<PrepareNewSlide />} />
         </Routes>
       </BrowserRouter>
 

@@ -14,6 +14,7 @@ import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
+import logo from '../../src/logo.png'
 
 export default function SideNavbar() {
     const [collapsed, setCollapsed] = useState(false);
@@ -30,7 +31,9 @@ export default function SideNavbar() {
                         onClick={toggleSidebar}
                     />}
                 >
-                    <h2>EdVenture</h2>
+                    <img
+                        style={{ width: '100%' }} src={logo} alt="logo" />
+                    {/* <h2>EdVenture</h2> */}
                 </MenuItem>
                 <MenuItem
 
@@ -40,7 +43,7 @@ export default function SideNavbar() {
                     Dashboard
                 </MenuItem>
                 <SubMenu label="Games" icon={<SportsEsportsRoundedIcon />}>
-                    <MenuItem >Line Game</MenuItem>
+                    <MenuItem component={<Link to="/line-game" className="link" />} >Line Game</MenuItem>
                     <MenuItem >Spellathon Game</MenuItem>
                     <MenuItem >Identification Game</MenuItem>
                 </SubMenu>
