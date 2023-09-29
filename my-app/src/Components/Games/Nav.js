@@ -1,9 +1,18 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
 export default function Nav(props) {
+    const navStyle = {
+        position: 'sticky',
+        top: 0,
+        zIndex: 1000, // Adjust the z-index as needed
+        background: '#e0ebeb', // Set the background color as desired
+        border: '1px solid lightgray',
+    };
+
     return (
-        <nav className="navbar navbar-expand-lg bg-light p-2">
+        <nav className="navbar navbar-expand-lg bg-light p-2" style={navStyle}>
             <button
                 className="navbar-toggler"
                 type="button"
@@ -18,19 +27,18 @@ export default function Nav(props) {
 
             <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul className="navbar-nav px-4 ">
-                    <li className="nav-item active px-3">
+                    <li className="nav-item  px-3">
                         <Link className="nav-link" to="/prepare-new-slide">
                             {props.title1}
                         </Link>
                     </li>
-                    {/* Prepare New Slide | View Slides | Compile Game | View Games */}
-                    <li className="nav-item active px-3">
+                    <li className="nav-item  px-3">
                         <Link className="nav-link" to="/">
                             {props.title2}
                         </Link>
                     </li>
-                    <li className="nav-item active px-3">
-                        <Link className="nav-link" to="/">
+                    <li className="nav-item  px-3">
+                        <Link className="nav-link" to="/compile-game">
                             {props.title3}
                         </Link>
                     </li>

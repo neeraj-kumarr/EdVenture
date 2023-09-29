@@ -1,7 +1,6 @@
 import React from 'react';
 import SideNavbar from '../../SideNavbar'
 import Nav from '../Nav'
-import '../../../App.css';
 
 export default function PrepareNewSlide() {
 
@@ -17,13 +16,12 @@ export default function PrepareNewSlide() {
 
         <div style={{ display: 'flex', height: '100vh' }}>
             <SideNavbar />
-            <section style={{ flex: 1 }} >
-                <Nav title1="Prepare New Slide" title2="View Slides" title3="Compile Games" title4="View Games" />
+            <section style={{ flex: 1, overflowX: 'auto' }} >
+                < Nav title1="Prepare New Slide" title2="View Slides" title3="Compile Games" title4="View Games" />
                 <h2 className="container p-4 " >
                     𝓟𝓻𝓮𝓹𝓪𝓻𝓮 𝓝𝓮𝔀 𝓢𝓵𝓲𝓭𝓮𝓼 📖                </h2>
 
-                <div className='container ' style={{ border: 'solid 4px #203b89', width: '90%', borderRadius: '25px', padding: '50px    ' }}
-                >
+                <div className='container ' style={{ border: 'solid 4px #203b89', width: '90%', borderRadius: '25px', padding: '50px 50px 0px 50px', marginBottom: '20px' }}>
                     <table style={{ width: '100%', borderCollapse: 'separate' }} >
                         <tbody>
                             <tr>
@@ -177,7 +175,7 @@ export default function PrepareNewSlide() {
                         </tbody>
                     </table>
                 </div>
-            </section>
+            </section >
         </div >
 
     );

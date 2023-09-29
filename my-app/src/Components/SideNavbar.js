@@ -22,7 +22,7 @@ export default function SideNavbar() {
         setCollapsed(!collapsed);
     };
     return (
-        <Sidebar className="app " collapsed={collapsed}>
+        <Sidebar className="app border-end  border-secondary " collapsed={collapsed}>
             <Menu >
                 <MenuItem
                     component={<Link to="/home" className="link" />}
@@ -43,7 +43,7 @@ export default function SideNavbar() {
                     Dashboard
                 </MenuItem>
                 <SubMenu label="Games" icon={<SportsEsportsRoundedIcon />}>
-                    <MenuItem component={<Link to="/line-game" className="link" />} >Line Game</MenuItem>
+                    <MenuItem component={<Link to="/prepare-new-slide" className="link" />} >Line Game</MenuItem>
                     <MenuItem >Spellathon Game</MenuItem>
                     <MenuItem >Identification Game</MenuItem>
                 </SubMenu>

@@ -14,6 +14,7 @@ import ViewImagesInAlbum from "./Components/PictureLibrary/ViewImagesInAlbum";
 import BackgroundImages from './Components/PictureLibrary/BackgroundImages';
 // Line Game
 import PrepareNewSlide from './Components/Games/LineGame/PrepareNewSlide';
+import CompileGame from './Components/Games/LineGame/CompileGame';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -34,6 +35,7 @@ function App() {
           <Route exact path="/view-images-in-album" element={<ViewImagesInAlbum />} />
           <Route exact path="/background-images" element={<BackgroundImages />} />
           <Route exact path="/prepare-new-slide" element={<PrepareNewSlide />} />
+          <Route exact path="/compile-game" element={<CompileGame />} />
         </Routes>
       </BrowserRouter>
 
