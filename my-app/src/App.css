@@ -37,20 +37,8 @@
     transform: rotate(360deg);
   }
 } */
-
-/* body {
-  margin: 0;
-  font-family: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", "Figtree", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
-  background: #ffffff;
-  font-size: 24px;
-} */
-
-.app {
-  background-color: #eaf4fa;
-}
+/* Add this CSS to your stylesheet */
+/* Style for sidebar links */
 
 
 .menu1 {
@@ -85,6 +73,32 @@ h2 {
 .nav-link {
   color: inherit;
   /* Inherit the text color from the parent element */
-  text-decoration: none;
+  /* text-decoration: none; */
+  padding: 15px;
+
   /* Remove underline */
+}
+
+.sublink {
+  padding-left: 20px;
+}
+
+@media (min-width: 1200px) {
+  .col-xl-2 {
+    flex: 0 0 auto;
+    width: 20%;
+  }
+}
+
+/* Add this CSS to your stylesheet or style block */
+
+.sidebar {
+  max-height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 0;
 }

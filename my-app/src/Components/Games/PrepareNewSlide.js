@@ -1,6 +1,6 @@
 import React from 'react';
-import SideNavbar from '../../SideNavbar'
-import Nav from '../Nav'
+import SideNavbar from '../SideNavbar'
+import Nav from './Nav'
 
 export default function PrepareNewSlide() {
 
@@ -11,12 +11,18 @@ export default function PrepareNewSlide() {
     const inputStyle = {
         width: '60%', border: '1px solid grey'
     };
-
+    const sectionStyle = {
+        flex: 1,
+        overflowX: 'auto',
+        backgroundImage: 'url("https://e0.pxfuel.com/wallpapers/512/865/desktop-wallpaper-grey-background-vectors-stock-psd-light-gray-thumbnail.jpg")', // Replace with the path to your image
+        backgroundSize: 'cover', // Adjust background size as needed
+        backgroundRepeat: 'no-repeat', // Adjust background repeat as needed
+    };
     return (
 
         <div style={{ display: 'flex', height: '100vh' }}>
             <SideNavbar />
-            <section style={{ flex: 1, overflowX: 'auto' }} >
+            <section style={sectionStyle} >
                 < Nav title1="Prepare New Slide" title2="View Slides" title3="Compile Games" title4="View Games" />
                 <h2 className="container p-4 " >
                     𝓟𝓻𝓮𝓹𝓪𝓻𝓮 𝓝𝓮𝔀 𝓢𝓵𝓲𝓭𝓮𝓼 📖                </h2>
@@ -52,125 +58,107 @@ export default function PrepareNewSlide() {
                             </tr>
                             <tr>
                                 <td style={tdcStyle}> Game Title</td>
-                                <td colspan="3" style={tdcStyle}>
-                                    <input type="text" className="form-control" autocomplete="off" style={{ width: '30%', border: '1px solid grey' }} />
+                                <td colSpan="3" style={tdcStyle}>
+                                    <input type="text" className="form-control" autoComplete="off" style={{ width: '30%', border: '1px solid grey' }} />
                                 </td>
                             </tr>
                             <tr>
+                                <td style={tdcStyle}> Game Instruction</td>
+                                <td colSpan="3" style={tdcStyle}>
+                                    <input type="text" className="form-control" autoComplete="off" style={{ width: '30%', border: '1px solid grey' }} />
+                                </td>
+                            </tr>
+                            {/* <tr>
                                 <td style={tdcStyle}> Text 1</td>
                                 <td style={tdcStyle}>
-                                    <input type="text" className="form-control" style={inputStyle} autocomplete="off" />
+                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
                                 </td>
                                 <td style={tdcStyle}>Position</td>
                                 <td style={tdcStyle}>
-                                    <input type="text" className="form-control" style={inputStyle} autocomplete="off" />
+                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
                                 </td>
                             </tr>
                             <tr>
-                                <td style={tdcStyle}> Image 1</td>
+                                <td style={tdcStyle}>Image 1</td>
                                 <td style={tdcStyle}>
-                                    <table>
-                                        <tbody><tr>  <td > <a className=" btn btn-success" >Select Image</a></td></tr></tbody></table>
+                                    <button className="btn btn-success">Select Image</button>
                                 </td>
-                                <td style={tdcStyle}>Position </td>
+                                <td style={tdcStyle}>Position</td>
                                 <td style={tdcStyle}>
-                                    <input type="text" autocomplete="off" className="form-control" style={inputStyle} />
+                                    <input type="text" autoComplete="off" className="form-control" style={inputStyle} />
                                 </td>
                             </tr>
-
                             <tr>
                                 <td style={tdcStyle}> Sound 1</td>
-                                <td colspan="3" style={tdcStyle}><div>
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td >
-                                                    <a className="btn btn-success" >Select Sound</a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <td colSpan="3" style={tdcStyle}>
+
+                                    <button className="btn btn-success" >Select Sound</button >
                                 </td>
                             </tr>
                             <tr>
                                 <td style={tdcStyle}> Text 2</td>
                                 <td style={tdcStyle}>
-                                    <input type="text" className="form-control" style={inputStyle} autocomplete="off" />
+                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
                                 </td>
                                 <td style={tdcStyle}>Position</td>
                                 <td style={tdcStyle}>
-                                    <input type="text" className="form-control" style={inputStyle} autocomplete="off" />
+                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
                                 </td>
                             </tr>
                             <tr>
-                                <td style={tdcStyle}> Image 2</td>
+                                <td style={tdcStyle}>Image 2</td>
                                 <td style={tdcStyle}>
-                                    <table>
-                                        <tbody><tr>  <td > <a className=" btn btn-success" >Select Image</a></td></tr></tbody></table>
-                                </td>
-                                <td style={tdcStyle}>Position </td>
-                                <td style={tdcStyle}>
-                                    <input type="text" autocomplete="off" className="form-control" style={inputStyle} />
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td style={tdcStyle}> Sound 2</td>
-                                <td colspan="3" style={tdcStyle}><div>
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td >
-                                                    <a className="btn btn-success" >Select Sound</a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style={tdcStyle}> Text 3</td>
-                                <td style={tdcStyle}>
-                                    <input type="text" className="form-control" style={inputStyle} autocomplete="off" />
+                                    <button className="btn btn-success">Select Image</button>
                                 </td>
                                 <td style={tdcStyle}>Position</td>
                                 <td style={tdcStyle}>
-                                    <input type="text" className="form-control" style={inputStyle} autocomplete="off" />
+                                    <input type="text" autoComplete="off" className="form-control" style={inputStyle} />
                                 </td>
                             </tr>
                             <tr>
-                                <td style={tdcStyle}> Image 3</td>
-                                <td style={tdcStyle}>
-                                    <table>
-                                        <tbody><tr>  <td > <a className=" btn btn-success" >Select Image</a></td></tr></tbody></table>
+                                <td style={tdcStyle}>Sound 2</td>
+                                <td colSpan="3" style={tdcStyle}>
+                                    <div>
+                                        <button className="btn btn-success">Select Sound</button>
+                                    </div>
                                 </td>
-                                <td style={tdcStyle}>Position </td>
+                            </tr>
+                            <tr>
+                                <td style={tdcStyle}>Text 3</td>
                                 <td style={tdcStyle}>
-                                    <input type="text" autocomplete="off" className="form-control" style={inputStyle} />
+                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
+                                </td>
+                                <td style={tdcStyle}>Position</td>
+                                <td style={tdcStyle}>
+                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
                                 </td>
                             </tr>
 
                             <tr>
-                                <td style={tdcStyle}> Sound 3</td>
-                                <td colspan="3" style={tdcStyle}><div>
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td >
-                                                    <a className="btn btn-success" >Select Sound</a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <td style={tdcStyle}>Image 3</td>
+                                <td style={tdcStyle}>
+                                    <button className="btn btn-success">Select Image</button>
+                                </td>
+                                <td style={tdcStyle}>Position</td>
+                                <td style={tdcStyle}>
+                                    <input type="text" autoComplete="off" className="form-control" style={inputStyle} />
                                 </td>
                             </tr>
 
-                            <td style={tdcStyle} className='p-3'>
-                                <button type="submit" class="btn btn-primary">Submit Now</button>
-                            </td>
+                            <tr>
+                                <td style={tdcStyle}>Sound 3</td>
+                                <td colSpan="3" style={tdcStyle}>
+                                    <div>
+                                        <button className="btn btn-success">Select Sound</button>
+                                    </div>
+                                </td>
+                            </tr>
+ */}
+                            <tr>
+                                <td style={tdcStyle} className='p-3'>
+                                    <button type="submit" className="btn btn-primary">Submit Now</button>
+                                </td>
+                            </tr>
 
                         </tbody>
                     </table>

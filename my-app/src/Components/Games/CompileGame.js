@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
-import SideNavbar from '../../SideNavbar';
-import Nav from '../Nav';
+import Checkbox from '@mui/material/Checkbox';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+
+import SideNavbar from '../SideNavbar';
+import Nav from './Nav';
 
 export default function CompileGame() {
 
@@ -16,13 +22,33 @@ export default function CompileGame() {
     backgroundSize: 'cover', // Adjust background size as needed
     backgroundRepeat: 'no-repeat', // Adjust background repeat as needed
   };
+
   const tdcStyle = {
     border: 'solid 1px #203b89',
     padding: '10px',
   };
-  const inputStyle = {
-    width: '60%', border: '1px solid grey'
-  };
+
+  const classNames = [
+    "Nursery-A",
+    "Prep 1 - A",
+    "Prep 2 - A",
+    "Prep 1 - B",
+    "Class 1A",
+    "Class 1B",
+    "Class 2A",
+    "Class 2B",
+    "Prep 2B",
+    "Class 3A",
+    "Class 4 A",
+    "Class 5A",
+    "Class 3B",
+    "Class 6",
+    "Class 4B",
+    "CLASS 7",
+    "Class 7B",
+    "Class 5B",
+    // Add more class names here...
+  ];
 
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
@@ -52,10 +78,10 @@ export default function CompileGame() {
                 </td>
               </tr>
               <tr>
-                <td style={tdcStyle}>Number of Levels</td>
-                <td colSpan="3" style={tdcStyle}>
-                  <span >
-                    <select onChange={handleNumLevelsChange} className="form-select form-select-md " style={{ width: '30%', border: '1px solid grey' }} >
+                <td className='col-3' style={tdcStyle}>Number of Levels</td>
+                <td style={tdcStyle}>
+                  <span  >
+                    <select onChange={handleNumLevelsChange} className="form-select form-select-md" style={{ width: '30%', border: '1px solid grey' }} >
                       <option>Select Language</option>
                       <option value="1">One</option>
                       <option value="2">Two</option>
@@ -68,7 +94,7 @@ export default function CompileGame() {
               </tr>
               <tr>
                 <td style={tdcStyle}>Game Language</td>
-                <td colSpan="3" style={tdcStyle}>
+                <td style={tdcStyle}>
                   <span >
                     <select className="form-select form-select-md " style={{ width: '30%', border: '1px solid grey' }} >
                       <option>Select Language</option>
@@ -81,19 +107,19 @@ export default function CompileGame() {
               </tr>
               <tr>
                 <td style={tdcStyle}> Game Title</td>
-                <td colspan="3" style={tdcStyle}>
-                  <input type="text" className="form-control" autocomplete="off" style={{ width: '30%', border: '1px solid grey' }} />
+                <td style={tdcStyle}>
+                  <input type="text" className="form-control" autoComplete="off" style={{ width: '30%', border: '1px solid grey' }} />
                 </td>
               </tr>
               <tr>
                 <td style={tdcStyle}> Game Chapter</td>
-                <td colspan="3" style={tdcStyle}>
-                  <input type="text" className="form-control" autocomplete="off" style={{ width: '30%', border: '1px solid grey' }} />
+                <td style={tdcStyle}>
+                  <input type="text" className="form-control" autoComplete="off" style={{ width: '30%', border: '1px solid grey' }} />
                 </td>
               </tr>
               <tr>
                 <td style={tdcStyle}>Subject</td>
-                <td colSpan="3" style={tdcStyle}>
+                <td style={tdcStyle}>
                   <span >
                     <select className="form-select form-select-md " style={{ width: '30%', border: '1px solid grey' }} >
                       <option>Select Language</option>
@@ -107,7 +133,7 @@ export default function CompileGame() {
               </tr>
               <tr>
                 <td style={tdcStyle}>Book</td>
-                <td colSpan="3" style={tdcStyle}>
+                <td style={tdcStyle}>
                   <span >
                     <select className="form-select form-select-md " style={{ width: '30%', border: '1px solid grey' }} >
                       <option>Select Book ID</option>
@@ -123,7 +149,7 @@ export default function CompileGame() {
               {Array.from({ length: numLevels }).map((_, index) => (
                 <tr key={index}>
                   <td style={tdcStyle}>Select Game for Level {index + 1}</td>
-                  <td colSpan="3" style={tdcStyle}>
+                  <td style={tdcStyle}>
                     <span>
                       <div className="d-flex justify-content-between">
                         <select
@@ -147,9 +173,30 @@ export default function CompileGame() {
               <tr>
                 <td style={tdcStyle}> Game Background Image</td>
                 <td style={tdcStyle}>
-                  <a className=" btn btn-success" >Select Image</a>
+                  <a className=" btn btn-success w-25" >Select Image</a>
                 </td>
               </tr>
+
+              <tr>
+                <td style={tdcStyle}> Select Class</td>
+                <td style={tdcStyle}>
+                  <FormControl component="fieldset">
+                    <FormGroup aria-label="position" row>
+                      {classNames.map((className, index) => (
+                        <FormControlLabel
+                          key={index}
+                          value={className}
+                          control={<Checkbox />}
+                          label={className}
+                          labelPlacement="end"
+                          className='p-2'
+                        />
+                      ))}
+
+                    </FormGroup>
+                  </FormControl>                </td>
+              </tr>
+
 
 
 

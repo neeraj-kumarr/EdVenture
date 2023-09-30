@@ -13,8 +13,9 @@ import AddImagesToAlbum from "./Components/PictureLibrary/AddImagesToAlbum";
 import ViewImagesInAlbum from "./Components/PictureLibrary/ViewImagesInAlbum";
 import BackgroundImages from './Components/PictureLibrary/BackgroundImages';
 // Line Game
-import PrepareNewSlide from './Components/Games/LineGame/PrepareNewSlide';
-import CompileGame from './Components/Games/LineGame/CompileGame';
+import PrepareNewSlide from './Components/Games/PrepareNewSlide';
+import CompileGame from './Components/Games/CompileGame';
+import TexttoImage from './Components/Games/LineGame/TexttoImage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -34,7 +35,7 @@ function App() {
           <Route exact path="/add-images" element={<AddImagesToAlbum />} />
           <Route exact path="/view-images-in-album" element={<ViewImagesInAlbum />} />
           <Route exact path="/background-images" element={<BackgroundImages />} />
-          <Route exact path="/prepare-new-slide" element={<PrepareNewSlide />} />
+          <Route exact path="/text-to-image" element={<TexttoImage />} />
           <Route exact path="/compile-game" element={<CompileGame />} />
         </Routes>
       </BrowserRouter>
