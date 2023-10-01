@@ -13,6 +13,8 @@ export default function Nav(props) {
 
     return (
         <nav className="navbar navbar-expand-lg bg-light p-2" style={navStyle}>
+            <h2 className="m-1 navbar-brand" style={{ fontFamily: ' Lucida Console' }}>{props.maintitle}</h2>
+
             <button
                 className="navbar-toggler"
                 type="button"
@@ -28,22 +30,22 @@ export default function Nav(props) {
             <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul className="navbar-nav px-4 ">
                     <li className="nav-item  px-3">
-                        <Link className="nav-link" to="/prepare-new-slide">
+                        <Link className="nav-link" to={props.navlink1}>
                             {props.title1}
                         </Link>
                     </li>
                     <li className="nav-item  px-3">
-                        <Link className="nav-link" to="/">
+                        <Link className="nav-link" to={props.navlink2}>
                             {props.title2}
                         </Link>
                     </li>
                     <li className="nav-item  px-3">
-                        <Link className="nav-link" to="/compile-game">
+                        <Link className="nav-link" to={props.navlink3}>
                             {props.title3}
                         </Link>
                     </li>
                     <li className="nav-item px-3">
-                        <Link className="nav-link" to="/">
+                        <Link className="nav-link" to={props.navlink4}>
                             {props.title4}
                         </Link>
                     </li>
@@ -54,16 +56,27 @@ export default function Nav(props) {
 }
 
 Nav.propTypes = {
+    maintitle: propTypes.string,
     title1: propTypes.string,
     title2: propTypes.string,
     title3: propTypes.string,
     title4: propTypes.string,
+    navlink1: propTypes.string,
+    navlink2: propTypes.string,
+    navlink3: propTypes.string,
+    navlink4: propTypes.string,
 }
 
 // If no title is given
 Nav.defaultProps = {
+    maintitle: 'Enter Main title here',
     title1: 'Enter 1st title here',
     title2: 'Enter 2nd title here',
     title3: 'Enter 3rd title here',
     title4: 'Enter 4th title here',
+    navlink1: 'Enter 1st navlink here',
+    navlink2: 'Enter 2nd navlink here',
+    navlink3: 'Enter 3rd navlink here',
+    navlink4: 'Enter 4th navlink here',
+
 }
