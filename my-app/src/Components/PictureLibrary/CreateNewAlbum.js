@@ -37,12 +37,20 @@ function CreateNewAlbum() {
     }, []);
 
 
+    const sectionStyle = {
+        flex: 1,
+        overflowX: 'auto',
+        backgroundImage: 'url("https://e0.pxfuel.com/wallpapers/512/865/desktop-wallpaper-grey-background-vectors-stock-psd-light-gray-thumbnail.jpg")', // Replace with the path to your image
+        backgroundSize: 'cover', // Adjust background size as needed
+        backgroundRepeat: 'no-repeat', // Adjust background repeat as needed
+    };
+
     return (
         <>
             <div style={{ display: 'flex', height: '100vh' }}>
                 <SideNavbar />
 
-                <section style={{ flex: 1 }}>
+                <section style={sectionStyle}>
                     <div className=' p-4'>
                         <h1 className="text-center mb-3"><mark> Create New Album</mark></h1>
                         <div className="p-3 border border-dark ">
@@ -94,7 +102,7 @@ function CreateNewAlbum() {
                         </div>
                     </div>
                 </section>
-            </div>
+            </div >
         </>
     );
 }

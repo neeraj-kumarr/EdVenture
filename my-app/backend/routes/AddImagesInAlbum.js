@@ -1,7 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
-const db = require('../models/AddImagesInAlbum');
+const db = require('../db');
 
 const router = express.Router();
 

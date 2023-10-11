@@ -2,15 +2,26 @@ import React from 'react';
 import SideNavbar from '../SideNavbar'
 import Nav from './Nav'
 
-export default function PrepareNewSlide() {
 
+function TableCell({ children }) {
     const tdcStyle = {
         border: 'solid 1px #203b89',
         padding: '10px',
     };
-    const inputStyle = {
-        width: '60%', border: '1px solid grey'
-    };
+
+    return (
+        <td style={tdcStyle}>
+            {children}
+        </td>
+    );
+}
+
+export default function PrepareNewSlide() {
+
+
+    // const inputStyle = {
+    //     width: '60%', border: '1px solid grey'
+    // };
     const sectionStyle = {
         flex: 1,
         overflowX: 'auto',
@@ -31,21 +42,21 @@ export default function PrepareNewSlide() {
                     <table style={{ width: '100%', borderCollapse: 'separate' }} >
                         <tbody>
                             <tr>
-                                <td height="24" colSpan="4" style={tdcStyle}>
+                                <TableCell height="24" colSpan="4" >
                                     <strong><i> Instructions: </i></strong>
-                                </td>
+                                </TableCell>
                             </tr>
                             <tr>
-                                <td height="24" colSpan="4" style={tdcStyle}>
+                                <TableCell height="24" colSpan="4" >
                                     <p>1. Select Game Language [Arabic English Urdu]
                                         <br />2. In text box paste text in the selected language
                                         <br />3. Click on the colored text box to select a color for text
                                         <br /> 4. In the sound file uploader, upload a .mp3 sound file</p>
-                                </td>
+                                </TableCell>
                             </tr>
                             <tr>
-                                <td style={tdcStyle}>Game Language</td>
-                                <td colSpan="3" style={tdcStyle}>
+                                <TableCell >Game Language</TableCell>
+                                <TableCell colSpan="3" >
                                     <span >
                                         <select className="form-select form-select-md " style={{ width: '30%', border: '1px solid grey' }} >
                                             <option>Select Language</option>
@@ -54,110 +65,110 @@ export default function PrepareNewSlide() {
                                             <option value="Urdu">اردو</option>
                                         </select>
                                     </span>
-                                </td>
+                                </TableCell>
                             </tr>
                             <tr>
-                                <td style={tdcStyle}> Game Title</td>
-                                <td colSpan="3" style={tdcStyle}>
+                                <TableCell > Game Title</TableCell>
+                                <TableCell colSpan="3" >
                                     <input type="text" className="form-control" autoComplete="off" style={{ width: '30%', border: '1px solid grey' }} />
-                                </td>
+                                </TableCell>
                             </tr>
                             <tr>
-                                <td style={tdcStyle}> Game Instruction</td>
-                                <td colSpan="3" style={tdcStyle}>
+                                <TableCell > Game Instruction</TableCell>
+                                <TableCell colSpan="3" >
                                     <input type="text" className="form-control" autoComplete="off" style={{ width: '30%', border: '1px solid grey' }} />
-                                </td>
+                                </TableCell>
                             </tr>
                             {/* <tr>
-                                <td style={tdcStyle}> Text 1</td>
-                                <td style={tdcStyle}>
+                                <TableCell > Text 1</TableCell>
+                                <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </td>
-                                <td style={tdcStyle}>Position</td>
-                                <td style={tdcStyle}>
+                                </TableCell>
+                                <TableCell >Position</TableCell>
+                                <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </td>
+                                </TableCell>
                             </tr>
                             <tr>
-                                <td style={tdcStyle}>Image 1</td>
-                                <td style={tdcStyle}>
+                                <TableCell >Image 1</TableCell>
+                                <TableCell >
                                     <button className="btn btn-success">Select Image</button>
-                                </td>
-                                <td style={tdcStyle}>Position</td>
-                                <td style={tdcStyle}>
+                                </TableCell>
+                                <TableCell >Position</TableCell>
+                                <TableCell >
                                     <input type="text" autoComplete="off" className="form-control" style={inputStyle} />
-                                </td>
+                                </TableCell>
                             </tr>
                             <tr>
-                                <td style={tdcStyle}> Sound 1</td>
-                                <td colSpan="3" style={tdcStyle}>
+                                <TableCell > Sound 1</TableCell>
+                                <TableCell colSpan="3" >
 
                                     <button className="btn btn-success" >Select Sound</button >
-                                </td>
+                                </TableCell>
                             </tr>
                             <tr>
-                                <td style={tdcStyle}> Text 2</td>
-                                <td style={tdcStyle}>
+                                <TableCell > Text 2</TableCell>
+                                <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </td>
-                                <td style={tdcStyle}>Position</td>
-                                <td style={tdcStyle}>
+                                </TableCell>
+                                <TableCell >Position</TableCell>
+                                <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </td>
+                                </TableCell>
                             </tr>
                             <tr>
-                                <td style={tdcStyle}>Image 2</td>
-                                <td style={tdcStyle}>
+                                <TableCell >Image 2</TableCell>
+                                <TableCell >
                                     <button className="btn btn-success">Select Image</button>
-                                </td>
-                                <td style={tdcStyle}>Position</td>
-                                <td style={tdcStyle}>
+                                </TableCell>
+                                <TableCell >Position</TableCell>
+                                <TableCell >
                                     <input type="text" autoComplete="off" className="form-control" style={inputStyle} />
-                                </td>
+                                </TableCell>
                             </tr>
                             <tr>
-                                <td style={tdcStyle}>Sound 2</td>
-                                <td colSpan="3" style={tdcStyle}>
+                                <TableCell >Sound 2</TableCell>
+                                <TableCell colSpan="3" >
                                     <div>
                                         <button className="btn btn-success">Select Sound</button>
                                     </div>
-                                </td>
+                                </TableCell>
                             </tr>
                             <tr>
-                                <td style={tdcStyle}>Text 3</td>
-                                <td style={tdcStyle}>
+                                <TableCell >Text 3</TableCell>
+                                <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </td>
-                                <td style={tdcStyle}>Position</td>
-                                <td style={tdcStyle}>
+                                </TableCell>
+                                <TableCell >Position</TableCell>
+                                <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </td>
+                                </TableCell>
                             </tr>
 
                             <tr>
-                                <td style={tdcStyle}>Image 3</td>
-                                <td style={tdcStyle}>
+                                <TableCell >Image 3</TableCell>
+                                <TableCell >
                                     <button className="btn btn-success">Select Image</button>
-                                </td>
-                                <td style={tdcStyle}>Position</td>
-                                <td style={tdcStyle}>
+                                </TableCell>
+                                <TableCell >Position</TableCell>
+                                <TableCell >
                                     <input type="text" autoComplete="off" className="form-control" style={inputStyle} />
-                                </td>
+                                </TableCell>
                             </tr>
 
                             <tr>
-                                <td style={tdcStyle}>Sound 3</td>
-                                <td colSpan="3" style={tdcStyle}>
+                                <TableCell >Sound 3</TableCell>
+                                <TableCell colSpan="3" >
                                     <div>
                                         <button className="btn btn-success">Select Sound</button>
                                     </div>
-                                </td>
+                                </TableCell>
                             </tr>
  */}
                             <tr>
-                                <td style={tdcStyle} className='p-3'>
+                                <TableCell className='p-3'>
                                     <button type="submit" className="btn btn-primary">Submit Now</button>
-                                </td>
+                                </TableCell>
                             </tr>
 
                         </tbody>

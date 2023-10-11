@@ -2,15 +2,21 @@ import React from 'react';
 import SideNavbar from '../../../SideNavbar';
 import Nav from '../../Nav'
 
-export default function ImagetoImageNewSlide() {
-
+function TableCell({ children }) {
     const tdcStyle = {
         border: 'solid 1px #203b89',
         padding: '10px',
     };
-    const inputStyle = {
-        width: '60%', border: '1px solid grey'
-    };
+
+    return (
+        <td style={tdcStyle}>
+            {children}
+        </td>
+    );
+}
+
+export default function ImagetoImageNewSlide() {
+
     const sectionStyle = {
         flex: 1,
         overflowX: 'auto',
@@ -24,7 +30,7 @@ export default function ImagetoImageNewSlide() {
             <SideNavbar />
             <section style={sectionStyle} >
                 < Nav maintitle="[Image to Image]" title1="Prepare New Slide" title2="View Slides" title3="Compile Games" title4="View Games"
-                    navlink1="/image-to-image-newslide" navlink2="/" navlink3="/image-to-image-compile" navlink4="/"
+                    navlink1="/line-game/image-to-image-newslide" navlink2="/" navlink3="/line-game/image-to-image-compile" navlink4="/"
                 />
                 <h2 className="container p-4 " >
                     𝓟𝓻𝓮𝓹𝓪𝓻𝓮 𝓝𝓮𝔀 𝓢𝓵𝓲𝓭𝓮𝓼 📖                </h2>
@@ -33,21 +39,21 @@ export default function ImagetoImageNewSlide() {
                     <table style={{ width: '100%', borderCollapse: 'separate' }} >
                         <tbody>
                             <tr>
-                                <td height="24" colSpan="4" style={tdcStyle}>
+                                <TableCell height="24" colSpan="4" >
                                     <strong><i> Instructions: </i></strong>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td height="24" colSpan="4" style={tdcStyle}>
+                                </TableCell>
+                                <TableCell height="24" colSpan="4" >
                                     <p>1. Select Game Language [Arabic English Urdu]
                                         <br />2. In text box paste text in the selected language
                                         <br />3. Click on the colored text box to select a color for text
-                                        <br /> 4. In the sound file uploader, upload a .mp3 sound file</p>
-                                </td>
+                                        <br /> 4. In the sound file uploader, upload a .mp3 sound file
+                                        <br /> 5. The (a) objects are in left position and (b) onject are on right position
+                                    </p>
+                                </TableCell>
                             </tr>
                             <tr>
-                                <td style={tdcStyle}>Game Language</td>
-                                <td colSpan="3" style={tdcStyle}>
+                                <TableCell >Game Language</TableCell>
+                                <TableCell colSpan="3" >
                                     <span >
                                         <select className="form-select form-select-md " style={{ width: '30%', border: '1px solid grey' }} >
                                             <option>Select Language</option>
@@ -56,125 +62,125 @@ export default function ImagetoImageNewSlide() {
                                             <option value="Urdu">اردو</option>
                                         </select>
                                     </span>
-                                </td>
+                                </TableCell>
                             </tr>
                             <tr>
-                                <td style={tdcStyle}> Game Title</td>
-                                <td colSpan="3" style={tdcStyle}>
+                                <TableCell > Game Title</TableCell>
+                                <TableCell colSpan="3" >
                                     <input type="text" className="form-control" autoComplete="off" style={{ width: '30%', border: '1px solid grey' }} />
-                                </td>
+                                </TableCell>
                             </tr>
                             <tr>
-                                <td style={tdcStyle}> Game Instruction</td>
-                                <td colSpan="3" style={tdcStyle}>
-                                    <input type="text" className="form-control" autoComplete="off" style={{ width: '30%', border: '1px solid grey' }} />
-                                </td>
+                                <TableCell > Game Instruction</TableCell>
+                                <TableCell colSpan="3" >
+                                    <input type="text" className="form-control" autoComplete="off" style={{ width: '60%', height: '50px', border: '1px solid grey' }} />
+                                </TableCell>
                             </tr>
                             <tr>
-                                <td style={tdcStyle}> Object 1a</td>
-                                <td style={tdcStyle}>
+                                <TableCell > Object 1a</TableCell>
+                                <TableCell >
                                     <button className="btn btn-success">Select Image</button>
-                                </td>
-                                <td style={tdcStyle}>Position</td>
-                                <td style={tdcStyle}>
+                                </TableCell>
+                                {/* <TableCell >Position</TableCell>
+                                <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </td>
+                                </TableCell> */}
                             </tr>
                             <tr>
-                                <td style={tdcStyle}> Object 1b</td>
-                                <td style={tdcStyle}>
+                                <TableCell > Object 1b</TableCell>
+                                <TableCell >
                                     <button className="btn btn-success">Select Image</button>
-                                </td>
-                                <td style={tdcStyle}>Position</td>
-                                <td style={tdcStyle}>
+                                </TableCell>
+                                {/* <TableCell >Position</TableCell>
+                                <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </td>
+                                </TableCell> */}
                             </tr>
                             <tr>
-                                <td style={tdcStyle}> Object 2a</td>
-                                <td style={tdcStyle}>
+                                <TableCell > Object 2a</TableCell>
+                                <TableCell >
                                     <button className="btn btn-success">Select Image</button>
-                                </td>
-                                <td style={tdcStyle}>Position</td>
-                                <td style={tdcStyle}>
+                                </TableCell>
+                                {/* <TableCell >Position</TableCell>
+                                <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </td>
+                                </TableCell> */}
                             </tr>
                             <tr>
-                                <td style={tdcStyle}> Object 2b</td>
-                                <td style={tdcStyle}>
+                                <TableCell > Object 2b</TableCell>
+                                <TableCell >
                                     <button className="btn btn-success">Select Image</button>
-                                </td>
-                                <td style={tdcStyle}>Position</td>
-                                <td style={tdcStyle}>
+                                </TableCell>
+                                {/* <TableCell >Position</TableCell>
+                                <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </td>
+                                </TableCell> */}
                             </tr>
                             <tr>
-                                <td style={tdcStyle}> Object 3a</td>
-                                <td style={tdcStyle}>
+                                <TableCell > Object 3a</TableCell>
+                                <TableCell >
                                     <button className="btn btn-success">Select Image</button>
-                                </td>
-                                <td style={tdcStyle}>Position</td>
-                                <td style={tdcStyle}>
+                                </TableCell>
+                                {/* <TableCell >Position</TableCell>
+                                <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </td>
+                                </TableCell> */}
                             </tr>
                             <tr>
-                                <td style={tdcStyle}> Object 3b</td>
-                                <td style={tdcStyle}>
+                                <TableCell > Object 3b</TableCell>
+                                <TableCell >
                                     <button className="btn btn-success">Select Image</button>
-                                </td>
-                                <td style={tdcStyle}>Position</td>
-                                <td style={tdcStyle}>
+                                </TableCell>
+                                {/* <TableCell >Position</TableCell>
+                                <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </td>
+                                </TableCell> */}
                             </tr>
                             <tr>
-                                <td style={tdcStyle}> Object 4a</td>
-                                <td style={tdcStyle}>
+                                <TableCell > Object 4a</TableCell>
+                                <TableCell >
                                     <button className="btn btn-success">Select Image</button>
-                                </td>
-                                <td style={tdcStyle}>Position</td>
-                                <td style={tdcStyle}>
+                                </TableCell>
+                                {/* <TableCell >Position</TableCell>
+                                <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </td>
+                                </TableCell> */}
                             </tr>
                             <tr>
-                                <td style={tdcStyle}> Object 4b</td>
-                                <td style={tdcStyle}>
+                                <TableCell > Object 4b</TableCell>
+                                <TableCell >
                                     <button className="btn btn-success">Select Image</button>
-                                </td>
-                                <td style={tdcStyle}>Position</td>
-                                <td style={tdcStyle}>
+                                </TableCell>
+                                {/* <TableCell >Position</TableCell>
+                                <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </td>
+                                </TableCell> */}
                             </tr>
                             <tr>
-                                <td style={tdcStyle}> Object 5a</td>
-                                <td style={tdcStyle}>
+                                <TableCell > Object 5a</TableCell>
+                                <TableCell >
                                     <button className="btn btn-success">Select Image</button>
-                                </td>
-                                <td style={tdcStyle}>Position</td>
-                                <td style={tdcStyle}>
+                                </TableCell>
+                                {/* <TableCell >Position</TableCell>
+                                <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </td>
+                                </TableCell> */}
                             </tr>
                             <tr>
-                                <td style={tdcStyle}> Object 5b</td>
-                                <td style={tdcStyle}>
+                                <TableCell > Object 5b</TableCell>
+                                <TableCell >
                                     <button className="btn btn-success">Select Image</button>
-                                </td>
-                                <td style={tdcStyle}>Position</td>
-                                <td style={tdcStyle}>
+                                </TableCell>
+                                {/* <TableCell >Position</TableCell>
+                                <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </td>
+                                </TableCell> */}
                             </tr>
 
                             <tr>
-                                <td style={tdcStyle} className='p-3'>
+                                <TableCell className='p-3'>
                                     <button type="submit" className="btn btn-primary">Submit Now</button>
-                                </td>
+                                </TableCell>
                             </tr>
 
                         </tbody>

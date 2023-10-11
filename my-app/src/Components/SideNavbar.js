@@ -8,6 +8,44 @@ import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded';
 import { Link } from "react-router-dom";
 import logo from '../../src/logowhite.png'
 
+const pictureLibraryDropdownItems = [
+    {
+        to: "/create-album",
+        text: "Create New Album",
+    },
+    {
+        to: "/add-images",
+        text: "Add Images to Album",
+    },
+    {
+        to: "/view-images-in-album",
+        text: "View Images in Album",
+    },
+];
+
+const gamesDropdownItems = [
+    {
+        to: "/line-game/text-to-image-newslide",
+        text: "Text to Image",
+    },
+    {
+        to: "/line-game/text-to-text-newslide",
+        text: "Text to Text",
+    },
+    {
+        to: "/line-game/image-to-image-newslide",
+        text: "Image to Image",
+    },
+    {
+        to: "/line-game/identification-game",
+        text: "Identification Game",
+    },
+    {
+        to: "/line-game/spellathon",
+        text: "Spellathon",
+    },
+];
+
 export default function SideNavbar() {
 
     return (
@@ -25,47 +63,38 @@ export default function SideNavbar() {
                     </li>
                     <li>
                         <Link to="#submenu1" data-bs-toggle="collapse" className="nav-link px-0 align-middle">
-                            {<AddPhotoAlternateRoundedIcon />} <span className="ms-1 d-none d-sm-inline mx-3">Picture Library</span> </Link>
-                        <ul className="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                            <li className="w-100">
-                                <Link to="/create-album" className="nav-link px-0"> <span className="d-none d-sm-inline sublink">➣ Create New Album</span> </Link>
+                            {<AddPhotoAlternateRoundedIcon />}             <span className="ms-1 d-none d-sm-inline mx-3">Picture Library</span>{" "}
+                        </Link>
+                        {pictureLibraryDropdownItems.map((item, index) => (
+                            <li key={index} className="w-100">
+                                <Link to={item.to} className="nav-link px-0">
+                                    {" "}
+                                    <span className="d-none d-sm-inline picmenu">➣ {item.text}</span>{" "}
+                                </Link>
                             </li>
-                            <li>
-                                <Link to="/add-images" className="nav-link px-0"> <span className="d-none d-sm-inline sublink">➣ Add Images to Album</span>  </Link>
-                            </li>
-                            <li>
-                                <Link to="/view-images-in-album" className="nav-link px-0"> <span className="d-none d-sm-inline sublink">➣ View Images in Album</span>  </Link>
-                            </li>
-                        </ul>
+                        ))}
                     </li>
                     <li>
                         <Link to="#submenu3" data-bs-toggle="collapse" className="nav-link px-0 align-middle">
-                            {<SportsEsportsRoundedIcon />} <span className="ms-1 d-none d-sm-inline ">Games</span> </Link>
+                            {<SportsEsportsRoundedIcon />} <span className="ms-1 d-none d-sm-inline ">Games</span> {" "} </Link>
                         <ul className="collapse show nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                             {/* <li>
                                 <Link to="/prepare-new-slide" className="nav-link px-0"> <span className="d-none d-sm-inline sublink">➣ Line Game</span> </Link>
                             </li> */}
-                            <li>
-                                <Link to="#submenu4" data-bs-toggle="collapse" className="nav-link px-0 align-middle">
-                                    <span className="ms-1 d-none d-sm-inline mx-3 sublink">➣ Line Game</span> </Link>
-                                <ul className="collapse show nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
-                                    <li>
-                                        <Link to="/text-to-image-newslide" className="nav-link px-0"> <span className="d-none d-sm-inline px-5">➣ Text to Image </span>  </Link>
-                                    </li>
-                                    <li className="w-100">
-                                        <Link to="/text-to-text-newslide" className="nav-link px-0"> <span className="d-none d-sm-inline px-5">➣ Text to Text </span> </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/image-to-image-newslide" className="nav-link px-0"> <span className="d-none d-sm-inline px-5">➣ Image to Image  </span>  </Link>
-                                    </li>
-                                </ul>
+                            {gamesDropdownItems.map((item, index) => (
+                                <li key={index}>
+                                    <Link to={item.to} className="nav-link px-0">
+                                        {" "}
+                                        <span className="d-none d-sm-inline gamemenu">{`➣ ${item.text}`}</span>{" "}
+                                    </Link>
+                                </li>
+                            ))}
+                            {/* <li>
+                                <Link to="/" className="nav-link px-0"> <span className="d-none d-sm-inline gamemenu ">➣ Identification Game</span> </Link>
                             </li>
                             <li>
-                                <Link to="/" className="nav-link px-0"> <span className="d-none d-sm-inline sublink">➣ Identification Game</span> </Link>
-                            </li>
-                            <li>
-                                <Link to="/" className="nav-link px-0"> <span className="d-none d-sm-inline sublink">➣ Spellathon</span> </Link>
-                            </li>
+                                <Link to="/" className="nav-link px-0"> <span className="d-none d-sm-inline gamemenu">➣ Spellathon</span> </Link>
+                            </li> */}
 
                         </ul>
                     </li>

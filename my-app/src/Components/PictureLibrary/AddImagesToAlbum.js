@@ -56,30 +56,21 @@ export default function AddImagesToAlbum() {
             });
     };
 
-    // const props = {
-    //     name: 'file',
-    //     action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-    //     headers: {
-    //         authorization: 'authorization-text',
-    //     },
-    //     onChange(info) {
-    //         if (info.file.status !== 'uploading') {
-    //             console.log(info.file, info.fileList);
-    //         }
-    //         if (info.file.status === 'done') {
-    //             message.success(`${info.file.name} file uploaded successfully`);
-    //         } else if (info.file.status === 'error') {
-    //             message.error(`${info.file.name} file upload failed.`);
-    //         }
-    //     },
-    // };
 
+
+    const sectionStyle = {
+        flex: 1,
+        overflowX: 'auto',
+        backgroundImage: 'url("https://e0.pxfuel.com/wallpapers/512/865/desktop-wallpaper-grey-background-vectors-stock-psd-light-gray-thumbnail.jpg")', // Replace with the path to your image
+        backgroundSize: 'cover', // Adjust background size as needed
+        backgroundRepeat: 'no-repeat', // Adjust background repeat as needed
+    };
     return (
         <>
             <div style={{ display: 'flex', height: '100vh' }}>
                 <SideNavbar />
 
-                <section style={{ flex: 1 }}>
+                <section style={sectionStyle} >
                     <div className='container'>
                         <h1 className="my-4 text-center"><mark>Add Image to Existing Albums</mark></h1>
                         <div className='m-4 p-4 border border-dark'>

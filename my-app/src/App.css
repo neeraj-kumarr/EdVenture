@@ -72,25 +72,8 @@ h2 {
 /* CSS */
 .nav-link {
   color: inherit;
-  /* Inherit the text color from the parent element */
-  /* text-decoration: none; */
-  padding: 15px;
-
-  /* Remove underline */
+  padding: 20px;
 }
-
-.sublink {
-  padding-left: 20px;
-}
-
-@media (min-width: 1200px) {
-  .col-xl-2 {
-    flex: 0 0 auto;
-    width: 20%;
-  }
-}
-
-/* Add this CSS to your stylesheet or style block */
 
 .sidebar {
   max-height: 100%;
@@ -101,4 +84,16 @@ h2 {
 
 .sidebar::-webkit-scrollbar {
   width: 0;
+}
+
+.linegamemenu {
+  padding-left: 50px;
+}
+
+.picmenu {
+  padding-left: 21px;
+}
+
+.gamemenu {
+  padding-left: 10px;
 }
