@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import SideNavbar from '../SideNavbar';
 import axios from 'axios';
 import { Gallery } from "react-grid-gallery";
 import Spinner from '../Spinner';
 
 export default function BackgroundImages() {
     const [file, setFile] = useState(null);
+    // eslint-disable-next-line 
     const [data, setData] = useState([]);
     const [galleryImages, setGalleryImages] = useState([]);
     const [searchKeyword, setSearchKeyword] = useState('');
     const [page, setPage] = useState(1);
+    // eslint-disable-next-line 
     const [pageSize, setPageSize] = useState(8);
     const [loading, setLoading] = useState(false);
     const [hasMoreResults, setHasMoreResults] = useState(true); // Track if there are more results
@@ -76,64 +77,64 @@ export default function BackgroundImages() {
 
     return (
         <>
-            <div style={{ display: 'flex', height: '100vh' }}>
-                <SideNavbar />
-                <section style={{ flex: 1 }}>
-                    <div className="m-4">
-                        <h1 className="text-center">Welcome to Background Images</h1>
-                        <div className="d-flex col-6 m-4">
-                            <input className="border border-dark form-control" type="file" id="formFile" onChange={handleFile} />
-                            <button className="mx-4 btn btn-dark" onClick={handleUpload}>Upload</button>
-                        </div>
-                        <div className="input-group m-4">
-                            <label htmlFor="exampleFormControlInput1" className='m-2'>Search By Keyword: </label>
-                            <div className="col-4 p-0">
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Enter Title here."
-                                    value={searchKeyword}
-                                    onChange={(e) => setSearchKeyword(e.target.value)}
-                                />
-                            </div>
-                            {searchKeyword && (
-                                <button
-                                    type="button"
-                                    className="btn btn-danger mx-4 "
-                                    onClick={handleSearchKeywordReset}
-                                >
-                                    Clear Search
-                                </button>
-                            )}
-                        </div>
+            {/* <div style={{ display: 'flex', height: '100vh' }}>
+                <SideNavbar /> */}
+            {/* <section style={sectionStyle}> */}
+            <div className="m-4">
+                <h1 className="text-center">Welcome to Background Images</h1>
+                <div className="d-flex col-6 m-4">
+                    <input className="border border-dark form-control" type="file" id="formFile" onChange={handleFile} />
+                    <button className="mx-4 btn btn-dark" onClick={handleUpload}>Upload</button>
+                </div>
+                <div className="input-group m-4">
+                    <label htmlFor="exampleFormControlInput1" className='m-2'>Search By Keyword: </label>
+                    <div className="col-4 p-0">
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter Title here."
+                            value={searchKeyword}
+                            onChange={(e) => setSearchKeyword(e.target.value)}
+                        />
                     </div>
-                    {loading ? (
-                        <Spinner />
-                    ) : (
-                        <div className="m-4">
-                            <Gallery images={galleryImages} />
-                        </div>
+                    {searchKeyword && (
+                        <button
+                            type="button"
+                            className="btn btn-danger mx-4 "
+                            onClick={handleSearchKeywordReset}
+                        >
+                            Clear Search
+                        </button>
                     )}
-                    <div className="m-4 d-flex justify-content-between">
-                        <button
-                            type="button"
-                            disabled={page <= 1}
-                            className="btn btn-dark"
-                            onClick={handlePrevPage}
-                        >
-                            &larr; Previous Page
-                        </button>
-                        <button
-                            type="button"
-                            disabled={!hasMoreResults}
-                            className="btn btn-dark"
-                            onClick={handleNextPage}
-                        >
-                            Next Page &rarr;
-                        </button>
-                    </div>
-                </section>
+                </div>
             </div>
+            {loading ? (
+                <Spinner />
+            ) : (
+                <div className="m-4">
+                    <Gallery images={galleryImages} />
+                </div>
+            )}
+            <div className="m-4 d-flex justify-content-between">
+                <button
+                    type="button"
+                    disabled={page <= 1}
+                    className="btn btn-dark"
+                    onClick={handlePrevPage}
+                >
+                    &larr; Previous Page
+                </button>
+                <button
+                    type="button"
+                    disabled={!hasMoreResults}
+                    className="btn btn-dark"
+                    onClick={handleNextPage}
+                >
+                    Next Page &rarr;
+                </button>
+            </div>
+            {/* </section> */}
+            {/* </div> */}
         </>
     );
 }

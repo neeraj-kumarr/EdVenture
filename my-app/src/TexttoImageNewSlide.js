@@ -1,7 +1,5 @@
 import React from 'react';
-import SideNavbar from '../SideNavbar'
-import Nav from './Nav'
-
+import Nav from './Components/Games/Nav'
 
 function TableCell({ children }) {
     const tdcStyle = {
@@ -16,44 +14,40 @@ function TableCell({ children }) {
     );
 }
 
-export default function PrepareNewSlide() {
+export default function TexttoImageNewSlide() {
 
 
-    // const inputStyle = {
-    //     width: '60%', border: '1px solid grey'
-    // };
-    const sectionStyle = {
-        flex: 1,
-        overflowX: 'auto',
-        backgroundImage: 'url("https://e0.pxfuel.com/wallpapers/512/865/desktop-wallpaper-grey-background-vectors-stock-psd-light-gray-thumbnail.jpg")', // Replace with the path to your image
-        backgroundSize: 'cover', // Adjust background size as needed
-        backgroundRepeat: 'no-repeat', // Adjust background repeat as needed
+    const inputStyle = {
+        width: '30%', border: '1px solid grey'
     };
+
     return (
+        <>
+            < Nav maintitle="[Text to Image]" title1="Prepare New Slide" title2="View Slides" title3="Compile Games" title4="View Games"
+                navlink1="/line-game/text-to-image-newslide" navlink2="/" navlink3="/line-game/text-to-image-compile" navlink4="/"
+            />
+            <h2 className=" p-4 " >
+                𝓟𝓻𝓮𝓹𝓪𝓻𝓮 𝓝𝓮𝔀 𝓢𝓵𝓲𝓭𝓮𝓼 📖
+            </h2>
 
-        <div style={{ display: 'flex', height: '100vh' }}>
-            <SideNavbar />
-            <section style={sectionStyle} >
-                < Nav title1="Prepare New Slide" title2="View Slides" title3="Compile Games" title4="View Games" />
-                <h2 className="container p-4 " >
-                    𝓟𝓻𝓮𝓹𝓪𝓻𝓮 𝓝𝓮𝔀 𝓢𝓵𝓲𝓭𝓮𝓼 📖                </h2>
-
-                <div className='container ' style={{ border: 'solid 4px #203b89', width: '90%', borderRadius: '25px', padding: '50px 50px 0px 50px', marginBottom: '20px' }}>
+            <div style={{ padding: '0 60px' }}>
+                <div style={{ border: 'solid 4px #203b89', borderRadius: '25px', padding: '50px 50px 0px 50px', marginBottom: '20px' }}>
                     <table style={{ width: '100%', borderCollapse: 'separate' }} >
                         <tbody>
                             <tr>
-                                <TableCell height="24" colSpan="4" >
-                                    <strong><i> Instructions: </i></strong>
+                                <TableCell height="24" colSpan="6" >
+                                    <strong ><i> Instructions: </i></strong>
                                 </TableCell>
-                            </tr>
-                            <tr>
-                                <TableCell height="24" colSpan="4" >
+                                <TableCell height="24" className='font-weight-bold'>
                                     <p>1. Select Game Language [Arabic English Urdu]
                                         <br />2. In text box paste text in the selected language
                                         <br />3. Click on the colored text box to select a color for text
-                                        <br /> 4. In the sound file uploader, upload a .mp3 sound file</p>
+                                        <br /> 4. In the sound file uploader, upload a .mp3 sound file
+                                        <br /> 5. The Text will be on left and the Image will be on the right
+                                    </p>
                                 </TableCell>
                             </tr>
+
                             <tr>
                                 <TableCell >Game Language</TableCell>
                                 <TableCell colSpan="3" >
@@ -69,35 +63,32 @@ export default function PrepareNewSlide() {
                             </tr>
                             <tr>
                                 <TableCell > Game Title</TableCell>
-                                <TableCell colSpan="3" >
+                                <TableCell colSpan="4" >
                                     <input type="text" className="form-control" autoComplete="off" style={{ width: '30%', border: '1px solid grey' }} />
                                 </TableCell>
                             </tr>
                             <tr>
                                 <TableCell > Game Instruction</TableCell>
                                 <TableCell colSpan="3" >
-                                    <input type="text" className="form-control" autoComplete="off" style={{ width: '30%', border: '1px solid grey' }} />
+                                    <input type="text" className="form-control" autoComplete="off" style={{ width: '60%', height: '50px', border: '1px solid grey' }} />
                                 </TableCell>
                             </tr>
-                            {/* <tr>
+                            <tr>
                                 <TableCell > Text 1</TableCell>
                                 <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
                                 </TableCell>
-                                <TableCell >Position</TableCell>
-                                <TableCell >
-                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell>
+
                             </tr>
                             <tr>
                                 <TableCell >Image 1</TableCell>
                                 <TableCell >
                                     <button className="btn btn-success">Select Image</button>
                                 </TableCell>
-                                <TableCell >Position</TableCell>
+                                {/* <TableCell >Position</TableCell>
                                 <TableCell >
                                     <input type="text" autoComplete="off" className="form-control" style={inputStyle} />
-                                </TableCell>
+                                </TableCell> */}
                             </tr>
                             <tr>
                                 <TableCell > Sound 1</TableCell>
@@ -111,20 +102,20 @@ export default function PrepareNewSlide() {
                                 <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
                                 </TableCell>
-                                <TableCell >Position</TableCell>
+                                {/* <TableCell >Position</TableCell>
                                 <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell>
+                                </TableCell> */}
                             </tr>
                             <tr>
                                 <TableCell >Image 2</TableCell>
                                 <TableCell >
                                     <button className="btn btn-success">Select Image</button>
                                 </TableCell>
-                                <TableCell >Position</TableCell>
+                                {/* <TableCell >Position</TableCell>
                                 <TableCell >
                                     <input type="text" autoComplete="off" className="form-control" style={inputStyle} />
-                                </TableCell>
+                                </TableCell> */}
                             </tr>
                             <tr>
                                 <TableCell >Sound 2</TableCell>
@@ -139,10 +130,10 @@ export default function PrepareNewSlide() {
                                 <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
                                 </TableCell>
-                                <TableCell >Position</TableCell>
+                                {/* <TableCell >Position</TableCell>
                                 <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell>
+                                </TableCell> */}
                             </tr>
 
                             <tr>
@@ -150,10 +141,10 @@ export default function PrepareNewSlide() {
                                 <TableCell >
                                     <button className="btn btn-success">Select Image</button>
                                 </TableCell>
-                                <TableCell >Position</TableCell>
+                                {/* <TableCell >Position</TableCell>
                                 <TableCell >
                                     <input type="text" autoComplete="off" className="form-control" style={inputStyle} />
-                                </TableCell>
+                                </TableCell> */}
                             </tr>
 
                             <tr>
@@ -164,7 +155,7 @@ export default function PrepareNewSlide() {
                                     </div>
                                 </TableCell>
                             </tr>
- */}
+
                             <tr>
                                 <TableCell className='p-3'>
                                     <button type="submit" className="btn btn-primary">Submit Now</button>
@@ -174,8 +165,7 @@ export default function PrepareNewSlide() {
                         </tbody>
                     </table>
                 </div>
-            </section >
-        </div >
-
+            </div >
+        </>
     );
 }

@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import SideNavbar from '../SideNavbar';
 import { Gallery } from "react-grid-gallery";
 import Spinner from '../Spinner';
 
 export default function ViewImagesInAlbum() {
+    // eslint-disable-next-line
     const [albumData, setAlbumData] = useState([]);
     const [selectedAlbum, setSelectedAlbum] = useState('');
+    // eslint-disable-next-line
     const [data, setData] = useState([]);
     const [galleryImages, setGalleryImages] = useState([]);
     const [searchKeyword, setSearchKeyword] = useState('');
     const [page, setPage] = useState(1);
+    // eslint-disable-next-line
     const [pageSize, setPageSize] = useState(8);
     const [loading, setLoading] = useState(false);
     const [hasMoreResults, setHasMoreResults] = useState(true);
@@ -99,84 +101,78 @@ export default function ViewImagesInAlbum() {
     };
 
 
-
     return (
         <>
-            <div style={{ display: 'flex', height: '100vh' }}>
-                <SideNavbar />
-                <section style={{ flex: 1 }}>
-                    <div className='p-4'>
-                        <h1 className="text-center mb-3"><mark>View Images</mark></h1>
-                        <div className="p-3 border border-dark">
-                            <h3>Instructions:</h3>
-                            <p>1. Select Album Name to View Images in the selected Album</p>
-                            <p>2. Enter a Keyword to search for a particular image within an Album</p>
 
-                            <div className="d-flex justify-content-between my-4">
-                                <h6 >Select Album Name: </h6>
+            <div className='p-4'>
+                <h1 className="text-center mb-3"><mark>View Images</mark></h1>
+                <div className="p-3 border border-dark">
+                    <h3>Instructions:</h3>
+                    <p>1. Select Album Name to View Images in the selected Album</p>
+                    <p>2. Enter a Keyword to search for a particular image within an Album</p>
 
-                                <select className="form-select h-25 w-25" aria-label="Default select example"
-                                    value={selectedAlbum}
-                                    onChange={(e) => setSelectedAlbum(e.target.value)}
-                                >
-                                    <option value=''>Select</option>
-                                    {albumData.map((album) => (
-                                        <option key={album.id} value={album.id}>
-                                            {album.title}
-                                        </option>
-                                    ))}
-                                </select>
-                                <div className="input-group">
-                                    <label htmlFor="exampleFormControlInput1" className='m-2'>Search By Keyword: </label>
-                                    <div >
-                                        <input
-                                            type="text"
-                                            className="form-control"
-                                            placeholder="Enter Title here."
-                                            value={searchKeyword}
-                                            onChange={(e) => setSearchKeyword(e.target.value)}
-                                        />
-                                    </div>
-                                    {searchKeyword && (
-                                        <button
-                                            type="button"
-                                            className="btn btn-danger mx-4 "
-                                            onClick={handleSearchKeywordReset}
-                                        >
-                                            Clear Search
-                                        </button>
-                                    )}
-                                </div>
+                    <div className="d-flex justify-content-between my-4">
+                        <h6 >Select Album Name: </h6>
+
+                        <select className="form-select h-25 w-25" aria-label="Default select example"
+                            value={selectedAlbum}
+                            onChange={(e) => setSelectedAlbum(e.target.value)}
+                        >
+                            <option value=''>Select</option>
+                            {albumData.map((album) => (
+                                <option key={album.id} value={album.id}>
+                                    {album.title}
+                                </option>
+                            ))}
+                        </select>
+                        <div className="input-group">
+                            <label htmlFor="exampleFormControlInput1" className='m-2'>Search By Keyword: </label>
+                            <div >
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Enter Title here."
+                                    value={searchKeyword}
+                                    onChange={(e) => setSearchKeyword(e.target.value)}
+                                />
                             </div>
+                            {searchKeyword && (
+                                <button
+                                    type="button"
+                                    className="btn btn-danger mx-4 "
+                                    onClick={handleSearchKeywordReset}
+                                >
+                                    Clear Search
+                                </button>
+                            )}
                         </div>
                     </div>
-                    {loading ? (
-                        <Spinner />
-                    ) : (
-                        <div className="m-4">
-                            <Gallery images={galleryImages} />
-                        </div>
-                    )}
-                    <div className="m-4 d-flex justify-content-between">
-                        <button
-                            type="button"
-                            disabled={page <= 1}
-                            className="btn btn-dark"
-                            onClick={handlePrevPage}
-                        >
-                            &larr; Previous Page
-                        </button>
-                        <button
-                            type="button"
-                            disabled={!hasMoreResults}
-                            className="btn btn-dark"
-                            onClick={handleNextPage}
-                        >
-                            Next Page &rarr;
-                        </button>
-                    </div>
-
-                </section>
+                </div>
+            </div>
+            {loading ? (
+                <Spinner />
+            ) : (
+                <div className="m-4">
+                    <Gallery images={galleryImages} />
+                </div>
+            )}
+            <div className="m-4 d-flex justify-content-between">
+                <button
+                    type="button"
+                    disabled={page <= 1}
+                    className="btn btn-dark"
+                    onClick={handlePrevPage}
+                >
+                    &larr; Previous Page
+                </button>
+                <button
+                    type="button"
+                    disabled={!hasMoreResults}
+                    className="btn btn-dark"
+                    onClick={handleNextPage}
+                >
+                    Next Page &rarr;
+                </button>
             </div>
         </>
     );

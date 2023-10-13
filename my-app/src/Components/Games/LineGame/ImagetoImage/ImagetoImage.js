@@ -1,5 +1,4 @@
 import React from 'react';
-import SideNavbar from '../../../SideNavbar';
 import Nav from '../../Nav'
 
 function TableCell({ children }) {
@@ -15,27 +14,19 @@ function TableCell({ children }) {
     );
 }
 
-export default function ImagetoImageNewSlide() {
+export default function ImagetoImage() {
 
-    const sectionStyle = {
-        flex: 1,
-        overflowX: 'auto',
-        backgroundImage: 'url("https://e0.pxfuel.com/wallpapers/512/865/desktop-wallpaper-grey-background-vectors-stock-psd-light-gray-thumbnail.jpg")', // Replace with the path to your image
-        backgroundSize: 'cover', // Adjust background size as needed
-        backgroundRepeat: 'no-repeat', // Adjust background repeat as needed
-    };
+
     return (
-
-        <div style={{ display: 'flex', height: '100vh' }}>
-            <SideNavbar />
-            <section style={sectionStyle} >
-                < Nav maintitle="[Image to Image]" title1="Prepare New Slide" title2="View Slides" title3="Compile Games" title4="View Games"
-                    navlink1="/line-game/image-to-image-newslide" navlink2="/" navlink3="/line-game/image-to-image-compile" navlink4="/"
-                />
-                <h2 className="container p-4 " >
-                    𝓟𝓻𝓮𝓹𝓪𝓻𝓮 𝓝𝓮𝔀 𝓢𝓵𝓲𝓭𝓮𝓼 📖                </h2>
-
-                <div className='container ' style={{ border: 'solid 4px #203b89', width: '90%', borderRadius: '25px', padding: '50px 50px 0px 50px', marginBottom: '20px' }}>
+        <>
+            {/* <section style={sectionStyle} > */}
+            < Nav maintitle="[Image to Image]" title1="Prepare New Slide" title2="View Slides" title3="Compile Games" title4="View Games"
+                navlink1="/line-game/image-to-image-newslide" navlink2="/" navlink3="/line-game/image-to-image-compile" navlink4="/"
+            />
+            <h2 className=" p-4 " >
+                𝓟𝓻𝓮𝓹𝓪𝓻𝓮 𝓝𝓮𝔀 𝓢𝓵𝓲𝓭𝓮𝓼 📖                </h2>
+            <div style={{ padding: '0 60px' }}>
+                <div style={{ border: 'solid 4px #203b89', borderRadius: '25px', padding: '50px 50px 0px 50px', marginBottom: '20px' }}>
                     <table style={{ width: '100%', borderCollapse: 'separate' }} >
                         <tbody>
                             <tr>
@@ -47,7 +38,7 @@ export default function ImagetoImageNewSlide() {
                                         <br />2. In text box paste text in the selected language
                                         <br />3. Click on the colored text box to select a color for text
                                         <br /> 4. In the sound file uploader, upload a .mp3 sound file
-                                        <br /> 5. The (a) objects are in left position and (b) onject are on right position
+                                        <br /><mark>5. The (a) objects are in left position and (b) onject are on right position</mark>
                                     </p>
                                 </TableCell>
                             </tr>
@@ -186,8 +177,9 @@ export default function ImagetoImageNewSlide() {
                         </tbody>
                     </table>
                 </div>
-            </section >
-        </div >
-
+            </div>
+            {/* </section > */}
+            {/* </div > */}
+        </>
     );
 }

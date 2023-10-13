@@ -1,5 +1,4 @@
 import React from 'react';
-import SideNavbar from '../../../SideNavbar';
 import Nav from '../../Nav';
 
 function TableCell({ children }) {
@@ -15,31 +14,24 @@ function TableCell({ children }) {
     );
 }
 
-export default function TexttoTextNewSlide() {
+export default function TexttoText() {
 
 
     const inputStyle = {
         width: '30%', border: '1px solid grey'
     };
-    const sectionStyle = {
-        flex: 1,
-        overflowX: 'auto',
-        backgroundImage: 'url("https://e0.pxfuel.com/wallpapers/512/865/desktop-wallpaper-grey-background-vectors-stock-psd-light-gray-thumbnail.jpg")', // Replace with the path to your image
-        backgroundSize: 'cover', // Adjust background size as needed
-        backgroundRepeat: 'no-repeat', // Adjust background repeat as needed
-    };
+
     return (
 
-        <div style={{ display: 'flex', height: '100vh' }}>
-            <SideNavbar />
-            <section style={sectionStyle} >
-                < Nav maintitle="[Text to Text]" title1="Prepare New Slide" title2="View Slides" title3="Compile Games" title4="View Games"
-                    navlink1="/line-game/text-to-text-newslide" navlink2="/" navlink3="/line-game/text-to-text-compile" navlink4="/"
-                />
-                <h2 className="container p-4 " >
-                    𝓟𝓻𝓮𝓹𝓪𝓻𝓮 𝓝𝓮𝔀 𝓢𝓵𝓲𝓭𝓮𝓼 📖                </h2>
+        <>
+            < Nav maintitle="[Text to Text]" title1="Prepare New Slide" title2="View Slides" title3="Compile Games" title4="View Games"
+                navlink1="/line-game/text-to-text-newslide" navlink2="/" navlink3="/line-game/text-to-text-compile" navlink4="/"
+            />
+            <h2 className=" p-4 " >
+                𝓟𝓻𝓮𝓹𝓪𝓻𝓮 𝓝𝓮𝔀 𝓢𝓵𝓲𝓭𝓮𝓼 📖                </h2>
+            <div style={{ padding: '0 60px' }}>
 
-                <div className='container ' style={{ border: 'solid 4px #203b89', width: '90%', borderRadius: '25px', padding: '50px 50px 0px 50px', marginBottom: '20px' }}>
+                <div className=' ' style={{ border: 'solid 4px #203b89', borderRadius: '25px', padding: '50px 50px 0px 50px', marginBottom: '20px' }}>
                     <table style={{ width: '100%', borderCollapse: 'separate' }} >
                         <tbody>
                             <tr>
@@ -173,8 +165,7 @@ export default function TexttoTextNewSlide() {
                         </tbody>
                     </table>
                 </div>
-            </section >
-        </div >
-
+            </div>
+        </>
     );
 }

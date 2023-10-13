@@ -95,5 +95,9 @@ h2 {
 }
 
 .gamemenu {
-  padding-left: 10px;
+  padding-left: 15px;
+}
+
+.gamesubmenu {
+  padding-left: 40px;
 }

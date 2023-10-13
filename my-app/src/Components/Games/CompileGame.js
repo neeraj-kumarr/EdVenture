@@ -3,7 +3,6 @@ import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import SideNavbar from '../SideNavbar';
 import Nav from './Nav';
 import { Link } from 'react-router-dom';
 
@@ -27,14 +26,6 @@ export default function CompileGame(props) {
   const handleNumLevelsChange = (e) => {
     setNumLevels(parseInt(e.target.value));
   }
-  const sectionStyle = {
-    flex: 1,
-    overflowX: 'auto',
-    backgroundImage: 'url("https://e0.pxfuel.com/wallpapers/512/865/desktop-wallpaper-grey-background-vectors-stock-psd-light-gray-thumbnail.jpg")', // Replace with the path to your image
-    backgroundSize: 'cover', // Adjust background size as needed
-    backgroundRepeat: 'no-repeat', // Adjust background repeat as needed
-  };
-
   const classNames = [
     "Nursery-A",
     "Prep 1 - A",
@@ -58,17 +49,16 @@ export default function CompileGame(props) {
   ];
 
   return (
-    <div style={{ display: 'flex', height: '100vh' }}>
-      <SideNavbar />
-      <section style={sectionStyle} >
-        <Nav maintitle={props.maintitle} title1="Prepare New Slide" title2="View Slides" title3="Compile Games" title4="View Games"
-          // navlink1="/line-game/text-to-image-newslide" navlink2="/" navlink3="/line-game/text-to-image-compile" navlink4="/"
-          navlink1={props.navlink1} navlink2={props.navlink2} navlink3={props.navlink3} navlink4={props.navlink4}
-        />
-        <h2 className="container p-4 " >
-          𝓒𝓸𝓶𝓹𝓲𝓵𝓮 𝓖𝓪𝓶𝓮𝓼🎮                </h2>
+    <>
+      <Nav maintitle={props.maintitle} title1="Prepare New Slide" title2="View Slides" title3="Compile Games" title4="View Games"
+        // navlink1="/line-game/text-to-image-newslide" navlink2="/" navlink3="/line-game/text-to-image-compile" navlink4="/"
+        navlink1={props.navlink1} navlink2={props.navlink2} navlink3={props.navlink3} navlink4={props.navlink4}
+      />
+      <h2 className=" p-4 " >
+        𝓒𝓸𝓶𝓹𝓲𝓵𝓮 𝓖𝓪𝓶𝓮𝓼🎮                </h2>
+      <div style={{ padding: '0 60px' }}>
 
-        <div className='container ' style={{ border: 'solid 4px #203b89', width: '90%', borderRadius: '25px', padding: '50px 50px 0px 50px', marginBottom: '40px' }}
+        <div className=' ' style={{ border: 'solid 4px #203b89', borderRadius: '25px', padding: '50px 50px 0px 50px', marginBottom: '40px' }}
         >
           <table style={{ width: '100%', borderCollapse: 'separate' }} >
             <tbody>
@@ -212,7 +202,8 @@ export default function CompileGame(props) {
             <button className="btn btn-primary" type="submit">Submit Now</button>
           </div>
         </div>
-      </section>
-    </div >
+      </div>
+
+    </>
   )
 }

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, message, Upload } from 'antd';
-import SideNavbar from '../SideNavbar';
 
 export default function AddImagesToAlbum() {
 
@@ -58,87 +57,82 @@ export default function AddImagesToAlbum() {
 
 
 
-    const sectionStyle = {
-        flex: 1,
-        overflowX: 'auto',
-        backgroundImage: 'url("https://e0.pxfuel.com/wallpapers/512/865/desktop-wallpaper-grey-background-vectors-stock-psd-light-gray-thumbnail.jpg")', // Replace with the path to your image
-        backgroundSize: 'cover', // Adjust background size as needed
-        backgroundRepeat: 'no-repeat', // Adjust background repeat as needed
-    };
+    // const sectionStyle = {
+    //     // flex: 1,
+    //     overflowX: 'auto',
+    //     backgroundImage: 'url("https://e0.pxfuel.com/wallpapers/512/865/desktop-wallpaper-grey-background-vectors-stock-psd-light-gray-thumbnail.jpg")', // Replace with the path to your image
+    //     backgroundSize: 'cover', // Adjust background size as needed
+    //     backgroundRepeat: 'no-repeat', // Adjust background repeat as needed
+    // };
     return (
         <>
-            <div style={{ display: 'flex', height: '100vh' }}>
-                <SideNavbar />
 
-                <section style={sectionStyle} >
-                    <div className='container'>
-                        <h1 className="my-4 text-center"><mark>Add Image to Existing Albums</mark></h1>
-                        <div className='m-4 p-4 border border-dark'>
-                            <h3><u>Instructions:</u></h3>
-                            <p>
-                                1. Select Album from drop-down menu<br />
-                                2. Insert Image name in Text box in English<br />
-                                3. In the image box upload an image from your system. (The ideal size of the image is 95px X 135px and not greater than 300kb)<br />
-                                4. You may upload up to 5 images at a time.</p>
-                            <div style={{ color: 'red' }}>
-                                <p><i>Best Policy would be not to upload images bigger than 300px X 300px<br />
-                                    You can only upload images saved on your system</i></p>
-                            </div>
-                        </div>
+            {/* <div className='container'> */}
+            <h1 className="my-4 text-center"><mark>Add Image to Existing Albums</mark></h1>
+            <div className='m-4 p-4 border border-dark'>
+                <h3><u>Instructions:</u></h3>
+                <p>
+                    1. Select Album from drop-down menu<br />
+                    2. Insert Image name in Text box in English<br />
+                    3. In the image box upload an image from your system. (The ideal size of the image is 95px X 135px and not greater than 300kb)<br />
+                    4. You may upload up to 5 images at a time.</p>
+                <div style={{ color: 'red' }}>
+                    <p><i>Best Policy would be not to upload images bigger than 300px X 300px<br />
+                        You can only upload images saved on your system</i></p>
+                </div>
+            </div>
 
-                        <div class="d-flex justify-content-evenly m-4 ">
+            <div class="d-flex justify-content-evenly m-4 ">
 
-                            <h6 className='mt-2'>Choose Picture Album: </h6>
-                            <div className="col-2">
-                                <select className="border border-dark form-select" aria-label="Default select example" value={selectedAlbum} // Use selectedAlbum here
-                                    onChange={(event) => setSelectedAlbum(event.target.value)}>
+                <h6 className='mt-2'>Choose Picture Album: </h6>
+                <div className="col-2">
+                    <select className="border border-dark form-select" aria-label="Default select example" value={selectedAlbum} // Use selectedAlbum here
+                        onChange={(event) => setSelectedAlbum(event.target.value)}>
 
-                                    <option selected="selected" >Select </option>
-                                    {albumData.map((album, index) => (
-                                        <option key={index} value={album.id}>
-                                            {album.title}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
+                        <option selected="selected" >Select </option>
+                        {albumData.map((album, index) => (
+                            <option key={index} value={album.id}>
+                                {album.title}
+                            </option>
+                        ))}
+                    </select>
+                </div>
 
-                            {/* Include the Ant Design Upload component */}
-                            <Upload
-                                name="image"
+                {/* Include the Ant Design Upload component */}
+                <Upload
+                    name="image"
 
-                                showUploadList={true}
-                                beforeUpload={(file) => {
-                                    setFile(file);
-                                    return false; // Prevent automatic upload
-                                }}
+                    showUploadList={true}
+                    beforeUpload={(file) => {
+                        setFile(file);
+                        return false; // Prevent automatic upload
+                    }}
 
-                                onChange={handleFile}
-                            >
-                                <Button
-                                    style={{ height: '40px' }}
-                                    className='border border-dark'
-                                    icon={<UploadOutlined />}
-                                >
-                                    Click to Upload Image
-                                </Button>
-                            </Upload>
+                    onChange={handleFile}
+                >
+                    <Button
+                        style={{ height: '40px' }}
+                        className='border border-dark'
+                        icon={<UploadOutlined />}
+                    >
+                        Click to Upload Image
+                    </Button>
+                </Upload>
 
-                            <div className="">
-                                <input className="form-control border border-dark me-2 col-3" type="text" placeholder="Write Title/Keyword" />
-                            </div>
+                <div className="">
+                    <input className="form-control border border-dark me-2 col-3" type="text" placeholder="Write Title/Keyword" />
+                </div>
 
-                            <div className="">
-                                <button
-                                    type="button"
-                                    className="btn btn-primary mb-3"
-                                    onClick={handleUpload}
-                                >
-                                    Upload Image
-                                </button>                            </div>
-                        </div>
-                    </div>
-                </section >
-            </div >
+                <div className="">
+                    <button
+                        type="button"
+                        className="btn btn-primary mb-3"
+                        onClick={handleUpload}
+                    >
+                        Upload Image
+                    </button>                            </div>
+            </div>
+            {/* </div> */}
         </>
     );
 }
