@@ -3,9 +3,9 @@ const db = require('../db');
 
 const router = express.Router();
 
-router.get('/view-images', (req, res) => {
+router.get('/view-images-in-album', (req, res) => {
     const { keyword, page, pageSize } = req.query;
-    let sql = 'SELECT * from pictureGallery';
+    let sql = 'SELECT * from picturegallery';
 
     // If a keyword is provided, add a WHERE clause to filter by title
     if (keyword) {

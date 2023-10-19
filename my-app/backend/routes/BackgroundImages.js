@@ -6,7 +6,7 @@ const db = require('../db');
 const router = express.Router();
 
 // Define the absolute path to the destination directory
-const uploadDir = path.join(__dirname, '../../src/Components/PictureGallery/');
+const uploadDir = path.join(__dirname, '../../src/Components/PictureGallery/gamebg');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -23,7 +23,7 @@ const upload = multer({
 
 router.post('/upload', upload.single('image'), (req, res) => {
     const image = req.file.filename;
-    const sql = 'INSERT INTO pictureGallery (image) VALUES (?)';
+    const sql = 'INSERT INTO bggallery (image) VALUES (?)';
     db.query(sql, [image], (err, result) => {
         if (err) return res.json({ Message: 'Error' })
         return res.json({ Status: 'Success' })
@@ -32,7 +32,7 @@ router.post('/upload', upload.single('image'), (req, res) => {
 
 router.get('/background-images', (req, res) => {
     const { keyword, page, pageSize } = req.query;
-    let sql = 'SELECT * from pictureGallery';
+    let sql = 'SELECT * from bggallery';
 
     // If a keyword is provided, add a WHERE clause to filter by title
     if (keyword) {

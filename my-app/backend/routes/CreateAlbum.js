@@ -6,7 +6,7 @@ const router = express.Router();
 
 // Function to insert a new album into the database
 const createAlbum = (albumName, callback) => {
-    const sql = 'INSERT INTO viewAlbum (title) VALUES (?)';
+    const sql = 'INSERT INTO picture_category (title) VALUES (?)';
     db.query(sql, [albumName], (err, data) => {
         if (err) {
             console.error('Error inserting album:', err);
@@ -33,7 +33,7 @@ router.post('/create-album', (req, res) => {
 
 // Define an API endpoint to retrieve album data
 router.get('/view-albums', (req, res) => {
-    const sql = 'SELECT * FROM viewAlbum';
+    const sql = 'SELECT * FROM picture_category';
     db.query(sql, (err, data) => {
         if (err) {
             console.error('Error querying MySQL:', err);

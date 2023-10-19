@@ -5,7 +5,7 @@ const db = require('../db');
 
 const router = express.Router();
 
-const uploadDir = path.join(__dirname, '../../src/Components/PictureGallery/');
+const uploadDir = path.join(__dirname, '../../src/Components/PictureGallery/picture_album');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -23,7 +23,7 @@ const upload = multer({
 
 router.post('/upload', upload.single('image'), (req, res) => {
     const image = req.file.filename;
-    const sql = 'INSERT INTO pictureGallery (image) VALUES (?)';
+    const sql = 'INSERT INTO picturegallery (image) VALUES (?)';
     db.query(sql, [image], (err, result) => {
         if (err) return res.json({ Message: 'Error' })
         return res.json({ Status: 'Success' })
