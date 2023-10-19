@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 // import logo from "./assets/logo/webscript.png";
-import logo from "../../logo1.jpg";
+import logo from "../../logo.jpg";
 import user from "./assets/user.jpg";
 import './Sidemenu.css';
 import MenuItem from "./MenuItem";
-import CreateNewAlbum from "../PictureLibrary/CreateNewAlbum";
 import Home from "../Home";
+import CreateNewAlbum from "../PictureLibrary/CreateNewAlbum";
 import AddImagesToAlbum from "../PictureLibrary/AddImagesToAlbum";
 import BackgroundImages from "../PictureLibrary/BackgroundImages";
 import ViewImagesInAlbum from "../PictureLibrary/ViewImagesInAlbum";
@@ -13,9 +13,9 @@ import ViewImagesInAlbum from "../PictureLibrary/ViewImagesInAlbum";
  * @author
  * @function SideMenu
  **/
-import TexttoText from '../Games/LineGame/TexttoText/TexttoText';
-import ImagetoImage from '../Games/LineGame/ImagetoImage/ImagetoImage';
-import TexttoImage from "../Games/LineGame/TexttoImage/TexttoImage";
+import TexttoText from '../Games/LineGame/TexttoText';
+import ImagetoImage from '../Games/LineGame/ImagetoImage';
+import TexttoImage from "../Games/LineGame/TexttoImage";
 
 // added more menuItems for testing
 export const menuItems = [

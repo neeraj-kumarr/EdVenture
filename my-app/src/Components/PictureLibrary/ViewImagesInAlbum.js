@@ -60,7 +60,7 @@ export default function ViewImagesInAlbum() {
     useEffect(() => {
         setLoading(true);
         // FIND BELOW SOLUTION
-        axios.get('http://localhost:3000/view-images', {
+        axios.get('http://localhost:3000/view-images-in-album', {
             params: {
                 keyword: searchKeyword,
                 page,
@@ -70,7 +70,7 @@ export default function ViewImagesInAlbum() {
             .then((res) => {
                 setData(res.data);
                 const galleryData = res.data.map((image) => ({
-                    src: `http://localhost:3000/PictureGallery/${image.image}`,
+                    src: `http://localhost:3000/PictureGallery/picture_album/${image.image}`,
                     width: 320,
                     height: 212,
                 }));

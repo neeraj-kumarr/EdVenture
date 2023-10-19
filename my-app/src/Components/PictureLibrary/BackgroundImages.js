@@ -27,7 +27,7 @@ export default function BackgroundImages() {
             .then((res) => {
                 setData(res.data);
                 const galleryData = res.data.map((image) => ({
-                    src: `http://localhost:3000/PictureGallery/${image.image}`,
+                    src: `http://localhost:3000/PictureGallery/gamebg/${image.image}`,
                     width: 320,
                     height: 212,
                 }));
