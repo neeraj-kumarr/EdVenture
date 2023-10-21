@@ -79,7 +79,6 @@ function CreateNewAlbum() {
                             <tr>
                                 <th scope="col">Sno</th>
                                 <th scope="col">Title</th>
-
                             </tr>
                         </thead>
                         <tbody>

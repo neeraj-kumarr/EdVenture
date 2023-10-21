@@ -3,6 +3,7 @@ import SideMenu, { menuItems } from "./Components/Sidebar/SideMenu";
 import CompileGame from './Components/Games/LineGame/CompileGame';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ViewSlides from './Components/Games/LineGame/ViewSlides';
+import ViewGame from './Components/Games/LineGame/ViewGame';
 // import Login from './Components/Login';
 
 function App() {
@@ -33,12 +34,15 @@ function App() {
                 ))
               ) : null
             )}
-            <Route exact path="/line-game/text-to-image-compile" element={<CompileGame maintitle="[Text to Image]" navlink1="/line-game/text-to-image-newslide" navlink2="/line-game/text-to-image-viewslide" navlink3="/line-game/text-to-image-compile" navlink4="/" />} />
-            <Route exact path="/line-game/text-to-text-compile" element={<CompileGame maintitle="[Text to Text]" navlink1="/line-game/text-to-text-newslide" navlink2="/line-game/text-to-image-viewslide" navlink3="/line-game/text-to-text-compile" navlink4="/" />} />
-            <Route exact path="/line-game/image-to-image-compile" element={<CompileGame maintitle="[Image to Image]" navlink1="/line-game/image-to-image-newslide" navlink2="/line-game/text-to-image-viewslide" navlink3="/line-game/image-to-image-compile" navlink4="/" />} />
-            <Route exact path="/line-game/text-to-image-viewslide" element={<ViewSlides maintitle="[Text to Image]" navlink1="/line-game/text-to-image-newslide" navlink2="/line-game/text-to-image-viewslide" navlink3="/line-game/text-to-image-compile" navlink4="/" />} />
-            <Route exact path="/line-game/text-to-text-viewslide" element={<ViewSlides maintitle="[Text to Text]" navlink1="/line-game/text-to-text-newslide" navlink2="/line-game/text-to-image-viewslide" navlink3="/line-game/text-to-text-compile" navlink4="/" />} />
-            <Route exact path="/line-game/image-to-image-viewslide" element={<ViewSlides maintitle="[Image to Image]" navlink1="/line-game/image-to-image-newslide" navlink2="/line-game/text-to-image-viewslide" navlink3="/line-game/image-to-image-compile" navlink4="/" />} />
+            <Route exact path="/line-game/text-to-image-compile" element={<CompileGame maintitle="[Text to Image]" navlink1="/line-game/text-to-image-newslide" navlink2="/line-game/text-to-image-viewslide" navlink3="/line-game/text-to-image-compile" navlink4="/line-game/text-to-image-viewgame" />} />
+            <Route exact path="/line-game/text-to-text-compile" element={<CompileGame maintitle="[Text to Text]" navlink1="/line-game/text-to-text-newslide" navlink2="/line-game/text-to-text-viewslide" navlink3="/line-game/text-to-text-compile" navlink4="/line-game/text-to-text-viewgame" />} />
+            <Route exact path="/line-game/image-to-image-compile" element={<CompileGame maintitle="[Image to Image]" navlink1="/line-game/image-to-image-newslide" navlink2="/line-game/image-to-image-viewslide" navlink3="/line-game/image-to-image-compile" navlink4="/line-game/image-to-image-viewgame" />} />
+            <Route exact path="/line-game/text-to-image-viewslide" element={<ViewSlides maintitle="[Text to Image]" navlink1="/line-game/text-to-image-newslide" navlink2="/line-game/text-to-image-viewslide" navlink3="/line-game/text-to-image-compile" navlink4="/line-game/text-to-image-viewgame" />} />
+            <Route exact path="/line-game/text-to-text-viewslide" element={<ViewSlides maintitle="[Text to Text]" navlink1="/line-game/text-to-text-newslide" navlink2="/line-game/text-to-text-viewslide" navlink3="/line-game/text-to-text-compile" navlink4="/line-game/text-to-text-viewgame" />} />
+            <Route exact path="/line-game/image-to-image-viewslide" element={<ViewSlides maintitle="[Image to Image]" navlink1="/line-game/image-to-image-newslide" navlink2="/line-game/image-to-image-viewslide" navlink3="/line-game/image-to-image-compile" navlink4="/line-game/image-to-image-viewgame" />} />
+            <Route exact path="/line-game/text-to-image-viewgame" element={<ViewGame maintitle="[Text to Image]" navlink1="/line-game/text-to-image-newslide" navlink2="/line-game/text-to-image-viewslide" navlink3="/line-game/text-to-image-compile" navlink4="/line-game/text-to-image-viewgame" />} />
+            <Route exact path="/line-game/text-to-text-viewgame" element={<ViewGame maintitle="[Text to Text]" navlink1="/line-game/text-to-text-newslide" navlink2="/line-game/text-to-text-viewslide" navlink3="/line-game/text-to-text-compile" navlink4="/line-game/text-to-text-viewgame" />} />
+            <Route exact path="/line-game/image-to-image-viewgame" element={<ViewGame maintitle="[Image to Image]" navlink1="/line-game/image-to-image-newslide" navlink2="/line-game/image-to-image-viewslide" navlink3="/line-game/image-to-image-compile" navlink4="/line-game/image-to-image-viewgame" />} />
           </Routes>
         </div>
       </>

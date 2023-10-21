@@ -25,7 +25,7 @@ export default function TexttoText() {
 
         <>
             < Nav maintitle="[Text to Text]" title1="Prepare New Slide" title2="View Slides" title3="Compile Games" title4="View Games"
-                navlink1="/line-game/text-to-text-newslide" navlink2="/line-game/text-to-image-viewslide" navlink3="/line-game/text-to-text-compile" navlink4="/"
+                navlink1="/line-game/text-to-text-newslide" navlink2="/line-game/text-to-text-viewslide" navlink3="/line-game/text-to-text-compile" navlink4="/line-game/text-to-text-viewgame"
             />
             <h2 className=" p-4 " >
                 𝓟𝓻𝓮𝓹𝓪𝓻𝓮 𝓝𝓮𝔀 𝓢𝓵𝓲𝓭𝓮𝓼 📖                </h2>

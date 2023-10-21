@@ -6,7 +6,8 @@ import Spinner from '../Spinner';
 export default function ViewImagesInAlbum() {
     // eslint-disable-next-line
     const [albumData, setAlbumData] = useState([]);
-    const [selectedAlbum, setSelectedAlbum] = useState('');
+    const [selectedAlbumTitle, setSelectedAlbumTitle] = useState(''); // Track the selected album title
+
     // eslint-disable-next-line
     const [data, setData] = useState([]);
     const [galleryImages, setGalleryImages] = useState([]);
@@ -17,54 +18,27 @@ export default function ViewImagesInAlbum() {
     const [loading, setLoading] = useState(false);
     const [hasMoreResults, setHasMoreResults] = useState(true);
 
-    // Function to fetch images for the selected album
-    // const fetchImages = async () => {
-    //     setLoading(true);
-    //     try {
-    //         // Fetch album data from the API
-    //         const albumResponse = await axios.get('http://localhost:3000/view-albums');
-    //         setAlbumData(albumResponse.data);
-
-    //         // Fetch images for the selected album
-    //         const imagesResponse = await axios.get('http://localhost:3000/view-images-in-album', {
-    //             params: {
-    //                 keyword: searchKeyword,
-    //                 page,
-    //                 pageSize,
-    //             }
-    //         });
-
-    //         setData(imagesResponse.data);
-
-    //         // Process image data
-    //         const galleryData = imagesResponse.data.map((image) => ({
-    //             src: `http://localhost:3000/PictureGallery/${image.image}`,
-    //             width: 320,
-    //             height: 212,
-    //         }));
-
-    //         setGalleryImages(galleryData);
-    //         setHasMoreResults(imagesResponse.data.length === pageSize);
-    //     } catch (error) {
-    //         console.error('Error fetching data:', error);
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     fetchImages(); // Call the fetchImages function to fetch data
-    // }, [searchKeyword, page, pageSize]);
+    useEffect(() => {
+        // Fetch album data from the API
+        axios.get('http://localhost:3000/view-albums')
+            .then((response) => {
+                setAlbumData(response.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching album data:', error);
+            });
+    }, []);
 
 
     useEffect(() => {
+        // if (selectedAlbumTitle) { // Only fetch images if an album title is selected
         setLoading(true);
-        // FIND BELOW SOLUTION
         axios.get('http://localhost:3000/view-images-in-album', {
             params: {
                 keyword: searchKeyword,
                 page,
                 pageSize,
+                // albumTitle: selectedAlbumTitle, // Pass the selected album title
             }
         })
             .then((res) => {
@@ -75,11 +49,17 @@ export default function ViewImagesInAlbum() {
                     height: 212,
                 }));
                 setGalleryImages(galleryData);
-                setHasMoreResults(res.data.length === pageSize); // Check if there are more results
+                setHasMoreResults(res.data.length === pageSize);
             })
-            .catch((err) => console.log(err))
+            .catch((err) => console.log('Error fetching image data:', err))
             .finally(() => setLoading(false));
-    }, [searchKeyword, page, pageSize]);
+        // } else {
+        //     // If no album title is selected, you can choose to show all pictures
+        //     // You may fetch all pictures without filtering by album title here
+        // }
+    }, [searchKeyword, page, pageSize, selectedAlbumTitle]);
+
+
 
     const handlePrevPage = () => {
         if (page > 1) {
@@ -114,9 +94,11 @@ export default function ViewImagesInAlbum() {
                     <div className="d-flex justify-content-between my-4">
                         <h6 >Select Album Name: </h6>
 
-                        <select className="form-select h-25 w-25" aria-label="Default select example"
-                            value={selectedAlbum}
-                            onChange={(e) => setSelectedAlbum(e.target.value)}
+                        <select
+                            className="form-select h-25 w-25"
+                            aria-label="Default select example"
+                            value={selectedAlbumTitle}
+                            onChange={(e) => setSelectedAlbumTitle(e.target.value)}
                         >
                             <option value=''>Select</option>
                             {albumData.map((album) => (

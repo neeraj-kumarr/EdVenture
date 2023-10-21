@@ -6,6 +6,9 @@ const createAlbum = require('./routes/CreateAlbum');
 const viewImages = require('./routes/ViewImages');
 const backgroundImages = require('./routes/BackgroundImages'); // Import your API routes
 const addImages = require('./routes/AddImagesInAlbum')
+const imgToImgLineGame = require('./routes/LineGame/ImagetoImage')
+const textToImgLineGame = require('./routes/LineGame/TexttoImage')
+const textToTextLineGame = require('./routes/LineGame/TexttoText')
 
 const app = express();
 
@@ -19,6 +22,9 @@ app.use(createAlbum);
 app.use(viewImages);
 app.use(backgroundImages);
 app.use(addImages);
+app.use(imgToImgLineGame);
+app.use(textToImgLineGame);
+app.use(textToTextLineGame);
 
 
 

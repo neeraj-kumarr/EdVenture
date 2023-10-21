@@ -7,7 +7,6 @@ router.get('/view-images-in-album', (req, res) => {
     const { keyword, page, pageSize } = req.query;
     let sql = 'SELECT * from picturegallery';
 
-    // If a keyword is provided, add a WHERE clause to filter by title
     if (keyword) {
         sql += ` WHERE title LIKE '%${keyword}%'`;
     }
@@ -23,5 +22,6 @@ router.get('/view-images-in-album', (req, res) => {
         return res.json(result);
     });
 });
+
 
 module.exports = router;
