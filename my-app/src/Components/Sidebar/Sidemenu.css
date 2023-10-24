@@ -128,9 +128,9 @@ body {
 }
 
 .side-menu .main-menu .menu-item.active {
-    background: #494949;
+    background: white;
     border-radius: 5px;
-    color: #fff;
+    color: black;
 }
 
 
@@ -196,12 +196,17 @@ body {
     padding: 5px;
 }
 
+.side-menu .main-menu .menu-item:hover,
+a:hover {
+    display: block;
+    border-radius: 5px;
+    color: white;
+    background: #3e3e3e;
+}
 
 .side-menu .main-menu .sub-menu a.active {
-    /* change in background, not recorded in video */
-    background: #222;
+    background: #353434;
     display: block;
-
     border-radius: 5px;
     color: #fff;
 

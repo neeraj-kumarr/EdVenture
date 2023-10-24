@@ -9,7 +9,7 @@ const addImages = require('./routes/AddImagesInAlbum')
 const imgToImgLineGame = require('./routes/LineGame/ImagetoImage')
 const textToImgLineGame = require('./routes/LineGame/TexttoImage')
 const textToTextLineGame = require('./routes/LineGame/TexttoText')
-
+const CompileGame = require('./routes/CompileGame')
 const app = express();
 
 app.use(express.json());
@@ -25,6 +25,7 @@ app.use(addImages);
 app.use(imgToImgLineGame);
 app.use(textToImgLineGame);
 app.use(textToTextLineGame);
+app.use(CompileGame);
 
 
 

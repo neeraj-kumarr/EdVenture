@@ -29,4 +29,15 @@ router.get('/line-game/text-to-text-viewgame', (req, res) => {
     });
 });
 
+router.get('/line-game/text-to-text-compile', (req, res) => {
+
+    let sql = "SELECT * from linegamesets2"
+
+    db.query(sql, (err, result) => {
+        if (err) return res.json('Error');
+        const reversedData = reverseArray(result); // Reverse the data array
+        return res.json(reversedData);
+    });
+});
+
 module.exports = router;

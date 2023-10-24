@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import Nav from './Nav';
+import axios from 'axios';
+
 import { Link } from 'react-router-dom';
 
 function TableCell({ children }) {
@@ -22,31 +24,62 @@ function TableCell({ children }) {
 export default function CompileGame(props) {
 
   const [numLevels, setNumLevels] = useState(1);
+  const [subjects, setSubjects] = useState([]);
+  const [books, setBooks] = useState([]);
+  const [selectLevel, setSelectLevel] = useState([]);
+  const [className, setClassName] = useState([]);
 
-  const handleNumLevelsChange = (e) => {
-    setNumLevels(parseInt(e.target.value));
-  }
-  const classNames = [
-    "Nursery-A",
-    "Prep 1 - A",
-    "Prep 2 - A",
-    "Prep 1 - B",
-    "Class 1A",
-    "Class 1B",
-    "Class 2A",
-    "Class 2B",
-    "Prep 2B",
-    "Class 3A",
-    "Class 4 A",
-    "Class 5A",
-    "Class 3B",
-    "Class 6",
-    "Class 4B",
-    "CLASS 7",
-    "Class 7B",
-    "Class 5B",
-    // Add more class names here...
-  ];
+  useEffect(() => {
+    // Fetch album data from the API
+    axios.get('http://localhost:3000/compile-game/subjects')
+      .then((response) => {
+        setSubjects(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+
+
+    // Fetch album data from the API
+    axios.get('http://localhost:3000/compile-game/books')
+      .then((response) => {
+        setBooks(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+
+    axios.get('http://localhost:3000/compile-game')
+      .then((response) => {
+        setClassName(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+
+
+    if (props.navlink3 === '/line-game/image-to-image-compile') {
+      // Fetch album data from the API for image-to-image-compile
+      axios.get('http://localhost:3000/line-game/image-to-image-compile')
+        .then((response) => {
+          setSelectLevel(response.data);
+        })
+        .catch((error) => {
+          console.error('Error fetching image-to-image-compile data:', error);
+        });
+
+    } else if (props.navlink3 === '/line-game/text-to-text-compile') {
+      // Fetch album data from the API for text-to-text-compile
+      axios.get('http://localhost:3000/line-game/text-to-text-compile')
+        .then((response) => {
+          setSelectLevel(response.data);
+        })
+        .catch((error) => {
+          console.error('Error fetching text-to-text-compile data:', error);
+        });
+    }
+  }, []);
+
 
   return (
     <>
@@ -82,13 +115,18 @@ export default function CompileGame(props) {
                 <TableCell className='col-3' >Number of Levels</TableCell>
                 <TableCell >
                   <span  >
-                    <select onChange={handleNumLevelsChange} className="form-select form-select-md" style={{ width: '30%', border: '1px solid grey' }} >
+                    <select className="form-select form-select-md" style={{ width: '30%', border: '1px solid grey' }} >
                       <option>Select Language</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                      <option value="4">Four</option>
-                      <option value="5">Five</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
                     </select>
                   </span>
                 </TableCell>
@@ -118,30 +156,35 @@ export default function CompileGame(props) {
                   <input type="text" className="form-control" autoComplete="off" style={{ width: '30%', border: '1px solid grey' }} />
                 </TableCell>
               </tr>
+
               <tr>
-                <TableCell >Subject</TableCell>
-                <TableCell >
+                <TableCell>Subject</TableCell>
+                <TableCell>
                   <span >
-                    <select className="form-select form-select-md " style={{ width: '30%', border: '1px solid grey' }} >
+                    <select className="form-select form-select-md " style={{ width: '30%', border: '1px solid grey' }}>
                       <option>Select Language</option>
-                      <option value="Arabic">Maths</option>
-                      <option value="English">English</option>
-                      <option value="Urdu">اردو</option>
-                      <option value="...">...</option>
+                      {subjects.map((row) => (
+                        <>
+                          <option value={row.id}>{row.name}</option>
+                        </>
+                      ))}
                     </select>
                   </span>
                 </TableCell>
               </tr>
-              <tr>
-                <TableCell >Book</TableCell>
-                <TableCell >
+
+
+              <tr >
+                <TableCell>Book</TableCell>
+                <TableCell>
                   <span >
-                    <select className="form-select form-select-md " style={{ width: '30%', border: '1px solid grey' }} >
+                    <select className="form-select form-select-md " style={{ width: '30%', border: '1px solid grey' }}>
                       <option>Select Book ID</option>
-                      <option value="Arabic">Language Book</option>
-                      <option value="English">Drawing Book</option>
-                      <option value="Urdu">اردو</option>
-                      <option value="...">...</option>
+                      {books.map((row) => (
+                        <>
+                          <option value={row.id}>{row.title}</option>
+                        </>
+                      ))}
                     </select>
                   </span>
                 </TableCell>
@@ -149,27 +192,24 @@ export default function CompileGame(props) {
 
               {Array.from({ length: numLevels }).map((_, index) => (
                 <tr key={index}>
-                  <TableCell >Select Game for Level {index + 1}</TableCell>
-                  <TableCell >
-                    <span>
+                  <TableCell>Select Game for Level {index + 1}</TableCell>
+                  <TableCell>
+                    <span >
                       <div className="d-flex justify-content-between">
-                        <select
-                          className="form-select form-select-md"
-                          style={{ width: '30%', border: '1px solid grey' }}
-                        >
+                        <select className="form-select form-select-md" style={{ width: '30%', border: '1px solid grey' }}>
                           <option>Select Game</option>
-                          {/* Add your game options here */}
-                          <option value="1">Learning Animal Names</option>
-                          <option value="2">Learning Names of Animals 2</option>
-                          <option value="3">Fruit Fun</option>
-                          <option value="4">Fruit Fun 2</option>
+                          {selectLevel.map((row) => (
+                            <>
+                              <option value={row.id}>{row.title}</option>
+                            </>
+                          ))}
                         </select>
                       </div>
                     </span>
                   </TableCell>
                 </tr>
-
               ))}
+
 
               <tr>
                 <TableCell > Game Background Image</TableCell>
@@ -183,19 +223,20 @@ export default function CompileGame(props) {
                 <TableCell >
                   <FormControl component="fieldset">
                     <FormGroup aria-label="position" row>
-                      {classNames.map((className, index) => (
+                      {className.map((row) => (
                         <FormControlLabel
-                          key={index}
-                          value={className}
+                          key={row.id}
+                          value={row.lib_name}
                           control={<Checkbox />}
-                          label={className}
+                          label={row.lib_name}
                           labelPlacement="end"
                           className='p-2'
                         />
                       ))}
 
                     </FormGroup>
-                  </FormControl>                </TableCell>
+                  </FormControl>
+                </TableCell>
               </tr>
             </tbody>
           </table>
@@ -203,7 +244,7 @@ export default function CompileGame(props) {
             <button className="btn btn-primary" type="submit">Submit Now</button>
           </div>
         </div>
-      </div>
+      </div >
 
     </>
   )

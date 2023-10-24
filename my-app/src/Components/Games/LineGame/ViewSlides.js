@@ -25,6 +25,7 @@ export default function ViewSlides(props) {
     const [textToImgTableData, setTextToImgTableData] = useState([]);
     const [textToTextTableData, setTextToTextTableData] = useState([]);
 
+
     useEffect(() => {
         // Fetch album data from the API
         axios.get('http://localhost:3000/line-game/image-to-image-viewslide')
@@ -34,9 +35,8 @@ export default function ViewSlides(props) {
             .catch((error) => {
                 console.error('Error fetching data:', error);
             });
-    }, []);
 
-    useEffect(() => {
+
         // Fetch album data from the API
         axios.get('http://localhost:3000/line-game/text-to-text-viewslide')
             .then((response) => {
@@ -45,9 +45,7 @@ export default function ViewSlides(props) {
             .catch((error) => {
                 console.error('Error fetching data:', error);
             });
-    }, []);
 
-    useEffect(() => {
         // Fetch album data from the API
         axios.get('http://localhost:3000/line-game/text-to-image-viewslide')
             .then((response) => {
@@ -91,8 +89,8 @@ export default function ViewSlides(props) {
                                         <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg"><div ><strong>Action</strong></div></TableCell>
                                     </tr>
 
-                                    {imgToImgTableData.map((row, index) => (
-                                        <tr key={index}>
+                                    {imgToImgTableData.map((row) => (
+                                        <tr key={row.id}>
                                             <TableCell> {row.title}</TableCell>
                                             <TableCell>
                                                 <div>
@@ -149,8 +147,8 @@ export default function ViewSlides(props) {
                                         <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Active</strong></TableCell>
                                         <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg"><div ><strong>Action</strong></div></TableCell>
                                     </tr>
-                                    {textToImgTableData.map((row, index) => (
-                                        <tr key={index}>
+                                    {textToImgTableData.map((row) => (
+                                        <tr key={row.id}>
                                             <TableCell> {row.title}</TableCell>
                                             <TableCell>
                                                 <div>
@@ -199,9 +197,9 @@ export default function ViewSlides(props) {
                                         <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Active</strong></TableCell>
                                         <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg"><div ><strong>Action</strong></div></TableCell>
                                     </tr>
-                                    {textToTextTableData.map((row, index) => (
+                                    {textToTextTableData.map((row) => (
 
-                                        <tr key={index}>
+                                        <tr key={row.id}>
                                             <TableCell> {row.title}</TableCell>
                                             <TableCell>
                                                 <div >

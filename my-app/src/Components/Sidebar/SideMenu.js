@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import logo from "./assets/logo/webscript.png";
+import { Helmet } from 'react-helmet';
 import logo from "../../logo.jpg";
 import user from "./assets/user.jpg";
 import './Sidemenu.css';
@@ -9,6 +9,8 @@ import CreateNewAlbum from "../PictureLibrary/CreateNewAlbum";
 import AddImagesToAlbum from "../PictureLibrary/AddImagesToAlbum";
 import BackgroundImages from "../PictureLibrary/BackgroundImages";
 import ViewImagesInAlbum from "../PictureLibrary/ViewImagesInAlbum";
+import { useLocation } from 'react-router-dom'; // Assuming you're using React Router
+
 /**
  * @author
  * @function SideMenu
@@ -16,6 +18,8 @@ import ViewImagesInAlbum from "../PictureLibrary/ViewImagesInAlbum";
 import TexttoText from '../Games/LineGame/TexttoText';
 import ImagetoImage from '../Games/LineGame/ImagetoImage';
 import TexttoImage from "../Games/LineGame/TexttoImage";
+
+
 
 // added more menuItems for testing
 export const menuItems = [
@@ -29,7 +33,6 @@ export const menuItems = [
     {
         name: "Picture Library",
         exact: true,
-        // to: `/picturelibrary`,
         iconClassName: "&#xF840;",
         subMenus: [
             { name: "Create New Album", to: "/create-album", route: <CreateNewAlbum /> },
@@ -62,8 +65,31 @@ export const menuItems = [
     { name: "Spellathon Game", to: "/spellathon-game" },
 ];
 
+const findMenuItemName = (path, items) => {
+    for (const item of items) {
+        if (item.to === path) {
+            return item.name;
+        }
+        if (item.subMenus) {
+            const submenuMatch = findMenuItemName(path, item.subMenus);
+            if (submenuMatch) {
+                return submenuMatch;
+            }
+        }
+    }
+    return null;
+};
+
+
+
 const SideMenu = ({ onCollapse }) => {
     const [inactive, setInactive] = useState(false);
+    const location = useLocation(); // Get the current route location
+
+    const pageTitle = findMenuItemName(location.pathname, menuItems) || 'Edventure';
+
+
+
 
     useEffect(() => {
         if (inactive) {
@@ -98,6 +124,9 @@ const SideMenu = ({ onCollapse }) => {
             });
         });
     }, []);
+
+
+
 
     return (
         <div className={`side-menu ${inactive ? "inactive" : ""}`}>
@@ -146,6 +175,10 @@ const SideMenu = ({ onCollapse }) => {
                     <p>rizwankhan@gmail.com</p>
                 </div>
             </div>
+            {/* Use Helmet to update the title */}
+            <Helmet>
+                <title>{pageTitle}</title>
+            </Helmet>
         </div>
     );
 };

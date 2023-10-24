@@ -1,21 +1,10 @@
 const express = require('express');
-const db = require('../../db');
+const db = require('../db');
 const router = express.Router();
 
+router.get('/compile-game/subjects', (req, res) => {
 
-router.get('/line-game/image-to-image-viewslide', (req, res) => {
-
-    let sql = "SELECT * from imgtoimglingame"
-
-    db.query(sql, (err, result) => {
-        if (err) return res.json('Error');
-        return res.json(result);
-    });
-});
-
-router.get('/line-game/image-to-image-viewgame', (req, res) => {
-
-    let sql = "SELECT * from imgtoimglingame_sets"
+    let sql = "SELECT * from subjects"
 
     db.query(sql, (err, result) => {
         if (err) return res.json('Error');
@@ -23,9 +12,19 @@ router.get('/line-game/image-to-image-viewgame', (req, res) => {
     });
 });
 
-router.get('/line-game/image-to-image-compile', (req, res) => {
+router.get('/compile-game/books', (req, res) => {
 
-    let sql = "SELECT * from imgtoimglingame_sets"
+    let sql = "SELECT * from my_books"
+
+    db.query(sql, (err, result) => {
+        if (err) return res.json('Error');
+        return res.json(result);
+    });
+});
+
+router.get('/compile-game', (req, res) => {
+
+    let sql = "SELECT * from libr"
 
     db.query(sql, (err, result) => {
         if (err) return res.json('Error');
