@@ -55,15 +55,6 @@ export default function AddImagesToAlbum() {
             });
     };
 
-
-
-    // const sectionStyle = {
-    //     // flex: 1,
-    //     overflowX: 'auto',
-    //     backgroundImage: 'url("https://e0.pxfuel.com/wallpapers/512/865/desktop-wallpaper-grey-background-vectors-stock-psd-light-gray-thumbnail.jpg")', // Replace with the path to your image
-    //     backgroundSize: 'cover', // Adjust background size as needed
-    //     backgroundRepeat: 'no-repeat', // Adjust background repeat as needed
-    // };
     return (
         <>
 
@@ -90,8 +81,8 @@ export default function AddImagesToAlbum() {
                         onChange={(event) => setSelectedAlbum(event.target.value)}>
 
                         <option selected="selected" >Select </option>
-                        {albumData.map((album, index) => (
-                            <option key={index} value={album.id}>
+                        {albumData.map((album) => (
+                            <option key={album.id} value={album.id}>
                                 {album.title}
                             </option>
                         ))}

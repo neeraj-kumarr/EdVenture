@@ -3,7 +3,7 @@ import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import Nav from './Nav';
+import Nav from '../Nav';
 import axios from 'axios';
 
 import { Link } from 'react-router-dom';
@@ -23,13 +23,30 @@ function TableCell({ children }) {
 
 export default function CompileGame(props) {
 
+
   const [numLevels, setNumLevels] = useState(1);
   const [subjects, setSubjects] = useState([]);
   const [books, setBooks] = useState([]);
   const [selectLevel, setSelectLevel] = useState([]);
   const [className, setClassName] = useState([]);
 
+
+  const [objects, setObjects] = useState([]);
+
+  const handleNumLevelsChange = (e) => {
+    setNumLevels(parseInt(e.target.value));
+  }
+
   useEffect(() => {
+
+    axios.get('http://localhost:3000/identify-object/view-objects')
+      .then((response) => {
+        setObjects(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+
     // Fetch album data from the API
     axios.get('http://localhost:3000/compile-game/subjects')
       .then((response) => {
@@ -78,7 +95,7 @@ export default function CompileGame(props) {
           console.error('Error fetching text-to-text-compile data:', error);
         });
     }
-  }, []);
+  }, [props.navlink3]);
 
 
   return (
@@ -112,11 +129,12 @@ export default function CompileGame(props) {
               {/* <tr>
               </tr> */}
               <tr>
+
                 <TableCell className='col-3' >Number of Levels</TableCell>
                 <TableCell >
                   <span  >
-                    <select className="form-select form-select-md" style={{ width: '30%', border: '1px solid grey' }} >
-                      <option>Select Language</option>
+                    <select onChange={handleNumLevelsChange} className="form-select form-select-md" style={{ width: '30%', border: '1px solid grey' }} >
+                      <option>Select Levels</option>
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
@@ -129,8 +147,11 @@ export default function CompileGame(props) {
                       <option value="10">10</option>
                     </select>
                   </span>
+                  <span style={{ fontSize: '12px', color: 'red' }}>{props.descriptionforobject}</span>
                 </TableCell>
+
               </tr>
+
               <tr>
                 <TableCell >Game Language</TableCell>
                 <TableCell >
@@ -190,25 +211,49 @@ export default function CompileGame(props) {
                 </TableCell>
               </tr>
 
-              {Array.from({ length: numLevels }).map((_, index) => (
-                <tr key={index}>
-                  <TableCell>Select Game for Level {index + 1}</TableCell>
-                  <TableCell>
-                    <span >
-                      <div className="d-flex justify-content-between">
-                        <select className="form-select form-select-md" style={{ width: '30%', border: '1px solid grey' }}>
-                          <option>Select Game</option>
-                          {selectLevel.map((row) => (
-                            <>
-                              <option value={row.id}>{row.title}</option>
-                            </>
-                          ))}
-                        </select>
-                      </div>
-                    </span>
-                  </TableCell>
-                </tr>
-              ))}
+              {props.navlink3 !== "/identify-game/compile-object-game" ? (
+                <>
+                  {Array.from({ length: numLevels }).map((_, index) => (
+                    <tr key={index}>
+                      <TableCell>Select Game for Level {index + 1}</TableCell>
+                      <TableCell>
+                        <span >
+                          <div className="d-flex justify-content-between">
+                            <select className="form-select form-select-md" style={{ width: '30%', border: '1px solid grey' }}>
+                              <option>Select Game</option>
+                              {selectLevel.map((row) => (
+                                <>
+                                  <option value={row.id}>{row.title}</option>
+                                </>
+                              ))}
+                            </select>
+                          </div>
+                        </span>
+                      </TableCell>
+                    </tr>
+                  ))}
+                </>
+              ) : props.navlink3 === '/identify-game/compile-object-game' ? (
+                <>
+                  {Array.from({ length: numLevels }).map((_, index) => (
+                    <tr key={index}>
+                      <TableCell>Select Object {index + 1} Game</TableCell>
+                      <TableCell>
+                        <span>
+                          <div className="d-flex justify-content-between">
+                            <select className="form-select form-select-md" style={{ width: '30%', border: '1px solid grey' }}>
+                              <option>Select Game</option>
+                              {objects.map((row) => (
+                                <option key={row.id} value={row.id}>{row.title}</option>
+                              ))}
+                            </select>
+                          </div>
+                        </span>
+                      </TableCell>
+                    </tr>
+                  ))}
+                </>
+              ) : null}
 
 
               <tr>

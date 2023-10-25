@@ -63,12 +63,6 @@ body {
     position: relative;
 }
 
-.side-menu .top-section .logo {
-    width: 40px;
-    height: 40px;
-    overflow: hidden;
-    display: inline-block;
-}
 
 .side-menu .top-section .logo img {
     max-width: 100%;
@@ -141,9 +135,6 @@ body {
     overflow-x: hidden;
 }
 
-/* not required any more */
-.side-menu.inactive .main-menu {}
-
 .side-menu .main-menu .menu-item .menu-icon {
     display: inline-block;
     width: 40px;
@@ -197,7 +188,10 @@ body {
 }
 
 .side-menu .main-menu .menu-item:hover,
-a:hover {
+.side-menu .main-menu .sub-menu a:hover
+
+/* a:hover  */
+    {
     display: block;
     border-radius: 5px;
     color: white;

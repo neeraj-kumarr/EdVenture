@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from 'react-helmet';
-import logo from "../../logo.jpg";
+import logo from "../../logo.png";
 import user from "./assets/user.jpg";
 import './Sidemenu.css';
 import MenuItem from "./MenuItem";
@@ -18,6 +18,7 @@ import { useLocation } from 'react-router-dom'; // Assuming you're using React R
 import TexttoText from '../Games/LineGame/TexttoText';
 import ImagetoImage from '../Games/LineGame/ImagetoImage';
 import TexttoImage from "../Games/LineGame/TexttoImage";
+import PrepareNewObject from "../Games/IdentifyGame/PrepareNewObjects";
 
 
 
@@ -61,7 +62,8 @@ export const menuItems = [
 
             ],
     },
-    { name: "Identification Game", to: "/identification-game" },
+
+    { name: "Identification Game", to: "/identify-game/prepare-new-objects", route: <PrepareNewObject /> },
     { name: "Spellathon Game", to: "/spellathon-game" },
 ];
 

@@ -14,9 +14,7 @@ function TableCell({ children }) {
     );
 }
 
-export default function TexttoText() {
-
-
+export default function PrepareNewObjects(props) {
     const inputStyle = {
         width: '30%', border: '1px solid grey'
     };
@@ -24,11 +22,11 @@ export default function TexttoText() {
     return (
 
         <>
-            < Nav maintitle="[Text to Text]" title1="Prepare New Slide" title2="View Slides" title3="Compile Games" title4="View Games"
-                navlink1="/line-game/text-to-text-newslide" navlink2="/line-game/text-to-text-viewslide" navlink3="/line-game/text-to-text-compile" navlink4="/line-game/text-to-text-viewgame"
+            < Nav maintitle="Identify Game" title1="Prepare New Slides" title2="View Slides" title3="Compile Games" title4="View Games"
+                navlink1="/identify-game/prepare-new-objects" navlink2="/identify-game/view-objects" navlink3="/identify-game/compile-object-game" navlink4="/identify-game/view-object-game"
             />
             <h2 className=" p-4 " >
-                𝓟𝓻𝓮𝓹𝓪𝓻𝓮 𝓝𝓮𝔀 𝓢𝓵𝓲𝓭𝓮𝓼 📖                </h2>
+                𝓟𝓻𝓮𝓹𝓪𝓻𝓮 𝓝𝓮𝔀 Objects 📖                </h2>
             <div style={{ padding: '0 60px' }}>
 
                 <div className=' ' style={{ border: 'solid 4px #203b89', borderRadius: '25px', padding: '50px 50px 0px 50px', marginBottom: '20px' }}>
@@ -42,7 +40,9 @@ export default function TexttoText() {
                                     <p>1. Select Game Language [Arabic English Urdu]
                                         <br />2. In text box paste text in the selected language
                                         <br />3. Click on the colored text box to select a color for text
-                                        <br /> 4. In the sound file uploader, upload a .mp3 sound file</p>
+                                        <br /> 4. In the sound file uploader, upload a .mp3 sound file
+                                        <br /> 5. In image file uploader, upload  sound file
+                                    </p>
                                 </TableCell>
                             </tr>
                             <tr>
@@ -71,88 +71,72 @@ export default function TexttoText() {
                                 </TableCell>
                             </tr>
                             <tr>
-                                <TableCell > Text 1a</TableCell>
-                                <TableCell >
-                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell>
-                                {/* <TableCell >Position</TableCell>
-                                <TableCell >
-                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell> */}
-                            </tr>
-                            <tr>
-                                <TableCell > Text 1b</TableCell>
-                                <TableCell >
-                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell>
-                                {/* <TableCell >Position</TableCell>
-                                <TableCell >
-                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell> */}
-                            </tr>
-
-                            <tr>
-                                <TableCell > Sound 1</TableCell>
+                                <TableCell > Image </TableCell>
                                 <TableCell colSpan="3" >
 
                                     <button className="btn btn-success" >Select Sound</button >
                                 </TableCell>
                             </tr>
                             <tr>
-                                <TableCell > Text 2a</TableCell>
+                                <TableCell > Text 1</TableCell>
                                 <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
                                 </TableCell>
-                                {/* <TableCell >Position</TableCell>
-                                <TableCell >
-                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell> */}
                             </tr>
                             <tr>
-                                <TableCell > Text 2b</TableCell>
+                                <TableCell > Answer 1</TableCell>
+                                <TableCell colSpan="6" >
+                                    <span >
+                                        <select className="form-select form-select-md " style={{ width: '30%', border: '1px solid grey' }} >
+                                            <option>Select Answer</option>
+                                            <option value="Right Answer">Right Answer</option>
+                                            <option value="Wrong Answer">Wrong Answer</option>
+                                        </select>
+                                    </span>
+                                </TableCell>
+                            </tr>
+                            <tr>
+                                <TableCell > Text 2</TableCell>
                                 <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
                                 </TableCell>
-                                {/* <TableCell >Position</TableCell>
+                            </tr>
+                            <tr>
+                                <TableCell > Answer 2</TableCell>
+                                <TableCell colSpan="6" >
+                                    <span >
+                                        <select className="form-select form-select-md " style={{ width: '30%', border: '1px solid grey' }} >
+                                            <option>Select Answer</option>
+                                            <option value="Right Answer">Right Answer</option>
+                                            <option value="Wrong Answer">Wrong Answer</option>
+                                        </select>
+                                    </span>
+                                </TableCell>
+                            </tr>
+                            <tr>
+                                <TableCell > Text 3</TableCell>
                                 <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell> */}
+                                </TableCell>
+                            </tr>
+                            <tr>
+                                <TableCell > Answer 3</TableCell>
+                                <TableCell colSpan="6" >
+                                    <span >
+                                        <select className="form-select form-select-md " style={{ width: '30%', border: '1px solid grey' }} >
+                                            <option>Select Answer</option>
+                                            <option value="Right Answer">Right Answer</option>
+                                            <option value="Wrong Answer">Wrong Answer</option>
+                                        </select>
+                                    </span>
+                                </TableCell>
                             </tr>
 
                             <tr>
-                                <TableCell >Sound 2</TableCell>
+                                <TableCell > Sound </TableCell>
                                 <TableCell colSpan="3" >
-                                    <div>
-                                        <button className="btn btn-success">Select Sound</button>
-                                    </div>
-                                </TableCell>
-                            </tr>
-                            <tr>
-                                <TableCell >Text 3a</TableCell>
-                                <TableCell >
-                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell>
-                                {/* <TableCell >Position</TableCell>
-                                <TableCell >
-                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell> */}
-                            </tr>
-                            <tr>
-                                <TableCell >Text 3b</TableCell>
-                                <TableCell >
-                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell>
-                                {/* <TableCell >Position</TableCell>
-                                <TableCell >
-                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell> */}
-                            </tr>
-                            <tr>
-                                <TableCell >Sound 3</TableCell>
-                                <TableCell colSpan="3" >
-                                    <div>
-                                        <button className="btn btn-success">Select Sound</button>
-                                    </div>
+
+                                    <button className="btn btn-success" >Select Sound</button >
                                 </TableCell>
                             </tr>
 

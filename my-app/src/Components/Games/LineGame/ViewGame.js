@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Nav from './Nav';
+import Nav from '../Nav';
 
 function TableCell({ children, backgroundImage }) {
     const tdcStyle = {
@@ -24,14 +24,26 @@ export default function ViewGame(props) {
 
     useEffect(() => {
         // Fetch album data from the API
-        axios.get('http://localhost:3000/line-game/image-to-image-viewgame')
-            .then((response) => {
-                setTableData(response.data);
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            });
-    }, []);
+        if (props.navlink4 === '/line-game/image-to-image-viewgame') {
+            axios.get('http://localhost:3000/line-game/image-to-image-viewgame')
+                .then((response) => {
+                    setTableData(response.data);
+                })
+                .catch((error) => {
+                    console.error('Error fetching data:', error);
+                });
+
+        } else if (props.navlink4 === '/identify-game/view-object-game') {
+
+            axios.get('http://localhost:3000/identify-game/view-object-game')
+                .then((response) => {
+                    setTableData(response.data);
+                })
+                .catch((error) => {
+                    console.error('Error fetching data:', error);
+                });
+        }
+    }, [props.navlink4]);
 
 
     return (
@@ -51,29 +63,61 @@ export default function ViewGame(props) {
                     <table style={{ width: '100%', borderCollapse: 'separate' }} >
                         <tbody >
 
-                            <tr >
-                                <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Title</strong></TableCell>
-                                <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Levels</strong></TableCell>
-                                <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Image</strong></TableCell>
-                                <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Class</strong></TableCell>
-                                <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Version</strong></TableCell>
-                                <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Test</strong></TableCell>
-                                <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg"><div ><strong>Action</strong></div></TableCell>
-                            </tr>
-                            {tableData.map((row, index) => (
-                                <tr key={index}>
-                                    <TableCell> {row.title}</TableCell>
-                                    <TableCell> {row.levels}</TableCell>
-                                    <TableCell>
-                                        <img src={`../PictureGallery/background/${row.image}`} alt="Background" style={{ width: '50px', height: '50px' }} />
-                                    </TableCell>
-                                    <TableCell> {row.class}</TableCell>
-                                    <TableCell> {row.version}</TableCell>
-                                    <TableCell> {row.test}</TableCell>
-                                    <TableCell> {row.action}</TableCell>
 
-                                </tr>
-                            ))}
+
+                            {props.navlink4 !== "/identify-game/view-object-game" ? (
+                                <>
+                                    <tr >
+                                        <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Title</strong></TableCell>
+                                        <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Levels</strong></TableCell>
+                                        <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Image</strong></TableCell>
+                                        <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Class</strong></TableCell>
+                                        <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Version</strong></TableCell>
+                                        <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Test</strong></TableCell>
+                                        <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg"><div ><strong>Action</strong></div></TableCell>
+                                    </tr>
+
+                                    {tableData.map((row) => (
+                                        <tr key={row.id}>
+                                            <TableCell> {row.title}</TableCell>
+                                            <TableCell> {row.levels}</TableCell>
+                                            <TableCell>
+                                                <img src={`../PictureGallery/gamebg/${row.image}`} alt="Background Not Available" style={{ width: '50px', height: '50px' }} />
+                                            </TableCell>
+                                            <TableCell> {row.class}</TableCell>
+                                            <TableCell> {row.version}</TableCell>
+                                            <TableCell> {row.test}</TableCell>
+                                            <TableCell> {row.action}</TableCell>
+                                        </tr>
+                                    ))}
+                                </>
+                            ) : props.navlink4 === '/identify-game/view-object-game' ? (
+                                <>
+                                    <tr >
+                                        <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Title</strong></TableCell>
+                                        <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Levels</strong></TableCell>
+                                        <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Image</strong></TableCell>
+                                        <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Class</strong></TableCell>
+                                        <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Version</strong></TableCell>
+                                        <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Instructions</strong></TableCell>
+                                        <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg"><div ><strong>Action</strong></div></TableCell>
+                                    </tr>
+
+                                    {tableData.map((row) => (
+                                        <tr key={row.id}>
+                                            <TableCell> {row.title}</TableCell>
+                                            <TableCell> {row.levels}</TableCell>
+                                            <TableCell>
+                                                <img src={`../PictureGallery/gamebg/${row.image}`} alt="Background Not Available" style={{ width: '50px', height: '50px' }} />
+                                            </TableCell>
+                                            <TableCell> {row.class}</TableCell>
+                                            <TableCell> {row.version}</TableCell>
+                                            <TableCell> {row.instruction}</TableCell>
+                                            <TableCell> {row.action}</TableCell>
+                                        </tr>
+                                    ))}
+                                </>
+                            ) : null}
                         </tbody>
                     </table>
                 </div>

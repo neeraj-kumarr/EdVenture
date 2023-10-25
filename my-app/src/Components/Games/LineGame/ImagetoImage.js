@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from './Nav'
+import Nav from '../Nav'
 
 function TableCell({ children }) {
     const tdcStyle = {
@@ -21,7 +21,7 @@ export default function ImagetoImage() {
         <>
             {/* <section style={sectionStyle} > */}
             < Nav maintitle="[Image to Image]" title1="Prepare New Slide" title2="View Slides" title3="Compile Games" title4="View Games"
-                navlink1="/line-game/image-to-image-newslide" navlink2="/line-game/image-to-image-viewslide" navlink3="/line-game/image-to-image-compile" navlink4="/line-game/text-to-text-viewgame"
+                navlink1="/line-game/image-to-image-newslide" navlink2="/line-game/image-to-image-viewslide" navlink3="/line-game/image-to-image-compile" navlink4="/line-game/image-to-image-viewgame"
             />
             <h2 className=" p-4 " >
                 𝓟𝓻𝓮𝓹𝓪𝓻𝓮 𝓝𝓮𝔀 𝓢𝓵𝓲𝓭𝓮𝓼 📖                </h2>
