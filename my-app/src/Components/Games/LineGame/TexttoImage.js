@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Nav from '../Nav'
 
 
@@ -19,8 +19,24 @@ function TableCell({ children }) {
 
 export default function TexttoImage() {
 
+
     const inputStyle = {
         width: '30%', border: '1px solid grey'
+    };
+
+    const [selectedImages, setSelectedImages] = useState([null, null, null]);
+
+    const handleImageUpload = (e, index) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const updatedImages = [...selectedImages];
+                updatedImages[index] = event.target.result;
+                setSelectedImages(updatedImages);
+            };
+            reader.readAsDataURL(file);
+        }
     };
 
     return (
@@ -84,19 +100,30 @@ export default function TexttoImage() {
                             </tr>
                             <tr>
                                 <TableCell >Image 1</TableCell>
-                                <TableCell >
-                                    <button className="btn btn-success">Select Image</button>
+                                <TableCell>
+                                    <label className="btn btn-success">
+                                        <input
+                                            type="file"
+                                            style={{ display: 'none' }}
+                                            onChange={(e) => handleImageUpload(e, 0)}
+                                            accept="image/*"
+                                        />
+                                        Select Image
+                                    </label>
+                                    {selectedImages[0] && (
+                                        <img
+                                            src={selectedImages[0]}
+                                            alt="Selected Image"
+                                            style={{ maxWidth: '100px', padding: '5px' }}
+                                        />
+                                    )}
                                 </TableCell>
-                                {/* <TableCell >Position</TableCell>
-                                <TableCell >
-                                    <input type="text" autoComplete="off" className="form-control" style={inputStyle} />
-                                </TableCell> */}
+
                             </tr>
                             <tr>
                                 <TableCell > Sound 1</TableCell>
-                                <TableCell colSpan="3" >
-
-                                    <button className="btn btn-success" >Select Sound</button >
+                                <TableCell >
+                                    <input className="w-auto form-control" type="file" id="formFile" />
                                 </TableCell>
                             </tr>
                             <tr>
@@ -104,27 +131,34 @@ export default function TexttoImage() {
                                 <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
                                 </TableCell>
-                                {/* <TableCell >Position</TableCell>
-                                <TableCell >
-                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell> */}
+
                             </tr>
                             <tr>
                                 <TableCell >Image 2</TableCell>
-                                <TableCell >
-                                    <button className="btn btn-success">Select Image</button>
+                                <TableCell>
+                                    <label className="btn btn-success">
+                                        <input
+                                            type="file"
+                                            style={{ display: 'none' }}
+                                            onChange={(e) => handleImageUpload(e, 1)}
+                                            accept="image/*"
+                                        />
+                                        Select Image
+                                    </label>
+                                    {selectedImages[1] && (
+                                        <img
+                                            src={selectedImages[1]}
+                                            alt="Selected Image"
+                                            style={{ maxWidth: '100px', padding: '5px' }}
+                                        />
+                                    )}
                                 </TableCell>
-                                {/* <TableCell >Position</TableCell>
-                                <TableCell >
-                                    <input type="text" autoComplete="off" className="form-control" style={inputStyle} />
-                                </TableCell> */}
+
                             </tr>
                             <tr>
                                 <TableCell >Sound 2</TableCell>
                                 <TableCell colSpan="3" >
-                                    <div>
-                                        <button className="btn btn-success">Select Sound</button>
-                                    </div>
+                                    <input className="w-auto form-control" type="file" id="formFile" />
                                 </TableCell>
                             </tr>
                             <tr>
@@ -132,29 +166,36 @@ export default function TexttoImage() {
                                 <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
                                 </TableCell>
-                                {/* <TableCell >Position</TableCell>
-                                <TableCell >
-                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell> */}
+
                             </tr>
 
                             <tr>
                                 <TableCell >Image 3</TableCell>
-                                <TableCell >
-                                    <button className="btn btn-success">Select Image</button>
+                                <TableCell>
+                                    <label className="btn btn-success">
+                                        <input
+                                            type="file"
+                                            style={{ display: 'none' }}
+                                            onChange={(e) => handleImageUpload(e, 2)}
+                                            accept="image/*"
+                                        />
+                                        Select Image
+                                    </label>
+                                    {selectedImages[2] && (
+                                        <img
+                                            src={selectedImages[2]}
+                                            alt="Selected Image"
+                                            style={{ maxWidth: '100px', padding: '5px' }}
+                                        />
+                                    )}
                                 </TableCell>
-                                {/* <TableCell >Position</TableCell>
-                                <TableCell >
-                                    <input type="text" autoComplete="off" className="form-control" style={inputStyle} />
-                                </TableCell> */}
+
                             </tr>
 
                             <tr>
                                 <TableCell >Sound 3</TableCell>
                                 <TableCell colSpan="3" >
-                                    <div>
-                                        <button className="btn btn-success">Select Sound</button>
-                                    </div>
+                                    <input className="w-auto form-control" type="file" id="formFile" />
                                 </TableCell>
                             </tr>
 

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import SideMenu, { menuItems } from "./Components/Sidebar/SideMenu";
-import CompileGame from './Components/Games/LineGame/CompileGame';
+import CompileGame from './Components/Games/CompileGame';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ViewSlides from './Components/Games/LineGame/ViewSlides';
-import ViewGame from './Components/Games/LineGame/ViewGame';
+import ViewGame from './Components/Games/ViewGame';
 import PrepareNewObjects from './Components/Games/IdentifyGame/PrepareNewObjects';
 import ViewObjects from './Components/Games/IdentifyGame/ViewObjects';
 // import Login from './Components/Login';

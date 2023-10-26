@@ -75,27 +75,20 @@ export default function TexttoText() {
                                 <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
                                 </TableCell>
-                                {/* <TableCell >Position</TableCell>
-                                <TableCell >
-                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell> */}
+
                             </tr>
                             <tr>
                                 <TableCell > Text 1b</TableCell>
                                 <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
                                 </TableCell>
-                                {/* <TableCell >Position</TableCell>
-                                <TableCell >
-                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell> */}
+
                             </tr>
 
                             <tr>
                                 <TableCell > Sound 1</TableCell>
-                                <TableCell colSpan="3" >
-
-                                    <button className="btn btn-success" >Select Sound</button >
+                                <TableCell  >
+                                    <input className="w-auto form-control" type="file" id="formFile" />
                                 </TableCell>
                             </tr>
                             <tr>
@@ -103,28 +96,20 @@ export default function TexttoText() {
                                 <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
                                 </TableCell>
-                                {/* <TableCell >Position</TableCell>
-                                <TableCell >
-                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell> */}
+
                             </tr>
                             <tr>
                                 <TableCell > Text 2b</TableCell>
                                 <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
                                 </TableCell>
-                                {/* <TableCell >Position</TableCell>
-                                <TableCell >
-                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell> */}
+
                             </tr>
 
                             <tr>
                                 <TableCell >Sound 2</TableCell>
                                 <TableCell colSpan="3" >
-                                    <div>
-                                        <button className="btn btn-success">Select Sound</button>
-                                    </div>
+                                    <input className="w-auto form-control" type="file" id="formFile" />
                                 </TableCell>
                             </tr>
                             <tr>
@@ -132,27 +117,19 @@ export default function TexttoText() {
                                 <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
                                 </TableCell>
-                                {/* <TableCell >Position</TableCell>
-                                <TableCell >
-                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell> */}
+
                             </tr>
                             <tr>
                                 <TableCell >Text 3b</TableCell>
                                 <TableCell >
                                     <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
                                 </TableCell>
-                                {/* <TableCell >Position</TableCell>
-                                <TableCell >
-                                    <input type="text" className="form-control" style={inputStyle} autoComplete="off" />
-                                </TableCell> */}
+
                             </tr>
                             <tr>
                                 <TableCell >Sound 3</TableCell>
                                 <TableCell colSpan="3" >
-                                    <div>
-                                        <button className="btn btn-success">Select Sound</button>
-                                    </div>
+                                    <input className="w-auto form-control" type="file" id="formFile" />
                                 </TableCell>
                             </tr>
 

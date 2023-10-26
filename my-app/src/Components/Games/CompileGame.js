@@ -3,10 +3,8 @@ import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import Nav from '../Nav';
+import Nav from './Nav';
 import axios from 'axios';
-
-import { Link } from 'react-router-dom';
 
 function TableCell({ children }) {
   const tdcStyle = {
@@ -29,7 +27,20 @@ export default function CompileGame(props) {
   const [books, setBooks] = useState([]);
   const [selectLevel, setSelectLevel] = useState([]);
   const [className, setClassName] = useState([]);
+  const [selectedImages, setSelectedImages] = useState([null]);
 
+  const handleImageUpload = (e, index) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const updatedImages = [...selectedImages];
+        updatedImages[index] = event.target.result;
+        setSelectedImages(updatedImages);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   const [objects, setObjects] = useState([]);
 
@@ -38,65 +49,56 @@ export default function CompileGame(props) {
   }
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [objectsResponse, subjectsResponse, booksResponse, classNameResponse, selectLevelResponse] = await Promise.all([
+          axios.get('http://localhost:3000/identify-object/view-objects'),
+          axios.get('http://localhost:3000/compile-game/subjects'),
+          axios.get('http://localhost:3000/compile-game/books'),
+          axios.get('http://localhost:3000/compile-game'),
+          props.navlink3 === '/line-game/image-to-image-compile'
+            ? axios.get('http://localhost:3000/line-game/image-to-image-compile')
+            : axios.get('http://localhost:3000/line-game/text-to-text-compile')
+        ]);
 
-    axios.get('http://localhost:3000/identify-object/view-objects')
-      .then((response) => {
-        setObjects(response.data);
-      })
-      .catch((error) => {
+        setObjects(objectsResponse.data);
+        setSubjects(subjectsResponse.data);
+        setBooks(booksResponse.data);
+        setClassName(classNameResponse.data);
+        setSelectLevel(selectLevelResponse.data);
+      } catch (error) {
         console.error('Error fetching data:', error);
-      });
+      }
+    };
 
-    // Fetch album data from the API
-    axios.get('http://localhost:3000/compile-game/subjects')
-      .then((response) => {
-        setSubjects(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-
-
-    // Fetch album data from the API
-    axios.get('http://localhost:3000/compile-game/books')
-      .then((response) => {
-        setBooks(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-
-    axios.get('http://localhost:3000/compile-game')
-      .then((response) => {
-        setClassName(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
-
-
-    if (props.navlink3 === '/line-game/image-to-image-compile') {
-      // Fetch album data from the API for image-to-image-compile
-      axios.get('http://localhost:3000/line-game/image-to-image-compile')
-        .then((response) => {
-          setSelectLevel(response.data);
-        })
-        .catch((error) => {
-          console.error('Error fetching image-to-image-compile data:', error);
-        });
-
-    } else if (props.navlink3 === '/line-game/text-to-text-compile') {
-      // Fetch album data from the API for text-to-text-compile
-      axios.get('http://localhost:3000/line-game/text-to-text-compile')
-        .then((response) => {
-          setSelectLevel(response.data);
-        })
-        .catch((error) => {
-          console.error('Error fetching text-to-text-compile data:', error);
-        });
-    }
+    fetchData();
   }, [props.navlink3]);
 
+  const getLevelContent = (isObjectGame) => {
+    return Array.from({ length: numLevels }).map((_, index) => (
+      <tr key={index}>
+        <TableCell>{isObjectGame ? `Select Object ${index + 1} Game` : `Select Game for Level ${index + 1}`}</TableCell>
+        <TableCell>
+          <span>
+            <div className="d-flex justify-content-between">
+              <select className="form-select form-select-md" style={{ width: '30%', border: '1px solid grey' }}>
+                <option>Select Game</option>
+                {isObjectGame ? (
+                  objects.map((row) => (
+                    <option key={row.id} value={row.id}>{row.title}</option>
+                  ))
+                ) : (
+                  selectLevel.map((row) => (
+                    <option key={row.id} value={row.id}>{row.title}</option>
+                  ))
+                )}
+              </select>
+            </div>
+          </span>
+        </TableCell>
+      </tr>
+    ));
+  };
 
   return (
     <>
@@ -213,53 +215,34 @@ export default function CompileGame(props) {
 
               {props.navlink3 !== "/identify-game/compile-object-game" ? (
                 <>
-                  {Array.from({ length: numLevels }).map((_, index) => (
-                    <tr key={index}>
-                      <TableCell>Select Game for Level {index + 1}</TableCell>
-                      <TableCell>
-                        <span >
-                          <div className="d-flex justify-content-between">
-                            <select className="form-select form-select-md" style={{ width: '30%', border: '1px solid grey' }}>
-                              <option>Select Game</option>
-                              {selectLevel.map((row) => (
-                                <>
-                                  <option value={row.id}>{row.title}</option>
-                                </>
-                              ))}
-                            </select>
-                          </div>
-                        </span>
-                      </TableCell>
-                    </tr>
-                  ))}
+                  {getLevelContent(false)}
                 </>
               ) : props.navlink3 === '/identify-game/compile-object-game' ? (
                 <>
-                  {Array.from({ length: numLevels }).map((_, index) => (
-                    <tr key={index}>
-                      <TableCell>Select Object {index + 1} Game</TableCell>
-                      <TableCell>
-                        <span>
-                          <div className="d-flex justify-content-between">
-                            <select className="form-select form-select-md" style={{ width: '30%', border: '1px solid grey' }}>
-                              <option>Select Game</option>
-                              {objects.map((row) => (
-                                <option key={row.id} value={row.id}>{row.title}</option>
-                              ))}
-                            </select>
-                          </div>
-                        </span>
-                      </TableCell>
-                    </tr>
-                  ))}
+                  {getLevelContent(true)}
                 </>
               ) : null}
 
 
               <tr>
                 <TableCell > Game Background Image</TableCell>
-                <TableCell >
-                  <Link className=" btn btn-success w-25" >Select Image</Link>
+                <TableCell>
+                  <label className="btn btn-success">
+                    <input
+                      type="file"
+                      style={{ display: 'none' }}
+                      onChange={(e) => handleImageUpload(e, 0)}
+                      accept="image/*"
+                    />
+                    Select Image
+                  </label>
+                  {selectedImages[0] && (
+                    <img
+                      src={selectedImages[0]}
+                      alt="Selected Image"
+                      style={{ maxWidth: '100px', padding: '5px' }}
+                    />
+                  )}
                 </TableCell>
               </tr>
 
