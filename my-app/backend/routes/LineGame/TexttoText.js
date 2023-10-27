@@ -20,7 +20,7 @@ router.get('/line-game/text-to-text-viewslide', (req, res) => {
 
 router.get('/line-game/text-to-text-viewgame', (req, res) => {
 
-    let sql = "SELECT * from linegame2"
+    let sql = "SELECT * from linegamesets2"
 
     db.query(sql, (err, result) => {
         if (err) return res.json('Error');
@@ -37,6 +37,16 @@ router.get('/line-game/text-to-text-compile', (req, res) => {
         if (err) return res.json('Error');
         const reversedData = reverseArray(result); // Reverse the data array
         return res.json(reversedData);
+    });
+});
+
+router.get('/linegame1setslibr', (req, res) => {
+
+    let sql = "SELECT * from linegame1setslibr"
+
+    db.query(sql, (err, result) => {
+        if (err) return res.json('Error');
+        return res.json(result);
     });
 });
 

@@ -15,7 +15,17 @@ router.get('/line-game/text-to-image-viewslide', (req, res) => {
 
 router.get('/line-game/text-to-image-viewgame', (req, res) => {
 
-    let sql = "SELECT * from linegame"
+    let sql = "SELECT * from linegamesets"
+
+    db.query(sql, (err, result) => {
+        if (err) return res.json('Error');
+        return res.json(result);
+    });
+});
+
+router.get('/linegame1setslibr', (req, res) => {
+
+    let sql = "SELECT * from linegame1setslibr"
 
     db.query(sql, (err, result) => {
         if (err) return res.json('Error');

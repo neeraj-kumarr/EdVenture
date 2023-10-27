@@ -27,6 +27,13 @@ export default function ViewGame(props) {
 
                 if (props.navlink4 === '/line-game/image-to-image-viewgame') {
                     endpoint = 'http://localhost:3000/line-game/image-to-image-viewgame';
+
+                } else if (props.navlink4 === '/line-game/text-to-image-viewgame') {
+                    endpoint = 'http://localhost:3000/line-game/text-to-image-viewgame';
+
+                } else if (props.navlink4 === '/line-game/text-to-text-viewgame') {
+                    endpoint = 'http://localhost:3000/line-game/text-to-text-viewgame';
+
                 } else if (props.navlink4 === '/identify-game/view-object-game') {
                     endpoint = 'http://localhost:3000/identify-game/view-object-game';
                 }
@@ -36,12 +43,16 @@ export default function ViewGame(props) {
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
+
+
         };
 
         fetchData();
+
     }, [props.navlink4]);
 
     const isIdentifyGame = props.navlink4 === '/identify-game/view-object-game';
+
 
     return (
         <>
@@ -61,6 +72,7 @@ export default function ViewGame(props) {
                                 <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Image</strong></TableCell>
                                 <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Class</strong></TableCell>
                                 <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Version</strong></TableCell>
+                                <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Chapter</strong></TableCell>
                                 <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">
                                     &nbsp;<strong>{isIdentifyGame ? 'Instructions' : 'Test'}</strong>
                                 </TableCell>
@@ -69,14 +81,17 @@ export default function ViewGame(props) {
                                 </TableCell>
                             </tr>
                             {tableData.map((row) => (
+
                                 <tr key={row.id}>
                                     <TableCell>{row.title}</TableCell>
                                     <TableCell>{row.levels}</TableCell>
                                     <TableCell>
-                                        <img src={`../PictureGallery/gamebg/${row.image}`} alt="Background Not Available" style={{ width: '50px', height: '50px' }} />
+                                        <img src={row.image ? `../PictureGallery/gamebg/${row.image}` : 'https://previews.123rf.com/images/roxanabalint/roxanabalint1701/roxanabalint170100147/69079016-not-available-grunge-rubber-stamp-on-white-background-vector-illustration.jpg'}
+                                            style={{ width: '100px', height: '50px' }} />
                                     </TableCell>
                                     <TableCell>{row.class}</TableCell>
                                     <TableCell>{row.version}</TableCell>
+                                    <TableCell>{row.chapter ? row.chapter : <i style={{ color: 'red' }}>'No Chapter'</i>}</TableCell>
                                     <TableCell>{isIdentifyGame ? row.instruction : row.test}</TableCell>
                                     <TableCell>{row.action}</TableCell>
                                 </tr>

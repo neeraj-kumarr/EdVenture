@@ -239,7 +239,7 @@ export default function CompileGame(props) {
                   {selectedImages[0] && (
                     <img
                       src={selectedImages[0]}
-                      alt="Selected Image"
+                      alt="Selected_Image"
                       style={{ maxWidth: '100px', padding: '5px' }}
                     />
                   )}

@@ -33,4 +33,16 @@ router.get('/line-game/image-to-image-compile', (req, res) => {
     });
 });
 
+router.get('/linegame1setslibr', (req, res) => {
+
+    let sql = "SELECT * from linegame1setslibr"
+
+    db.query(sql, (err, result) => {
+        if (err) return res.json('Error');
+        return res.json(result);
+    });
+});
+
+
+
 module.exports = router;

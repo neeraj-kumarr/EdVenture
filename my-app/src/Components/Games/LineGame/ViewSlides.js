@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
 import Nav from '../Nav';
 
 function TableCell({ children, backgroundImage }) {
@@ -94,38 +93,39 @@ export default function ViewSlides(props) {
                                             <TableCell> {row.title}</TableCell>
                                             <TableCell>
                                                 <div>
-                                                    <img src={`../PictureGallery/picture_album/${row.object1a}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
-                                                    <img src={`../PictureGallery/picture_album/${row.object1b}`} alt="Image2" style={{ width: '50px', height: '50px' }} />
+
+                                                    <img src={`../../PictureGallery/picture_album/${row.object1a}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
+                                                    <img src={`../../PictureGallery/picture_album/${row.object1b}`} alt="Image2" style={{ width: '50px', height: '50px' }} />
                                                 </div>
                                             </TableCell>
                                             <TableCell>
                                                 <div>
-                                                    <img src={`../PictureGallery/picture_album/${row.object2a}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
-                                                    <img src={`../PictureGallery/picture_album/${row.object2b}`} alt="Image2" style={{ width: '50px', height: '50px' }} />
+                                                    <img src={`../../PictureGallery/picture_album/${row.object2a}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
+                                                    <img src={`../../PictureGallery/picture_album/${row.object2b}`} alt="Image2" style={{ width: '50px', height: '50px' }} />
                                                 </div>
                                             </TableCell>
                                             <TableCell>
                                                 <div>
-                                                    <img src={`../PictureGallery/picture_album/${row.object3a}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
-                                                    <img src={`../PictureGallery/picture_album/${row.object3b}`} alt="Image2" style={{ width: '50px', height: '50px' }} />
+                                                    <img src={`../../PictureGallery/picture_album/${row.object3a}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
+                                                    <img src={`../../PictureGallery/picture_album/${row.object3b}`} alt="Image2" style={{ width: '50px', height: '50px' }} />
                                                 </div>
                                             </TableCell>
                                             <TableCell>
                                                 <div>
-                                                    <img src={`../PictureGallery/picture_album/${row.object4a}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
-                                                    <img src={`../PictureGallery/picture_album/${row.object4b}`} alt="Image2" style={{ width: '50px', height: '50px' }} />
+                                                    <img src={`../../PictureGallery/picture_album/${row.object4a}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
+                                                    <img src={`../../PictureGallery/picture_album/${row.object4b}`} alt="Image2" style={{ width: '50px', height: '50px' }} />
                                                 </div>
                                             </TableCell>
                                             <TableCell>
                                                 <div>
-                                                    <img src={`../PictureGallery/picture_album/${row.object5a}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
-                                                    <img src={`../PictureGallery/picture_album/${row.object5b}`} alt="Image2" style={{ width: '50px', height: '50px' }} />
+                                                    <img src={`../../PictureGallery/picture_album/${row.object5a}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
+                                                    <img src={`../../PictureGallery/picture_album/${row.object5b}`} alt="Image2" style={{ width: '50px', height: '50px' }} />
                                                 </div>
                                             </TableCell>
                                             <TableCell>
                                                 <div>
-                                                    <img src={`../PictureGallery/picture_album/${row.object6a}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
-                                                    <img src={`../PictureGallery/picture_album/${row.object6b}`} alt="Image2" style={{ width: '50px', height: '50px' }} />
+                                                    <img src={`../../PictureGallery/picture_album/${row.object6a}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
+                                                    <img src={`../../PictureGallery/picture_album/${row.object6b}`} alt="Image2" style={{ width: '50px', height: '50px' }} />
                                                 </div>
                                             </TableCell>
                                             <TableCell> {row.instruction}</TableCell>
@@ -152,27 +152,27 @@ export default function ViewSlides(props) {
                                             <TableCell> {row.title}</TableCell>
                                             <TableCell>
                                                 <div>
-                                                    <img src={`../PictureGallery/picture_album/${row.image1}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
+                                                    <img src={`../../PictureGallery/picture_album/${row.image1}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
                                                     {row.TEXT1}
                                                 </div>
                                             </TableCell>
                                             <TableCell>
                                                 <div>
-                                                    <img src={`../PictureGallery/picture_album/${row.image2}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
+                                                    <img src={`../../PictureGallery/picture_album/${row.image2}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
                                                     {row.TEXT2}
 
                                                 </div>
                                             </TableCell>
                                             <TableCell>
                                                 <div>
-                                                    <img src={`../PictureGallery/picture_album/${row.image3}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
+                                                    <img src={`../../PictureGallery/picture_album/${row.image3}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
                                                     {row.TEXT3}
 
                                                 </div>
                                             </TableCell>
                                             <TableCell>
                                                 <div>
-                                                    <img src={`../PictureGallery/picture_album/${row.image4}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
+                                                    <img src={`../../PictureGallery/picture_album/${row.image4}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
                                                     {row.TEXT4}
 
                                                 </div>
@@ -205,14 +205,14 @@ export default function ViewSlides(props) {
                                                 <div >
                                                     {row.TEXT1a}
                                                 </div>
-                                                <div style={{ margin: '5px' }} >
+                                                <div style={{ margin: '2px' }} >
                                                     {row.TEXT1b}
                                                 </div>
                                             </TableCell>
                                             <TableCell>
                                                 <div >
                                                     {row.TEXT2a}
-                                                </div><div style={{ margin: '5px' }}>
+                                                </div><div style={{ margin: '2px' }}>
                                                     {row.TEXT2b}
 
                                                 </div>
@@ -220,7 +220,7 @@ export default function ViewSlides(props) {
                                             <TableCell>
                                                 <div >
                                                     {row.TEXT3a}
-                                                </div><div style={{ margin: '5px' }}>
+                                                </div><div style={{ margin: '2px' }}>
                                                     {row.TEXT3b}
 
                                                 </div>
@@ -228,7 +228,7 @@ export default function ViewSlides(props) {
                                             <TableCell>
                                                 <div >
                                                     {row.TEXT4a}
-                                                </div><div style={{ margin: '5px' }}>
+                                                </div><div style={{ margin: '2px' }}>
                                                     {row.TEXT4b}
 
                                                 </div>
@@ -236,7 +236,7 @@ export default function ViewSlides(props) {
                                             <TableCell>
                                                 <div >
                                                     {row.TEXT5a}
-                                                </div><div style={{ margin: '5px' }}>
+                                                </div><div style={{ margin: '2px' }}>
                                                     {row.TEXT5b}
 
                                                 </div>
@@ -244,7 +244,7 @@ export default function ViewSlides(props) {
                                             <TableCell>
                                                 <div >
                                                     {row.TEXT6a}
-                                                </div><div style={{ margin: '5px' }}>
+                                                </div><div style={{ margin: '2px' }}>
                                                     {row.TEXT6b}
 
                                                 </div>
