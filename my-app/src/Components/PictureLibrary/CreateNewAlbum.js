@@ -6,6 +6,17 @@ function CreateNewAlbum() {
     const [message, setMessage] = useState('');
     const [albumData, setAlbumData] = useState([]);
 
+    function chunkArray(array, size) {
+        return array.reduce((chunks, element, index) => {
+            const chunkIndex = Math.floor(index / size);
+            if (!chunks[chunkIndex]) {
+                chunks[chunkIndex] = [];
+            }
+            chunks[chunkIndex].push(element);
+            return chunks;
+        }, []);
+    }
+
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
@@ -39,10 +50,6 @@ function CreateNewAlbum() {
 
     return (
         <>
-            {/* <div style={{ display: 'flex', height: '100vh' }}>
-                <SideNavbar /> */}
-
-            {/* <section style={sectionStyle}> */}
             <div className=' p-4'>
                 <h1 className="text-center mb-3"><mark> Create New Album</mark></h1>
                 <div className="p-3 border border-dark ">
@@ -76,24 +83,33 @@ function CreateNewAlbum() {
                 <div className='text-center'>
                     <table className="table table-bordered">
                         <thead>
-                            <tr>
-                                <th scope="col">Sno</th>
-                                <th scope="col">Title</th>
+                            <tr >
+                                {[...Array(3)].map((_, index) => (
+                                    <React.Fragment key={index}>
+                                        <th style={{ color: 'white', background: 'black' }}>Sno</th>
+                                        <th style={{ color: 'white', background: 'black' }}>Title</th>
+                                    </React.Fragment>
+                                ))}
                             </tr>
                         </thead>
                         <tbody>
-                            {albumData.map((album, index) => (
-                                <tr key={index}>
-                                    <th scope="row">{album.id}</th>
-                                    <td>{album.title}</td>
+                            {chunkArray(albumData, 3).map((chunk, album) => (
+                                <tr key={album.id}>
+                                    {chunk.map((album) => (
+                                        <React.Fragment key={album.id}>
+                                            <th scope="row" style={{ fontFamily: 'cursive', background: '#fbfbfb' }}>{album.id}</th>
+                                            <td style={{ fontFamily: 'cursive' }}>{album.title}</td>
+                                        </React.Fragment>
+                                    ))}
                                 </tr>
                             ))}
                         </tbody>
                     </table>
+
+
                 </div>
             </div>
-            {/* </section> */}
-            {/* </div > */}
+
         </>
     );
 }

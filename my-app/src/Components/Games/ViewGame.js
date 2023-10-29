@@ -86,7 +86,8 @@ export default function ViewGame(props) {
                                     <TableCell>{row.title}</TableCell>
                                     <TableCell>{row.levels}</TableCell>
                                     <TableCell>
-                                        <img src={row.image ? `../PictureGallery/gamebg/${row.image}` : 'https://previews.123rf.com/images/roxanabalint/roxanabalint1701/roxanabalint170100147/69079016-not-available-grunge-rubber-stamp-on-white-background-vector-illustration.jpg'}
+                                        {/*  eslint-disable-next-line */}
+                                        <img src={row.image ? `http://localhost:3000/PictureGallery/gamebg/${row.image}` : 'https://previews.123rf.com/images/roxanabalint/roxanabalint1701/roxanabalint170100147/69079016-not-available-grunge-rubber-stamp-on-white-background-vector-illustration.jpg'}
                                             style={{ width: '100px', height: '50px' }} />
                                     </TableCell>
                                     <TableCell>{row.class}</TableCell>

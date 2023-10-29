@@ -60,7 +60,7 @@ export default function TexttoText() {
                             </tr>
                             <tr>
                                 <TableCell > Game Title</TableCell>
-                                <TableCell colSpan="3" >
+                                <TableCell  >
                                     <input type="text" className="form-control" autoComplete="off" style={{ width: '30%', border: '1px solid grey' }} />
                                 </TableCell>
                             </tr>
@@ -108,7 +108,7 @@ export default function TexttoText() {
 
                             <tr>
                                 <TableCell >Sound 2</TableCell>
-                                <TableCell colSpan="3" >
+                                <TableCell  >
                                     <input className="w-auto form-control" type="file" id="formFile" />
                                 </TableCell>
                             </tr>
@@ -128,7 +128,7 @@ export default function TexttoText() {
                             </tr>
                             <tr>
                                 <TableCell >Sound 3</TableCell>
-                                <TableCell colSpan="3" >
+                                <TableCell  >
                                     <input className="w-auto form-control" type="file" id="formFile" />
                                 </TableCell>
                             </tr>

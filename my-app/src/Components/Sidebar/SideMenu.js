@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Helmet } from 'react-helmet';
 import logo from "../../logo.png";
-import user from "./assets/user.jpg";
 import './Sidemenu.css';
 import MenuItem from "./MenuItem";
 import Home from "../Home";
@@ -9,12 +9,6 @@ import CreateNewAlbum from "../PictureLibrary/CreateNewAlbum";
 import AddImagesToAlbum from "../PictureLibrary/AddImagesToAlbum";
 import BackgroundImages from "../PictureLibrary/BackgroundImages";
 import ViewImagesInAlbum from "../PictureLibrary/ViewImagesInAlbum";
-import { useLocation } from 'react-router-dom'; // Assuming you're using React Router
-
-/**
- * @author
- * @function SideMenu
- **/
 import TexttoText from '../Games/LineGame/TexttoText';
 import ImagetoImage from '../Games/LineGame/ImagetoImage';
 import TexttoImage from "../Games/LineGame/TexttoImage";
@@ -67,50 +61,39 @@ export const menuItems = [
     { name: "Spellathon Game", to: "/spellathon-game" },
 ];
 
-const findMenuItemName = (path, items) => {
-    for (const item of items) {
-        if (item.to === path) {
-            return item.name;
-        }
-        if (item.subMenus) {
-            const submenuMatch = findMenuItemName(path, item.subMenus);
-            if (submenuMatch) {
-                return submenuMatch;
+
+
+
+
+const SideMenu = () => {
+    const [inactive, setInactive] = useState(false);
+    const location = useLocation()
+
+
+    const findMenuItemName = (path, items) => {
+
+        for (const item of items) {
+            if (item.to === path) {
+                return item.name;
+            }
+            if (item.subMenus) {
+                const submenuMatch = findMenuItemName(path, item.subMenus);
+                if (submenuMatch) {
+                    return submenuMatch;
+                }
             }
         }
-    }
-    return null;
-};
-
-
-
-const SideMenu = ({ onCollapse }) => {
-    const [inactive, setInactive] = useState(false);
-    const location = useLocation(); // Get the current route location
+        return null;
+    };
 
     const pageTitle = findMenuItemName(location.pathname, menuItems) || 'Edventure';
 
-
-
-
-    useEffect(() => {
-        if (inactive) {
-            removeActiveClassFromSubMenu();
-        }
-
-        onCollapse(inactive);
-    }, [inactive, onCollapse]);
-
-    //just an improvment and it is not recorded in video :(
     const removeActiveClassFromSubMenu = () => {
         document.querySelectorAll(".sub-menu").forEach((el) => {
             el.classList.remove("active");
         });
     };
 
-    /*just a little improvement over click function of menuItem
-      Now no need to use expand state variable in MenuItem component
-    */
     useEffect(() => {
         let menuItems = document.querySelectorAll(".menu-item");
         menuItems.forEach((el) => {
@@ -148,9 +131,9 @@ const SideMenu = ({ onCollapse }) => {
 
             <div className="main-menu">
                 <ul>
-                    {menuItems.map((menuItem, index) => (
+                    {menuItems.map((menuItem) => (
                         <MenuItem
-                            key={index}
+                            key={menuItem.name}
                             name={menuItem.name}
                             exact={menuItem.exact}
                             to={menuItem.to}
@@ -163,19 +146,11 @@ const SideMenu = ({ onCollapse }) => {
                             }}
                         />
                     ))}
-
-
                 </ul>
             </div>
 
-            <div className="side-menu-footer">
-                <div className="avatar">
-                    <img src={user} alt="user" />
-                </div>
-                <div className="user-info">
-                    <h5>Rizwan Khan</h5>
-                    <p>rizwankhan@gmail.com</p>
-                </div>
+            <div className="user-info">
+                <button className="btn btn-secondary" >Logout </button>
             </div>
             {/* Use Helmet to update the title */}
             <Helmet>

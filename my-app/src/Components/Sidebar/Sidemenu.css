@@ -206,35 +206,9 @@ body {
 
 }
 
-.side-menu-footer {
-    width: 100%;
-    background: #333;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding: 20px;
-    box-sizing: border-box;
-}
+.user-info {
+    margin-left: 60px;
 
-.side-menu-footer .avatar {
-    width: 40px;
-    height: 40px;
-    overflow: hidden;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-.side-menu-footer .avatar img {
-    max-width: 100%;
-}
-
-.side-menu-footer .user-info {
-    display: inline-block;
-    margin: 0 10px;
-    color: #fff;
-    position: absolute;
-    opacity: 1;
-    transition: opacity .2s ease-in;
 }
 
 .side-menu.inactive .side-menu-footer .user-info {
@@ -244,15 +218,6 @@ body {
     overflow: hidden;
 }
 
-
-.side-menu-footer .user-info h5 {
-    font-size: 15px;
-}
-
-
-.side-menu-footer .user-info p {
-    font-size: 14px;
-}
 
 .divider {
     width: 100%;

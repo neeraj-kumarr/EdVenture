@@ -16,6 +16,7 @@ function Login({ setIsLoggedIn }) {
         axios.post("http://localhost:3000/login", { email, password })
             .then(res => {
                 console.log(res);
+                alert("success");
                 if (res.data === "Login Successfully") {
                     setIsLoggedIn(true);
                     navigate("/home");
@@ -23,7 +24,10 @@ function Login({ setIsLoggedIn }) {
                     console.log('Login not successful')
                 }
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                alert("Service Error");
+                console.log(err)
+            });
     }
     return (
         <>
@@ -56,7 +60,6 @@ function Login({ setIsLoggedIn }) {
                                             Remember me
                                         </label>
                                     </div>
-                                    {/* <a href="#!" className="text-body">Forgot password?</a> */}
                                 </div>
 
                                 <div className="text-center text-lg-start mt-4 pt-2">
@@ -64,10 +67,8 @@ function Login({ setIsLoggedIn }) {
                                         Login
                                     </button>
                                     <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account?
-                                        {/* <a href="#!"  className="link-danger">Register</a> */}
                                     </p>
                                 </div>
-
                             </form>
                         </div>
                     </div>
