@@ -2,17 +2,22 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const cors = require('cors');
 const users = require('./routes/Users');
+
 const createAlbum = require('./routes/CreateAlbum');
 const viewImages = require('./routes/ViewImages');
 const backgroundImages = require('./routes/BackgroundImages'); // Import your API routes
 const addImages = require('./routes/AddImagesInAlbum')
+
 const imgToImgLineGame = require('./routes/LineGame/ImagetoImage')
 const textToImgLineGame = require('./routes/LineGame/TexttoImage')
 const textToTextLineGame = require('./routes/LineGame/TexttoText')
+
 const compileGame = require('./routes/CompileGame')
+
 const viewObjectSlide = require('./routes/IdentifyGame/ViewObjectSlide')
 const viewObjectGame = require('./routes/IdentifyGame/ViewObjectGame')
 
+const viewSpellGame = require('./routes/SpellathonGame/ViewSpellGame')
 
 
 
@@ -34,6 +39,7 @@ app.use(textToTextLineGame);
 app.use(compileGame);
 app.use(viewObjectSlide);
 app.use(viewObjectGame);
+app.use(viewSpellGame);
 
 
 

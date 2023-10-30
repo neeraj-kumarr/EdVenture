@@ -113,7 +113,7 @@ export default function TexttoImage() {
                                     {selectedImages[0] && (
                                         <img
                                             src={selectedImages[0]}
-                                            alt="Selected Image"
+                                            alt="Selected"
                                             style={{ maxWidth: '100px', padding: '5px' }}
                                         />
                                     )}
@@ -148,7 +148,7 @@ export default function TexttoImage() {
                                     {selectedImages[1] && (
                                         <img
                                             src={selectedImages[1]}
-                                            alt="Selected Image"
+                                            alt="Selected"
                                             style={{ maxWidth: '100px', padding: '5px' }}
                                         />
                                     )}
@@ -184,7 +184,7 @@ export default function TexttoImage() {
                                     {selectedImages[2] && (
                                         <img
                                             src={selectedImages[2]}
-                                            alt="Selected Image"
+                                            alt="Selected"
                                             style={{ maxWidth: '100px', padding: '5px' }}
                                         />
                                     )}

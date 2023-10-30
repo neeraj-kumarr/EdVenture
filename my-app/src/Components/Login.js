@@ -16,7 +16,6 @@ function Login({ setIsLoggedIn }) {
         axios.post("http://localhost:3000/login", { email, password })
             .then(res => {
                 console.log(res);
-                alert("success");
                 if (res.data === "Login Successfully") {
                     setIsLoggedIn(true);
                     navigate("/home");

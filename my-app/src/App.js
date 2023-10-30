@@ -7,6 +7,7 @@ import ViewGame from './Components/Games/ViewGame';
 import PrepareNewObjects from './Components/Games/IdentifyGame/PrepareNewObjects';
 import ViewObjects from './Components/Games/IdentifyGame/ViewObjects';
 import Login from './Components/Login';
+import PrepareSpellGame from "./Components/Games/SpellathonGame/PrepareSpellGame";
 
 function App() {
   const [inactive, setInactive] = useState(false);
@@ -50,6 +51,10 @@ function App() {
               <Route exact path="/identify-game/view-objects" element={<ViewObjects />} />
               <Route exact path="/identify-game/compile-object-game" element={<CompileGame descriptionforobject="Number of Objects" maintitle="Identify Game" navlink1="/identify-game/prepare-new-objects" navlink2="/identify-game/view-objects" navlink3="/identify-game/compile-object-game" navlink4="/identify-game/view-object-game" />} />
               <Route exact path="/identify-game/view-object-game" element={<ViewGame maintitle="Identify Game" navlink1="/identify-game/prepare-new-objects" navlink2="/identify-game/view-objects" navlink3="/identify-game/compile-object-game" navlink4="/identify-game/view-object-game" />} />
+
+
+              <Route exact path="/spell-game/prepare-spell-slide" element={<PrepareSpellGame maintitle="Spellathon Game" navlink1="/spell-game/prepare-spell-slide" navlink2="/spell-game/view-slides" navlink3="/spell-game/compile-object-game" navlink4="/spell-game/view-object-game" />} />
+              <Route exact path="/spell-game/view-slides" element={<ViewSlides maintitle="Spellathon Game" navlink1="/spell-game/prepare-spell-slide" navlink2="/spell-game/view-slides" navlink3="/spell-game/compile-object-game" navlink4="/spell-game/view-object-game" />} />
 
 
             </Routes>

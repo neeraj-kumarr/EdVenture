@@ -1,14 +1,5 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 export default function Home() {
-
-    const navigate = useNavigate()
-
-    useEffect(() => {
-        if (!localStorage.getItem('token')) {
-            navigate('/')
-        }
-    }, [])
 
     return (
         <div className='m-4' >

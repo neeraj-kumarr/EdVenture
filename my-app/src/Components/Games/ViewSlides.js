@@ -24,7 +24,7 @@ export default function ViewSlides(props) {
     const [imgToImgTableData, setImgToImgTableData] = useState([]);
     const [textToImgTableData, setTextToImgTableData] = useState([]);
     const [textToTextTableData, setTextToTextTableData] = useState([]);
-
+    const [spellGame, setSpellGame] = useState([]);
 
     useEffect(() => {
         // Fetch album data from the API
@@ -41,6 +41,7 @@ export default function ViewSlides(props) {
         axios.get('http://localhost:3000/line-game/text-to-text-viewslide')
             .then((response) => {
                 setTextToTextTableData(response.data);
+
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);
@@ -50,6 +51,14 @@ export default function ViewSlides(props) {
         axios.get('http://localhost:3000/line-game/text-to-image-viewslide')
             .then((response) => {
                 setTextToImgTableData(response.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+
+        axios.get('http://localhost:3000/spell-game/view-slides')
+            .then((response) => {
+                setSpellGame(response.data);
             })
             .catch((error) => {
                 console.error('Error fetching data:', error);
@@ -150,7 +159,7 @@ export default function ViewSlides(props) {
                                     </tr>
                                     {textToImgTableData.map((row) => (
                                         <tr key={row.id}>
-                                            <TableCell> {row.title}</TableCell>
+                                            <TableCell> {row.title}  </TableCell>
                                             <TableCell>
                                                 <div>
                                                     <img src={`http://localhost:3000/PictureGallery/picture_album/${row.image1}`} alt="Image1" style={{ width: '50px', height: '50px' }} />
@@ -178,9 +187,9 @@ export default function ViewSlides(props) {
 
                                                 </div>
                                             </TableCell>
-                                            <TableCell> {row.instruction}</TableCell>
-                                            <TableCell> {row.active}</TableCell>
-                                            <TableCell> Edit</TableCell>
+                                            <TableCell> {row.instruction} </TableCell>
+                                            <TableCell> {row.active} </TableCell>
+                                            <TableCell> Edit </TableCell>
                                         </tr>
                                     ))}
                                 </>
@@ -237,7 +246,27 @@ export default function ViewSlides(props) {
                                         </tr>
                                     ))}
                                 </>
+                            ) : props.navlink2 === "/spell-game/view-slides" ? (
+                                <>
+                                    <tr >
+                                        <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Title</strong></TableCell>
+                                        <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Version</strong></TableCell>
+                                        <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Word Count</strong></TableCell>
+                                        <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Play Game</strong></TableCell>
+                                        <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg"><strong>Action</strong></TableCell>
+                                    </tr>
+                                    {spellGame.map((row) => (
+                                        <tr key={row.id}>
+                                            <TableCell > {row.title}</TableCell>
+                                            <TableCell>{row.version}</TableCell>
+                                            <TableCell> {row.noofwords}</TableCell>
+                                            <TableCell> Play Test </TableCell>
+                                            <TableCell> Edit</TableCell>
+                                        </tr>
+                                    ))}
+                                </>
                             ) : null}
+
                         </tbody>
                     </table>
                 </div>

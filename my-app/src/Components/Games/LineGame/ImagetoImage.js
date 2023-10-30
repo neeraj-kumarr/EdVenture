@@ -93,7 +93,7 @@ export default function ImagetoImage() {
                                     {selectedImages[0] && (
                                         <img
                                             src={selectedImages[0]}
-                                            alt="Selected Image"
+                                            alt="Selected"
                                             style={{ maxWidth: '100px', padding: '5px' }}
                                         />
                                     )}
@@ -115,7 +115,7 @@ export default function ImagetoImage() {
                                     {selectedImages[1] && (
                                         <img
                                             src={selectedImages[1]}
-                                            alt="Selected Image"
+                                            alt="Selected"
                                             style={{ maxWidth: '100px', padding: '5px' }}
                                         />
                                     )}
@@ -137,7 +137,7 @@ export default function ImagetoImage() {
                                     {selectedImages[2] && (
                                         <img
                                             src={selectedImages[2]}
-                                            alt="Selected Image"
+                                            alt="Selected"
                                             style={{ maxWidth: '100px', padding: '5px' }}
                                         />
                                     )}
@@ -159,7 +159,7 @@ export default function ImagetoImage() {
                                     {selectedImages[3] && (
                                         <img
                                             src={selectedImages[3]}
-                                            alt="Selected Image"
+                                            alt="Selected "
                                             style={{ maxWidth: '100px', padding: '5px' }}
                                         />
                                     )}
@@ -181,7 +181,7 @@ export default function ImagetoImage() {
                                     {selectedImages[4] && (
                                         <img
                                             src={selectedImages[4]}
-                                            alt="Selected Image"
+                                            alt="Selected"
                                             style={{ maxWidth: '100px', padding: '5px' }}
                                         />
                                     )}
@@ -203,7 +203,7 @@ export default function ImagetoImage() {
                                     {selectedImages[5] && (
                                         <img
                                             src={selectedImages[5]}
-                                            alt="Selected Image"
+                                            alt="Selected"
                                             style={{ maxWidth: '100px', padding: '5px' }}
                                         />
                                     )}
@@ -225,7 +225,7 @@ export default function ImagetoImage() {
                                     {selectedImages[6] && (
                                         <img
                                             src={selectedImages[6]}
-                                            alt="Selected Image"
+                                            alt="Selected"
                                             style={{ maxWidth: '100px', padding: '5px' }}
                                         />
                                     )}
@@ -247,7 +247,7 @@ export default function ImagetoImage() {
                                     {selectedImages[7] && (
                                         <img
                                             src={selectedImages[7]}
-                                            alt="Selected Image"
+                                            alt="Selected"
                                             style={{ maxWidth: '100px', padding: '5px' }}
                                         />
                                     )}
@@ -269,7 +269,7 @@ export default function ImagetoImage() {
                                     {selectedImages[8] && (
                                         <img
                                             src={selectedImages[8]}
-                                            alt="Selected Image"
+                                            alt="Selected"
                                             style={{ maxWidth: '100px', padding: '5px' }}
                                         />
                                     )}
@@ -291,7 +291,7 @@ export default function ImagetoImage() {
                                     {selectedImages[9] && (
                                         <img
                                             src={selectedImages[9]}
-                                            alt="Selected Image"
+                                            alt="Selected"
                                             style={{ maxWidth: '100px', padding: '5px' }}
                                         />
                                     )}

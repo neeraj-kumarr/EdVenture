@@ -4,10 +4,8 @@ import { Gallery } from "react-grid-gallery";
 import Spinner from '../Spinner';
 
 export default function ViewImagesInAlbum() {
-    // eslint-disable-next-line
-    const [albumData, setAlbumData] = useState([]);
-    const [selectedAlbumTitle, setSelectedAlbumTitle] = useState(''); // Track the selected album title
 
+    // const [albumData, setAlbumData] = useState([]);
     // eslint-disable-next-line
     const [data, setData] = useState([]);
     const [galleryImages, setGalleryImages] = useState([]);
@@ -18,27 +16,25 @@ export default function ViewImagesInAlbum() {
     const [loading, setLoading] = useState(false);
     const [hasMoreResults, setHasMoreResults] = useState(true);
 
-    useEffect(() => {
-        // Fetch album data from the API
-        axios.get('http://localhost:3000/view-albums')
-            .then((response) => {
-                setAlbumData(response.data);
-            })
-            .catch((error) => {
-                console.error('Error fetching album data:', error);
-            });
-    }, []);
+    // useEffect(() => {
+    //     // Fetch album data from the API
+    //     axios.get('http://localhost:3000/view-albums')
+    //         .then((response) => {
+    //             setAlbumData(response.data);
+    //         })
+    //         .catch((error) => {
+    //             console.error('Error fetching album data:', error);
+    //         });
+    // }, []);
 
 
     useEffect(() => {
-        // if (selectedAlbumTitle) { // Only fetch images if an album title is selected
         setLoading(true);
         axios.get('http://localhost:3000/view-images-in-album', {
             params: {
                 keyword: searchKeyword,
                 page,
                 pageSize,
-                // albumTitle: selectedAlbumTitle, // Pass the selected album title
             }
         })
             .then((res) => {
@@ -53,11 +49,8 @@ export default function ViewImagesInAlbum() {
             })
             .catch((err) => console.log('Error fetching image data:', err))
             .finally(() => setLoading(false));
-        // } else {
-        //     // If no album title is selected, you can choose to show all pictures
-        //     // You may fetch all pictures without filtering by album title here
-        // }
-    }, [searchKeyword, page, pageSize, selectedAlbumTitle]);
+
+    }, [searchKeyword, page, pageSize]);
 
 
 
@@ -92,13 +85,12 @@ export default function ViewImagesInAlbum() {
                     <p>2. Enter a Keyword to search for a particular image within an Album</p>
 
                     <div className="d-flex justify-content-between my-4">
-                        <h6 >Select Album Name: </h6>
+                        {/* <h6 >Select Album Name: </h6>
 
                         <select
                             className="form-select h-25 w-25"
                             aria-label="Default select example"
-                            value={selectedAlbumTitle}
-                            onChange={(e) => setSelectedAlbumTitle(e.target.value)}
+
                         >
                             <option value=''>Select</option>
                             {albumData.map((album) => (
@@ -106,7 +98,7 @@ export default function ViewImagesInAlbum() {
                                     {album.title}
                                 </option>
                             ))}
-                        </select>
+                        </select> */}
                         <div className="input-group">
                             <label htmlFor="exampleFormControlInput1" className='m-2'>Search By Keyword: </label>
                             <div >

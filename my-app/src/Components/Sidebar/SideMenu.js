@@ -13,7 +13,7 @@ import TexttoText from '../Games/LineGame/TexttoText';
 import ImagetoImage from '../Games/LineGame/ImagetoImage';
 import TexttoImage from "../Games/LineGame/TexttoImage";
 import PrepareNewObject from "../Games/IdentifyGame/PrepareNewObjects";
-
+import PrepareSpellGame from "../Games/SpellathonGame/PrepareSpellGame";
 
 
 // added more menuItems for testing
@@ -58,7 +58,7 @@ export const menuItems = [
     },
 
     { name: "Identification Game", to: "/identify-game/prepare-new-objects", route: <PrepareNewObject /> },
-    { name: "Spellathon Game", to: "/spellathon-game" },
+    { name: "Spellathon Game", to: "/spell-game/prepare-spell-slide", route: <PrepareSpellGame /> },
 ];
 
 
