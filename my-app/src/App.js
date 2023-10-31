@@ -8,6 +8,7 @@ import PrepareNewObjects from './Components/Games/IdentifyGame/PrepareNewObjects
 import ViewObjects from './Components/Games/IdentifyGame/ViewObjects';
 import Login from './Components/Login';
 import PrepareSpellGame from "./Components/Games/SpellathonGame/PrepareSpellGame";
+import CompileSpellGame from './Components/Games/SpellathonGame/CompileSpellGame';
 
 function App() {
   const [inactive, setInactive] = useState(false);
@@ -53,8 +54,10 @@ function App() {
               <Route exact path="/identify-game/view-object-game" element={<ViewGame maintitle="Identify Game" navlink1="/identify-game/prepare-new-objects" navlink2="/identify-game/view-objects" navlink3="/identify-game/compile-object-game" navlink4="/identify-game/view-object-game" />} />
 
 
-              <Route exact path="/spell-game/prepare-spell-slide" element={<PrepareSpellGame maintitle="Spellathon Game" navlink1="/spell-game/prepare-spell-slide" navlink2="/spell-game/view-slides" navlink3="/spell-game/compile-object-game" navlink4="/spell-game/view-object-game" />} />
-              <Route exact path="/spell-game/view-slides" element={<ViewSlides maintitle="Spellathon Game" navlink1="/spell-game/prepare-spell-slide" navlink2="/spell-game/view-slides" navlink3="/spell-game/compile-object-game" navlink4="/spell-game/view-object-game" />} />
+              <Route exact path="/spell-game/prepare-spell-slide" element={<PrepareSpellGame maintitle="Spellathon Game" navlink1="/spell-game/prepare-spell-slide" navlink2="/spell-game/view-slides" navlink3="/spell-game/compile-game" navlink4="/spell-game/view-games" />} />
+              <Route exact path="/spell-game/view-slides" element={<ViewSlides maintitle="Spellathon Game" navlink1="/spell-game/prepare-spell-slide" navlink2="/spell-game/view-slides" navlink3="/spell-game/compile-game" navlink4="/spell-game/view-games" />} />
+              <Route exact path="/spell-game/compile-game" element={<CompileSpellGame maintitle="Spellathon Game" navlink1="/spell-game/prepare-spell-slide" navlink2="/spell-game/view-slides" navlink3="/spell-game/compile-game" navlink4="/spell-game/view-games" />} />
+              <Route exact path="/spell-game/view-games" element={<ViewGame maintitle="Spellathon Game" navlink1="/spell-game/prepare-spell-slide" navlink2="/spell-game/view-slides" navlink3="/spell-game/compile-game" navlink4="/spell-game/view-games" />} />
 
 
             </Routes>

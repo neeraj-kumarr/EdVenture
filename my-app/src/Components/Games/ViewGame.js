@@ -36,6 +36,9 @@ export default function ViewGame(props) {
 
                 } else if (props.navlink4 === '/identify-game/view-object-game') {
                     endpoint = 'http://localhost:3000/identify-game/view-object-game';
+
+                } else if (props.navlink4 === '/spell-game/view-games') {
+                    endpoint = 'http://localhost:3000/spell-game/view-games';
                 }
 
                 const response = await axios.get(endpoint);
@@ -72,10 +75,10 @@ export default function ViewGame(props) {
                                 <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Image</strong></TableCell>
                                 <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Class</strong></TableCell>
                                 <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Version</strong></TableCell>
-                                <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Chapter</strong></TableCell>
-                                <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">
-                                    &nbsp;<strong>{isIdentifyGame ? 'Instructions' : 'Test'}</strong>
-                                </TableCell>
+                                {props.navlink4 === '/spell-game/view-games' ? null : (
+                                    <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>Chapter</strong></TableCell>
+                                )}
+                                <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">&nbsp;<strong>{isIdentifyGame ? 'Instructions' : 'Test'}</strong></TableCell>
                                 <TableCell backgroundImage="https://crossbones.org.uk/wp-content/uploads/2016/08/grey-background.jpg">
                                     <div><strong>Action</strong></div>
                                 </TableCell>
@@ -92,7 +95,9 @@ export default function ViewGame(props) {
                                     </TableCell>
                                     <TableCell>{row.class}</TableCell>
                                     <TableCell>{row.version}</TableCell>
-                                    <TableCell>{row.chapter ? row.chapter : <i style={{ color: 'red' }}>'No Chapter'</i>}</TableCell>
+                                    {props.navlink4 === '/spell-game/view-games' ? null : (
+                                        <TableCell>{row.chapter ? row.chapter : <i style={{ color: 'red' }}>'No Chapter'</i>}</TableCell>
+                                    )}
                                     <TableCell>{isIdentifyGame ? row.instruction : row.test}</TableCell>
                                     <TableCell>{row.action}</TableCell>
                                 </tr>

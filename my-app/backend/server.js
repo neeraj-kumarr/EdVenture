@@ -17,6 +17,7 @@ const compileGame = require('./routes/CompileGame')
 const viewObjectSlide = require('./routes/IdentifyGame/ViewObjectSlide')
 const viewObjectGame = require('./routes/IdentifyGame/ViewObjectGame')
 
+const viewSpellSlides = require('./routes/SpellathonGame/ViewSpellSlides')
 const viewSpellGame = require('./routes/SpellathonGame/ViewSpellGame')
 
 
@@ -39,6 +40,7 @@ app.use(textToTextLineGame);
 app.use(compileGame);
 app.use(viewObjectSlide);
 app.use(viewObjectGame);
+app.use(viewSpellSlides);
 app.use(viewSpellGame);
 
 
