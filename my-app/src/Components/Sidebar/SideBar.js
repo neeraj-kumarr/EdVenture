@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import logo from "../../logo.png";
 import './Sidemenu.css';
 import MenuItem from "./MenuItem";
-import Home from "../Home";
+// import Home from "../Home";
 import CreateNewAlbum from "../PictureLibrary/CreateNewAlbum";
 import AddImagesToAlbum from "../PictureLibrary/AddImagesToAlbum";
 import BackgroundImages from "../PictureLibrary/BackgroundImages";
@@ -18,13 +18,13 @@ import PrepareSpellGame from "../Games/SpellathonGame/PrepareSpellGame";
 
 // added more menuItems for testing
 export const menuItems = [
-    {
-        name: "Home",
-        exact: true,
-        to: "/home",
-        iconClassName: "bi bi-speedometer2",
-        route: <Home />
-    },
+    // {
+    //     name: "Home",
+    //     exact: true,
+    //     to: "/home",
+    //     iconClassName: "bi bi-speedometer2",
+    //     route: <Home />
+    // },
     {
         name: "Picture Library",
         exact: true,
@@ -65,7 +65,7 @@ export const menuItems = [
 
 
 
-const SideMenu = () => {
+const SideBar = () => {
     const [inactive, setInactive] = useState(false);
     const location = useLocation()
 
@@ -160,4 +160,4 @@ const SideMenu = () => {
     );
 };
 
-export default SideMenu;
+export default SideBar;

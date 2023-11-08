@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "./../App.css"; // Adjust the relative path to App.css
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Import useHistory from react-router-dom
-import Navbar from './Navbar';
-
+import { Link, useNavigate } from "react-router-dom"; // Import useHistory from react-router-dom
+import logo from '../logo.png'
 function Login({ setIsLoggedIn }) {
 
     const navigate = useNavigate();
@@ -30,10 +29,19 @@ function Login({ setIsLoggedIn }) {
     }
     return (
         <>
-            <Navbar />
-            <section className="vh-100">
+            <section>
+                <nav className="navbar navbar-expand-lg bg-body-tertiary">
+                    <div className="container-fluid">
+                        <img src={logo} alt="logo" width="150" height="50" />
+                        <Link to='/'>
+                            <button type="button" className="btn btn-dark">Log In</button>
+                        </Link>
+                    </div>
+                </nav >
+            </section>
+            <section>
                 <div className="container-fluid h-custom">
-                    <div className="row d-flex justify-content-center align-items-center h-100">
+                    <div className="m-5 row justify-content-center align-items-center ">
                         <div className="col-md-9 col-lg-6 col-xl-5">
                             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
                                 className="img-fluid" alt="" />
