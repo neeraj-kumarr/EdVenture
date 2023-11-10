@@ -101,3 +101,35 @@ h2 {
 .gamesubmenu {
   padding-left: 40px;
 }
+
+/*bg games and chapters*/
+.component-with-background {
+  background-image: url("https://cdn.pixabay.com/photo/2015/12/03/08/50/paper-1074131_640.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100vh;
+}
+
+
+/* CardWithProgressBar */
+/* .card-container {
+  position: relative;
+}
+
+.card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.progress-bar-container {
+  height: 10px;
+  background-color: #f0f0f0;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.5s; /
+} */
