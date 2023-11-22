@@ -1,4 +1,4 @@
- import Card from 'react-bootstrap/Card';
+import Card from 'react-bootstrap/Card';
 
 
  function Sub() {
@@ -10,7 +10,6 @@
          flex: '5',
          justifyContent: 'center',
          width: '100%', 
-         
          height: '100%', 
          gap: '40px',
      };
