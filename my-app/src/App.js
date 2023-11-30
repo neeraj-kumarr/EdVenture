@@ -12,8 +12,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './Components/Login';
 import Home from './Components/Home';
 import Games from './Components/Games';
-import Screen from './Components/Screen';
 import Chapters from './Components/Chapters';
+import Screen from './Components/Screen';
+
 
 import './App.css'
 function App() {
