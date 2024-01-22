@@ -12,6 +12,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './Components/Login';
 import Home from './Components/Home';
 import './App.css'
+import Chapters from './Components/Chapters';
+// import KonvaArrowDemo from './Components/KonvaArrowDemo';
+// import DrawLineGame from './Components/Games/LineGame/DrawLineGame';
 function App() {
   // const [inactive, setInactive] = useState(false);
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -75,6 +78,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={<Login />} />
         <Route exact path='/home' element={<Home />} />
+        <Route exact path='/english' element={<Chapters />} />
 
       </Routes>
     </BrowserRouter>

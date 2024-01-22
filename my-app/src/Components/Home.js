@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import Avatar from '@mui/material/Avatar';
 import { Card } from 'antd';
 import { Progress, Space } from 'antd';
+import { Link } from 'react-router-dom';
 
 import { MailOutlined, GlobalOutlined, PhoneOutlined } from '@ant-design/icons'
 
@@ -14,8 +15,8 @@ export default function Home() {
     return (
         <>
             <Navbar />
-            <div className="container">
-                <section className='m-4 bg-light '>
+            <div className="container ">
+                <section className='m-4  bg-light '>
                     <div className='border rounded border-1 '>
                         <div className='m-4 d-flex flex-wrap justify-content-start'>
                             <Avatar
@@ -86,17 +87,20 @@ export default function Home() {
                         <p className='pb-3' style={{ fontSize: 25, fontFamily: 'Monaco ' }}> All Subject List</p>
                         <div className=' d-flex flex-wrap justify-content-around '>
                             <div className='p-3'>
+                                <Link to="/english">
 
-                                <Card
-                                    className='shadow  rounded'
-                                    hoverable
-                                    style={{ width: 500 }}
-                                    cover={<img alt="example" height={180} src="https://t3.ftcdn.net/jpg/03/70/42/66/360_F_370426690_Pejt9KxjWTHPklsKwripaxr0iA17zupF.jpg" />}
-                                >
-                                    <Meta title="English " description="Class 2A" />
-                                    <Progress percent={50} status="active" />
+                                    <Card
+                                        className='shadow  rounded'
+                                        hoverable
+                                        style={{ width: 500 }}
+                                        cover={<img alt="example" height={180} src="https://t3.ftcdn.net/jpg/03/70/42/66/360_F_370426690_Pejt9KxjWTHPklsKwripaxr0iA17zupF.jpg" />}
+                                    >
+                                        <Meta title="English " description="Class 2A" />
+                                        <Progress percent={50} status="active" />
 
-                                </Card>
+                                    </Card>
+                                </Link>
+
                             </div>
 
                             <Card

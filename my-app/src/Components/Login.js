@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import "./../App.css"; // Adjust the relative path to App.css
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom"; // Import useHistory from react-router-dom
-import logo from '../logo.png'
+import logo from '../logo.png';
+import kidsimage from '../kids.png';
+
 function Login({ setIsLoggedIn }) {
 
     const navigate = useNavigate();
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -43,21 +47,25 @@ function Login({ setIsLoggedIn }) {
                 <div className="container-fluid h-custom">
                     <div className="m-5 row justify-content-center align-items-center ">
                         <div className="col-md-9 col-lg-6 col-xl-5">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                            {/* <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" */}
+                            <img src={kidsimage}
                                 className="img-fluid" alt="" />
                         </div>
                         <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+
                             <form onSubmit={handleSubmit}>
                                 <div className="form-outline mb-4">
                                     <label className="form-label" htmlFor="form3Example3">Email address</label>
+
                                     <input type="email" id="form3Example3" className="form-control form-control-lg"
                                         placeholder="Enter a valid email address" autoComplete="username" onChange={(e) => { setEmail(e.target.value) }} />
-                                </div>
 
+                                </div>
                                 <div className="form-outline mb-3">
                                     <label className="form-label" htmlFor="form3Example4">Password</label>
                                     <input type="password" id="form3Example4" className="form-control form-control-lg"
                                         placeholder="Enter password" autoComplete="current-password" onChange={(e) => { setPassword(e.target.value) }} />
+
                                 </div>
 
                                 <div className="d-flex justify-content-between align-items-center">
