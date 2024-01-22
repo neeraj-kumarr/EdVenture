@@ -5,8 +5,6 @@ import { Card } from 'antd';
 import { Progress, Space } from 'antd';
 import { Link } from 'react-router-dom';
 
-import { MailOutlined, GlobalOutlined, PhoneOutlined } from '@ant-design/icons'
-
 const { Meta } = Card;
 
 
@@ -24,7 +22,7 @@ export default function Home() {
                                 src="../logo.png"
                                 sx={{ width: 80, height: 80 }}
                             />
-                            <h2 className='text-center m-3'>Welcome, Neeraj Kumar <strong style={{ fontSize: 18 }}>(Grade 2A)</strong></h2>
+                            <h2 className='text-center m-3'>Welcome, Neeraj Kumar</h2>
                         </div>
                     </div>
                 </section>
@@ -158,23 +156,8 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section className='m-4' style={{
-                    backgroundImage: "url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnrqIIr3RkPVW06FGyzSLXmoUq6MCx4fp7tm6d9Cu9IzozZioEzUCDpLTXf7eTPdsE4o8&usqp=CAU)",
-                    backgroundSize: "cover",  // You can add more styles as needed
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat"
-                }}>
-                    <div className='p-4' style={{ borderRadius: 10 }} >
-                        <p style={{ fontSize: 25, fontFamily: 'Monaco ' }}> Get In Touch</p>
-                        <h1>Edventure</h1>
-                        <h6><GlobalOutlined /> https://www.edventure.com</h6>
-                        <h6><PhoneOutlined /> 021-1234567</h6>
-                        <h6><MailOutlined /> edventure@info.com</h6>
-                    </div>
-                </section>
 
-
-            </div >
+            </div>
         </>
     )
 }
