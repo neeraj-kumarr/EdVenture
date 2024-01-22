@@ -1,23 +1,15 @@
 // eslint-disable-next-line
 import React, { useState } from 'react';
-// import SideBar, { menuItems } from "./Components/Sidebar/SideBar";
-// import CompileGame from './Components/Games/CompileGame';
-// import ViewSlides from './Components/Games/ViewSlides';
-// import ViewGame from './Components/Games/ViewGame';
-// import PrepareNewObjects from './Components/Games/IdentifyGame/PrepareNewObjects';
-// import ViewObjects from './Components/Games/IdentifyGame/ViewObjects';
-// import PrepareSpellGame from "./Components/Games/SpellathonGame/PrepareSpellGame";
-// import CompileSpellGame from './Components/Games/SpellathonGame/CompileSpellGame';
+import SideMenu, { menuItems } from "./Components/Sidebar/SideMenu";
+import CompileGame from './Components/Games/CompileGame';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from './Components/Login';
-import Home from './Components/Home';
-import './App.css'
-import Chapters from './Components/Chapters';
-// import KonvaArrowDemo from './Components/KonvaArrowDemo';
-// import DrawLineGame from './Components/Games/LineGame/DrawLineGame';
+import PrepareSpellGame from "./Components/Games/SpellathonGame/PrepareSpellGame";
+import CompileSpellGame from './Components/Games/SpellathonGame/CompileSpellGame';
+
 function App() {
-  // const [inactive, setInactive] = useState(false);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [inactive, setInactive] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <BrowserRouter>
@@ -30,28 +22,28 @@ function App() {
           }}
         />
 
-        <div className={`container ${inactive ? 'inactive' : ''}`}>
-          <Routes>
-            {menuItems.map((menu) => (
-              <Route key={menu.name} path={menu.to} element={menu.route} />
-            ))}
-            {menuItems.map((menu) =>
-              menu.subMenus &&
-                menu.subMenus.length > 0 ? (
-                menu.subMenus.map((subMenu) => (
-                  <Route key={subMenu.name} path={subMenu.to} element={subMenu.route} />
-                ))
-              ) : null
-            )}
-            <Route exact path="/line-game/text-to-image-compile" element={<CompileGame maintitle="[Text to Image]" navlink1="/line-game/text-to-image-newslide" navlink2="/line-game/text-to-image-viewslide" navlink3="/line-game/text-to-image-compile" navlink4="/line-game/text-to-image-viewgame" />} />
-            <Route exact path="/line-game/text-to-text-compile" element={<CompileGame maintitle="[Text to Text]" navlink1="/line-game/text-to-text-newslide" navlink2="/line-game/text-to-text-viewslide" navlink3="/line-game/text-to-text-compile" navlink4="/line-game/text-to-text-viewgame" />} />
-            <Route exact path="/line-game/image-to-image-compile" element={<CompileGame maintitle="[Image to Image]" navlink1="/line-game/image-to-image-newslide" navlink2="/line-game/image-to-image-viewslide" navlink3="/line-game/image-to-image-compile" navlink4="/line-game/image-to-image-viewgame" />} />
-            <Route exact path="/line-game/text-to-image-viewslide" element={<ViewSlides maintitle="[Text to Image]" navlink1="/line-game/text-to-image-newslide" navlink2="/line-game/text-to-image-viewslide" navlink3="/line-game/text-to-image-compile" navlink4="/line-game/text-to-image-viewgame" />} />
-            <Route exact path="/line-game/text-to-text-viewslide" element={<ViewSlides maintitle="[Text to Text]" navlink1="/line-game/text-to-text-newslide" navlink2="/line-game/text-to-text-viewslide" navlink3="/line-game/text-to-text-compile" navlink4="/line-game/text-to-text-viewgame" />} />
-            <Route exact path="/line-game/image-to-image-viewslide" element={<ViewSlides maintitle="[Image to Image]" navlink1="/line-game/image-to-image-newslide" navlink2="/line-game/image-to-image-viewslide" navlink3="/line-game/image-to-image-compile" navlink4="/line-game/image-to-image-viewgame" />} />
-            <Route exact path="/line-game/text-to-image-viewgame" element={<ViewGame maintitle="[Text to Image]" navlink1="/line-game/text-to-image-newslide" navlink2="/line-game/text-to-image-viewslide" navlink3="/line-game/text-to-image-compile" navlink4="/line-game/text-to-image-viewgame" />} />
-            <Route exact path="/line-game/text-to-text-viewgame" element={<ViewGame maintitle="[Text to Text]" navlink1="/line-game/text-to-text-newslide" navlink2="/line-game/text-to-text-viewslide" navlink3="/line-game/text-to-text-compile" navlink4="/line-game/text-to-text-viewgame" />} />
-            <Route exact path="/line-game/image-to-image-viewgame" element={<ViewGame maintitle="[Image to Image]" navlink1="/line-game/image-to-image-newslide" navlink2="/line-game/image-to-image-viewslide" navlink3="/line-game/image-to-image-compile" navlink4="/line-game/image-to-image-viewgame" />} />
+          <div className={`container ${inactive ? 'inactive' : ''}`}>
+            <Routes>
+              {menuItems.map((menu) => (
+                <Route key={menu.name} path={menu.to} element={menu.route} />
+              ))}
+              {menuItems.map((menu) =>
+                menu.subMenus &&
+                  menu.subMenus.length > 0 ? (
+                  menu.subMenus.map((subMenu) => (
+                    <Route key={subMenu.name} path={subMenu.to} element={subMenu.route} />
+                  ))
+                ) : null
+              )}
+              <Route exact path="/line-game/text-to-image-compile" element={<CompileGame maintitle="[Text to Image]" navlink1="/line-game/text-to-image-newslide" navlink2="/line-game/text-to-image-viewslide" navlink3="/line-game/text-to-image-compile" navlink4="/line-game/text-to-image-viewgame" />} />
+              <Route exact path="/line-game/text-to-text-compile" element={<CompileGame maintitle="[Text to Text]" navlink1="/line-game/text-to-text-newslide" navlink2="/line-game/text-to-text-viewslide" navlink3="/line-game/text-to-text-compile" navlink4="/line-game/text-to-text-viewgame" />} />
+              <Route exact path="/line-game/image-to-image-compile" element={<CompileGame maintitle="[Image to Image]" navlink1="/line-game/image-to-image-newslide" navlink2="/line-game/image-to-image-viewslide" navlink3="/line-game/image-to-image-compile" navlink4="/line-game/image-to-image-viewgame" />} />
+              <Route exact path="/line-game/text-to-image-viewslide" element={<ViewSlides maintitle="[Text to Image]" navlink1="/line-game/text-to-image-newslide" navlink2="/line-game/text-to-image-viewslide" navlink3="/line-game/text-to-image-compile" navlink4="/line-game/text-to-image-viewgame" />} />
+              <Route exact path="/line-game/text-to-text-viewslide" element={<ViewSlides maintitle="[Text to Text]" navlink1="/line-game/text-to-text-newslide" navlink2="/line-game/text-to-text-viewslide" navlink3="/line-game/text-to-text-compile" navlink4="/line-game/text-to-text-viewgame" />} />
+              <Route exact path="/line-game/image-to-image-viewslide" element={<ViewSlides maintitle="[Image to Image]" navlink1="/line-game/image-to-image-newslide" navlink2="/line-game/image-to-image-viewslide" navlink3="/line-game/image-to-image-compile" navlink4="/line-game/image-to-image-viewgame" />} />
+              <Route exact path="/line-game/text-to-image-viewgame" element={<ViewGame maintitle="[Text to Image]" navlink1="/line-game/text-to-image-newslide" navlink2="/line-game/text-to-image-viewslide" navlink3="/line-game/text-to-image-compile" navlink4="/line-game/text-to-image-viewgame" />} />
+              <Route exact path="/line-game/text-to-text-viewgame" element={<ViewGame maintitle="[Text to Text]" navlink1="/line-game/text-to-text-newslide" navlink2="/line-game/text-to-text-viewslide" navlink3="/line-game/text-to-text-compile" navlink4="/line-game/text-to-text-viewgame" />} />
+              <Route exact path="/line-game/image-to-image-viewgame" element={<ViewGame maintitle="[Image to Image]" navlink1="/line-game/image-to-image-newslide" navlink2="/line-game/image-to-image-viewslide" navlink3="/line-game/image-to-image-compile" navlink4="/line-game/image-to-image-viewgame" />} />
 
             <Route exact path="/identify-game/prepare-new-objects" element={<PrepareNewObjects />} />
             <Route exact path="/identify-game/view-objects" element={<ViewObjects />} />
@@ -73,16 +65,12 @@ function App() {
         <Routes>
         <Route exact path='/' element={<Login setIsLoggedIn={setIsLoggedIn} />} />
         </Routes>
-      )} */}
+      )}
 
-      <Routes>
-        <Route exact path='/' element={<Login />} />
-        <Route exact path='/home' element={<Home />} />
-        <Route exact path='/english' element={<Chapters />} />
-
-      </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
+
+
